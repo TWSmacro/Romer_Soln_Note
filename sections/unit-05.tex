@@ -1,0 +1,208 @@
+\courseunit{5}
+
+% \sourceblock{fill with requirements}
+
+\begin{problem}{1}
+Redo the calculations reported in Table 5.1, 5.2, or 5.3 for any country other than the United States.
+\end{problem}
+
+\begin{problem}{2}
+Redo the calculations reported in Table 5.3 for the following:
+\begin{enumerate}[label=(\alph*)]
+    \item Employees' compensation as a share of national income.
+    \item The labor force participation rate.
+    \item The federal government budget deficit as a share of GDP.
+    \item The Standard and Poor's 500 composite stock price index.
+    \item The difference in yields between Moody's Baa and Aaa bonds.
+    \item The difference in yields between 10-year and 3-month U.S. Treasury securities.
+    \item The weighted average exchange rate of the U.S. dollar against major currencies.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+Let \(A_0\) denote the value of \(A\) in period 0, and let the behavior of \(\ln A\) be given by equations (5.8)--(5.9).
+\begin{enumerate}[label=(\alph*)]
+    \item Express \(\ln A_1\), \(\ln A_2\), and \(\ln A_3\) in terms of \(\ln A_0\), \(\varepsilon_{A1}\), \(\varepsilon_{A2}\), \(\varepsilon_{A3}\), \(\bar{A}\), and \(g\).
+    \item In light of the fact that the expectations of the \(\varepsilon_A\)'s are zero, what are the expectations of \(\ln A_1\), \(\ln A_2\), and \(\ln A_3\) given \(\ln A_0\), \(\bar{A}\), and \(g\)?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+Suppose the period-\(t\) utility function, \(u_t\), is \(u_t=\ln c_t+b\left(1-\ell_t\right)^{1-\gamma}/\left(1-\gamma\right)\), \(b>0\), \(\gamma>0\), rather than (5.7).
+\begin{enumerate}[label=(\alph*)]
+    \item Consider the one-period problem analogous to that investigated in (5.12)--(5.15). How, if at all, does labor supply depend on the wage?
+    \item Consider the two-period problem analogous to that investigated in (5.16)--(5.21). How does the relative demand for leisure in the two periods depend on the relative wage? How does it depend on the interest rate? Explain intuitively why \(\gamma\) affects the responsiveness of labor supply to wages and the interest rate.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{5}
+Consider the problem investigated in (5.16)--(5.21).
+\begin{enumerate}[label=(\alph*)]
+    \item Show that an increase in both \(w_1\) and \(w_2\) that leaves \(w_1/w_2\) unchanged does not affect \(\ell_1\) or \(\ell_2\).
+    \item Now assume that the household has initial wealth of amount \(Z>0\).
+    \begin{enumerate}[label=(\roman*)]
+        \item Does (5.23) continue to hold? Why or why not?
+        \item Does the result in (a) continue to hold? Why or why not?
+    \end{enumerate}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{6}
+Suppose an individual lives for two periods and has utility \(\ln C_1+\ln C_2\).
+\begin{enumerate}[label=(\alph*)]
+    \item Suppose the individual has labor income of \(Y_1\) in the first period of life and zero in the second period. Second-period consumption is thus \(\left(1+r\right)\left(Y_1-C_1\right)\); \(r\), the rate of return, is potentially random.
+    \begin{enumerate}[label=(\roman*)]
+        \item Find the first-order condition for the individual's choice of \(C_1\).
+        \item Suppose \(r\) changes from being certain to being uncertain, without any change in \(E\left[r\right]\). How, if at all, does \(C_1\) respond to this change?
+    \end{enumerate}
+    \item Suppose the individual has labor income of zero in the first period and \(Y_2\) in the second. Second-period consumption is thus \(Y_2-\left(1+r\right)C_1\). \(Y_2\) is certain; again, \(r\) may be random.
+    \begin{enumerate}[label=(\roman*)]
+        \item Find the first-order condition for the individual's choice of \(C_1\).
+        \item Suppose \(r\) changes from being certain to being uncertain, without any change in \(E\left[r\right]\). How, if at all, does \(C_1\) respond to this change?
+    \end{enumerate}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{7}
+\begin{enumerate}[label=(\alph*)]
+    \item Use an argument analogous to that used to derive equation (5.23) to show that household optimization requires 
+    \begin{align*}
+        \dfrac{b}{1-\ell_t} = e^{-\rho}\,\text{E}_t\left[\dfrac{b\,w_t\left(1+r_{t+1}\right)}{w_{t+1}\left(1-\ell_{t+1}\right)}\right]
+    \end{align*}
+    \item Show that this condition is implied by (5.23) and (5.26). (Note that [5.26] must hold in every period.)
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{8}[\textbf{A simplified real-business-cycle model with additive technology shocks.}]
+\problemsource{\parencite[329--331]{blanchard-fischer1989lectures}}
+Consider an economy consisting of a constant population of infinitely lived individuals. The representative individual maximizes the expected value of \(\sum_{t=0}^{\infty}u\left(C_t\right)/\left(1+\rho\right)^t\), \(\rho>0\). The instantaneous utility function, \(u\left(C_t\right)\), is \(u\left(C_t\right)=C_t-\theta C_t^2\), \(\theta>0\). Assume that \(C\) is always in the range where \(u'\left(C\right)\) is positive.
+
+Output is linear in capital, plus an additive disturbance: \(Y_t=AK_t+e_t\). There is no depreciation; thus \(K_{t+1}=K_t+Y_t-C_t\), and the interest rate is \(A\). Assume \(A=\rho\). Finally, the disturbance follows a first-order autoregressive process: \(e_t=\phi e_{t-1}+\varepsilon_t\), where \(-1<\phi<1\) and where the \(\varepsilon_t\)'s are mean-zero, i.i.d. shocks.
+\begin{enumerate}[label=(\alph*)]
+    \item Find the first-order condition (Euler equation) relating \(C_t\) and expectations of \(C_{t+1}\).
+    \item Guess that consumption takes the form \(C_t=\alpha+\beta K_t+\gamma e_t\). Given this guess, what is \(K_{t+1}\) as a function of \(K_t\) and \(e_t\)?
+    \item What values must the parameters \(\alpha\), \(\beta\), and \(\gamma\) have for the first-order condition in part (a) to be satisfied for all values of \(K_t\) and \(e_t\)?
+    \item What are the effects of a one-time shock to \(\varepsilon\) on the paths of \(Y\), \(K\), and \(C\)?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{9}[\textbf{A simplified real-business-cycle model with taste shocks.}]
+\problemsource{\parencite[361]{blanchard-fischer1989lectures}}
+Consider the setup in Problem 5.8. Assume, however, that the technological disturbances (the \(e\)'s) are absent and that the instantaneous utility function is \(u\left(C_t\right)=C_t-\theta\left(C_t+\nu_t\right)^2\). The \(\nu\)'s are mean-zero, i.i.d. shocks.
+\begin{enumerate}[label=(\alph*)]
+    \item Find the first-order condition (Euler equation) relating \(C_t\) and expectations of \(C_{t+1}\).
+    \item Guess that consumption takes the form \(C_t=\alpha+\beta K_t+\gamma\nu_t\). Given this guess, what is \(K_{t+1}\) as a function of \(K_t\) and \(\nu_t\)?
+    \item What values must the parameters \(\alpha\), \(\beta\), and \(\gamma\) have for the first-order condition in (a) to be satisfied for all values of \(K_t\) and \(\nu_t\)?
+    \item What are the effects of a one-time shock to \(\nu\) on the paths of \(Y\), \(K\), and \(C\)?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{10}[\textbf{The balanced growth path of the model of Section 5.3.}]
+Consider the model of Section 5.3 without any shocks. Let \(y^*\), \(k^*\), \(c^*\), and \(G^*\) denote the values of \(Y/\left(AL\right)\), \(K/\left(AL\right)\), \(C/\left(AL\right)\), and \(G/\left(AL\right)\) on the balanced growth path; \(w^*\) the value of \(w/A\); \(\ell^*\) the value of \(L/N\); and \(r^*\) the value of \(r\).
+\begin{enumerate}[label=(\alph*)]
+    \item Use equations (5.1)--(5.4), (5.23), and (5.26) and the fact that \(y^*\), \(k^*\), \(c^*\), \(w^*\), \(\ell^*\), and \(r^*\) are constant on the balanced growth path to find six equations in these six variables.
+    \par \remarkaccent{Hint:} The fact that \(c\) in [5.23] is consumption per person, \(C/N\), and \(c^*\) is the balanced-growth-path value of consumption per unit of effective labor, \(C/\left(AL\right)\), implies that \(c=c^*\ell^*A\) on the balanced growth path.
+    \item Consider the parameter values assumed in Section 5.7. What are the implied shares of consumption and investment in output on the balanced growth path? What is the implied ratio of capital to annual output on the balanced growth path?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{11}[\textbf{Solving a real-business-cycle model by finding the social optimum.}]
+Consider the model of Section 5.5. Assume for simplicity that \(n=g=\bar{A}=\bar{N}=0\). Let \(V\left(K_t,A_t\right)\), the \emph{value function}, be the expected present value from the current period forward of lifetime utility of the representative individual as a function of the capital stock and technology.
+\begin{enumerate}[label=(\alph*)]
+    \item Explain intuitively why \(V\left(\,\cdot\,\right)\) must satisfy
+    \begin{align*}
+        V\left(K_t,A_t\right)
+        &=
+        \max_{C_t,\ell_t}
+        \left\{
+        \left[\ln C_t+b\ln\left(1-\ell_t\right)\right]
+        +e^{-\rho}E_t\left[V\left(K_{t+1},A_{t+1}\right)\right]
+        \right\}.
+    \end{align*}
+    This condition is known as the \emph{Bellman equation}.
+
+    Given the log-linear structure of the model, let us guess that \(V\left(\,\cdot\,\right)\) takes the form \(V\left(K_t,A_t\right)=\beta_0+\beta_K\ln K_t+\beta_A\ln A_t\), where the values of the \(\beta\)'s are to be determined. Substituting this conjectured form and the facts that \(K_{t+1}=Y_t-C_t\) and \(E_t\left[\ln A_{t+1}\right]=\rho_A\ln A_t\) into the Bellman equation yields
+    \begin{align*}
+        V\left(K_t,A_t\right)
+        &=
+        \max_{C_t,\ell_t}
+        \left\{
+        \left[\ln C_t+b\ln\left(1-\ell_t\right)\right]
+        +e^{-\rho}
+        \left[
+        \beta_0+\beta_K\ln\left(Y_t-C_t\right)+\beta_A\rho_A\ln A_t
+        \right]
+        \right\}.
+    \end{align*}
+    \item Find the first-order condition for \(C_t\). Show that it implies that \(C_t/Y_t\) does not depend on \(K_t\) or \(A_t\).
+    \item Find the first-order condition for \(\ell_t\). Use this condition and the result in part (b) to show that \(\ell_t\) does not depend on \(K_t\) or \(A_t\).
+    \item Substitute the production function and the results in parts (b) and (c) for the optimal \(C_t\) and \(\ell_t\) into the equation above for \(V\left(\,\cdot\,\right)\), and show that the resulting expression has the form \(V\left(K_t,A_t\right)=\beta_0'+\beta_K'\ln K_t+\beta_A'\ln A_t\).
+    \item What must \(\beta_K\) and \(\beta_A\) be so that \(\beta_K'=\beta_K\) and \(\beta_A'=\beta_A\)?
+    \item What are the implied values of \(C/Y\) and \(\ell\)? Are they the same as those found in Section 5.5 for the case of \(n=g=0\)?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{12}
+Suppose technology follows some process other than (5.8)--(5.9). Do \(s_t=\hat{s}\) and \(\ell_t=\hat{\ell}\) for all \(t\) continue to solve the model of Section 5.5? Why or why not?
+\end{problem}
+
+\begin{problem}{13}
+Consider the model of Section 5.5. Suppose, however, that the instantaneous utility function, \(u_t\), is given by \(u_t=\ln c_t+b\left(1-\ell_t\right)^{1-\gamma}/\left(1-\gamma\right)\), \(b>0\), \(\gamma>0\), rather than by (5.7) (see Problem 5.4).
+\begin{enumerate}[label=(\alph*)]
+    \item Find the first-order condition analogous to equation (5.26) that relates current leisure and consumption, given the wage.
+    \item With this change in the model, is the saving rate \(\left(s\right)\) still constant?
+    \item Is leisure per person \(\left(1-\ell\right)\) still constant?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{14}
+\begin{enumerate}[label=(\alph*)]
+    \item If the \(\tilde{A}_t\)'s are uniformly 0 and if \(\ln Y_t\) evolves according to (5.39), what path does \(\ln Y_t\) settle down to?
+    \par \remarkaccent{Hint:} Note that we can rewrite [5.39] as \
+    \begin{align*}
+        \ln Y_t-\left(n+g\right)t=Q+\alpha\left[\ln Y_{t-1}-\left(n+g\right)\left(t-1\right)\right]+\left(1-\alpha\right)\tilde{A}_t
+    \end{align*}
+    where \(Q\equiv\alpha\ln\hat{s}+\left(1-\alpha\right)\left(\bar{A}+\ln\hat{\ell}+\bar{N}\right)-\alpha\left(n+g\right)\).
+    \item Let \(\tilde{Y}_t\) denote the difference between \(\ln Y_t\) and the path found in (a). With this definition, derive (5.40).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{15}[\textbf{The derivation of the log-linearized equation of motion for capital.}]
+Consider the equation of motion for capital, \(K_{t+1}=K_t+K_t^\alpha\left(A_tL_t\right)^{1-\alpha}-C_t-G_t-\delta K_t\).
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \begin{enumerate}[label=(\roman*)]
+        \item Show that 
+        \begin{align*}
+            \dfrac{\partial \ln K_{t+1}}{\partial \ln K_t} = \dfrac{1+r_t}{K_{t+1}/K_t}
+        \end{align*}
+        \item Show that this implies that \(\partial\ln K_{t+1}/\partial\ln K_t\) evaluated at the balanced growth path is \(\left(1+r^*\right)/e^{n+g}\).
+    \end{enumerate}
+    \item Show that
+    \begin{align*}
+        \tilde{K}_{t+1}
+        &\simeq
+        \lambda_1\tilde{K}_t
+        +\lambda_2\left(\tilde{A}_t+\tilde{L}_t\right)
+        +\lambda_3\tilde{G}_t
+        +\left(1-\lambda_1-\lambda_2-\lambda_3\right)\tilde{C}_t,
+    \end{align*}
+    where
+    \begin{align*}
+        \lambda_1 \equiv \dfrac{\left(1+r^*\right)}{e^{n+g}}\,,\quad 
+        \lambda_2 \equiv \dfrac{\left(1-\alpha\right)\left(r^*+\delta\right)}{\alpha \, e^{n+g}}\,,\quad 
+        \lambda_3 \equiv -\dfrac{\left(r^*+\delta\right)\left(G/Y\right)^*}{\alpha \, e^{n+g}}
+    \end{align*}
+    and where \(\left(G/Y\right)^*\) denotes the ratio of \(G\) to \(Y\) on the balanced growth path without shocks. (Hints: Since the production function is Cobb--Douglas, \(Y^*=\left(r^*+\delta\right)K^*/\alpha\). On the balanced growth path, \(K_{t+1}=e^{n+g}K_t\), which implies that \(C^*=Y^*-G^*-\delta K^*-\left(e^{n+g}-1\right)K^*\).)
+    \item Use the result in (b) and equations (5.43)--(5.44) to derive (5.53), where \(b_{KK}=\lambda_1+\lambda_2a_{LK}+\left(1-\lambda_1-\lambda_2-\lambda_3\right)a_{CK}\), \(b_{KA}=\lambda_2\left(1+a_{LA}\right)+\left(1-\lambda_1-\lambda_2-\lambda_3\right)a_{CA}\), and \(b_{KG}=\lambda_2a_{LG}+\lambda_3+\left(1-\lambda_1-\lambda_2-\lambda_3\right)a_{CG}\).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{16}
+Redo the regression reported in equation (5.55):
+\begin{enumerate}[label=(\alph*)]
+    \item Incorporating more recent data.
+    \item Incorporating more recent data, and using \(M1\) rather than \(M2\).
+    \item Including eight lags of the change in log money rather than four.
+\end{enumerate}
+\end{problem}

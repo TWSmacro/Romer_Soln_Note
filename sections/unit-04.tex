@@ -1,0 +1,170 @@
+\courseunit{4}
+
+\begin{problem}{1}[\textbf{The golden-rule level of education.}]
+Consider the model of Section 4.1 with the assumption that \(G\left(E\right)\) takes the form \(G\left(E\right)=e^{\phi E}\).
+\begin{enumerate}[label=(\alph*)]
+    \item Find an expression that characterizes the value of \(E\) that maximizes the level of output per person on the balanced growth path. Are there cases where this value equals 0? Are there cases where it equals \(T\)?
+    \item Assuming an interior solution, describe how, if at all, the golden-rule level of \(E\) (that is, the level of \(E\) you characterized in part (a)) is affected by each of the following changes:
+    \begin{enumerate}[label=(\roman*)]
+        \item A rise in \(T\).
+        \item A fall in \(n\).
+    \end{enumerate}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{2}[\textbf{Endogenizing the choice of \(E\).}]
+\problemsource{\parencite{bils-klenow2000schooling}}
+Suppose that the wage of a worker with education \(E\) at time \(t\) is \(be^{gt}e^{\phi E}\). Consider a worker born at time 0 who will be in school for the first \(E\) years of life and will work for the remaining \(T-E\) years. Assume that the interest rate is constant and equal to \(\bar{r}\).
+\begin{enumerate}[label=(\alph*)]
+    \item What is the present discounted value of the worker's lifetime earnings as a function of \(E\), \(T\), \(b\), \(\bar{r}\), \(\phi\), and \(g\)?
+    \item Find the first-order condition for the value of \(E\) that maximizes the expression you found in part (a). Let \(E^*\) denote this value of \(E\). (Assume an interior solution.)
+    \item Describe how each of the following developments affects \(E^*\):
+    \begin{enumerate}[label=(\roman*)]
+        \item A rise in \(T\).
+        \item A rise in \(\bar{r}\).
+        \item A rise in \(g\).
+    \end{enumerate}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+Suppose output in country \(i\) is given by \(Y_i=A_iQ_i e^{\phi E_i}L_i\). Here \(E_i\) is each worker's years of education, \(Q_i\) is the quality of education, and the rest of the notation is standard. Higher output per worker raises the quality of education. Specifically, \(Q_i\) is given by \(B_i\left(Y_i/L_i\right)^\gamma\), \(0<\gamma<1\), \(B_i>0\).
+
+Our goal is to decompose the difference in log output per worker between two countries, 1 and 2, into the contributions of education and all other forces. We have data on \(Y\), \(L\), and \(E\) in the two countries, and we know the values of the parameters \(\phi\) and \(\gamma\).
+\begin{enumerate}[label=(\alph*)]
+    \item Explain in what way attributing amount \(\phi\left(E_2-E_1\right)\) of \(\ln\left(Y_2/L_2\right)-\ln\left(Y_1/L_1\right)\) to education and the remainder to other forces would understate the contribution of education to the difference in log output per worker between the two countries.
+    \item What would be a better measure of the contribution of education to the difference in log output per worker?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+Suppose the production function is \(Y=K^\alpha\left(e^{\phi E}L\right)^{1-\alpha}\), \(0<\alpha<1\). \(E\) is the amount of education workers receive; the rest of the notation is standard. Assume that there is perfect capital mobility. In particular, \(K\) always adjusts so that the marginal product of capital equals the world rate of return, \(r^*\).
+\begin{enumerate}[label=(\alph*)]
+    \item Find an expression for the marginal product of capital as a function of \(K\), \(E\), \(L\), and the parameters of the production function.
+    \item Use the equation you derived in part (a) to find \(K\) as a function of \(r^*\), \(E\), \(L\), and the parameters of the production function.
+    \item Use your answer in part (b) to find an expression for \(d\left(\ln Y\right)/dE\), incorporating the effect of \(E\) on \(Y\) via \(K\).
+    \item Explain intuitively how capital mobility affects the impact of the change in \(E\) on output.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{5}
+\problemsource{\parencite{mankiw-romer-weil1992contribution}}
+Suppose output is given by
+\begin{align*}
+    Y\left(t\right)
+    &= K\left(t\right)^\alpha H\left(t\right)^\beta
+       \left[A\left(t\right)L\left(t\right)\right]^{1-\alpha-\beta},
+    & \alpha &> 0,\quad \beta>0,\quad \alpha+\beta<1.
+\end{align*}
+Here \(L\) is the number of workers and \(H\) is their total amount of skills. The remainder of the notation is standard. The dynamics of the inputs are \(\dot{L}\left(t\right)=nL\left(t\right)\), \(\dot{A}\left(t\right)=gA\left(t\right)\), \(\dot{K}\left(t\right)=s_KY\left(t\right)-\delta K\left(t\right)\), \(\dot{H}\left(t\right)=s_HY\left(t\right)-\delta H\left(t\right)\), where \(0<s_K<1\), \(0<s_H<1\), and \(n+g+\delta>0\). \(L\left(0\right)\), \(A\left(0\right)\), \(K\left(0\right)\), and \(H\left(0\right)\) are given, and are all strictly positive. Finally, define \(y\left(t\right)\equiv Y\left(t\right)/\left[A\left(t\right)L\left(t\right)\right]\), \(k\left(t\right)\equiv K\left(t\right)/\left[A\left(t\right)L\left(t\right)\right]\), and \(h\left(t\right)\equiv H\left(t\right)/\left[A\left(t\right)L\left(t\right)\right]\).
+\begin{enumerate}[label=(\alph*)]
+    \item Derive an expression for \(y\left(t\right)\) in terms of \(k\left(t\right)\) and \(h\left(t\right)\) and the parameters of the model.
+    \item Derive an expression for \(\dot{k}\left(t\right)\) in terms of \(k\left(t\right)\) and \(h\left(t\right)\) and the parameters of the model. In \(\left(k,h\right)\) space, sketch the set of points where \(\dot{k}=0\).
+    \item Derive an expression for \(\dot{h}\left(t\right)\) in terms of \(k\left(t\right)\) and \(h\left(t\right)\) and the parameters of the model. In \(\left(k,h\right)\) space, sketch the set of points where \(\dot{h}=0\).
+    \item Does the economy converge to a balanced growth path? Why or why not? If so, what is the growth rate of output per worker on the balanced growth path? If not, in general terms what is the behavior of output per worker over time?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{6}
+Consider the model in Problem 4.5.
+\begin{enumerate}[label=(\alph*)]
+    \item What are the balanced-growth-path values of \(k\) and \(h\) in terms of \(s_K\), \(s_H\), and the other parameters of the model?
+    \item Suppose \(\alpha=1/3\) and \(\beta=1/2\). Consider two countries, A and B, and suppose that both \(s_K\) and \(s_H\) are twice as large in Country A as in Country B and that the countries are otherwise identical. What is the ratio of the balanced-growth-path value of income per worker in Country A to its value in Country B implied by the model?
+    \item Consider the same assumptions as in part (b). What is the ratio of the balanced-growth-path value of skills per worker in Country A to its value in Country B implied by the model?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{7}
+\problemsource{\parencite{jones2002sources}}
+Consider the model of Section 4.1 with the assumption that \(G\left(E\right)=e^{\phi E}\). Suppose, however, that \(E\), rather than being constant, is increasing steadily: \(\dot{E}\left(t\right)=m\), where \(m>0\). Assume that, despite the steady increase in the amount of education people are getting, the growth rate of the number of workers is constant and equal to \(n\), as in the basic model.
+\begin{enumerate}[label=(\alph*)]
+    \item With this change in the model, what is the long-run growth rate of output per worker?
+    \item In the United States over the past century, if we measure \(E\) as years of schooling, \(\phi\simeq0.1\) and \(m\simeq1/15\). Overall growth of output per worker has been about 2 percent per year. In light of your answer to (a), approximately what fraction of this overall growth has been due to increasing education?
+    \item Can \(\dot{E}\left(t\right)\) continue to equal \(m>0\) forever? Explain.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{8}
+Consider the following model with physical and human capital:
+\begin{align*}
+Y\left(t\right)
+&=
+\left[\left(1-a_K\right)K\left(t\right)\right]^\alpha
+\left[\left(1-a_H\right)H\left(t\right)\right]^{1-\alpha} && 0<\alpha,\,a_K,\,a_H<1\\
+\dot{K}\left(t\right)
+&=
+sY\left(t\right)-\delta_KK\left(t\right)\\
+\dot{H}\left(t\right)
+&=
+B\left[a_KK\left(t\right)\right]^\gamma
+\left[a_HH\left(t\right)\right]^\phi
+\left[A\left(t\right)L\left(t\right)\right]^{1-\gamma-\phi}
+-\delta_HH\left(t\right) && \gamma,\,\phi>0, \ \gamma+\phi<1\\
+\dot{L}\left(t\right)
+&=
+nL\left(t\right)\\
+\dot{A}\left(t\right)
+&=
+gA\left(t\right),
+\end{align*}
+where \(a_K\) and \(a_H\) are the fractions of the stocks of physical and human capital used in the education sector.
+
+This model assumes that human capital is produced in its own sector with its own production function. Bodies \(\left(L\right)\) are useful only as something to be educated, not as an input into the production of final goods. Similarly, knowledge \(\left(A\right)\) is useful only as something that can be conveyed to students, not as a direct input to goods production.
+\begin{enumerate}[label=(\alph*)]
+    \item Define \(k\equiv K/\left(AL\right)\) and \(h\equiv H/\left(AL\right)\). Derive equations for \(\dot{k}\) and \(\dot{h}\).
+    \item Find an equation describing the set of combinations of \(h\) and \(k\) such that \(\dot{k}=0\). Sketch in \(\left(h,k\right)\) space. Do the same for \(\dot{h}=0\).
+    \item Does this economy have a balanced growth path? If so, is it unique? Is it stable? What are the growth rates of output per person, physical capital per person, and human capital per person on the balanced growth path?
+    \item Suppose the economy is initially on a balanced growth path, and that there is a permanent increase in \(s\). How does this change affect the path of output per person over time?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{9}[\textbf{Increasing returns in a model with human capital.}]
+\problemsource{\parencite{lucas1988mechanics}}
+Suppose that \(Y\left(t\right)=K\left(t\right)^\alpha\left[\left(1-a_H\right)H\left(t\right)\right]^\beta\), \(\dot{H}\left(t\right)=Ba_HH\left(t\right)\), and \(\dot{K}\left(t\right)=sY\left(t\right)\). Assume \(0<\alpha<1\), \(0<\beta<1\), and \(\alpha+\beta>1\).
+\begin{enumerate}[label=(\alph*)]
+    \item What is the growth rate of \(H\)?
+    \item Does the economy converge to a balanced growth path? If so, what are the growth rates of \(K\) and \(Y\) on the balanced growth path?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{10}[\textbf{A different form of measurement error.}]
+Suppose the true relationship between social infrastructure \(\left(SI\right)\) and log income per person \(\left(y\right)\) is \(y_i=a+bSI_i+e_i\). There are two components of social infrastructure, \(SI_i^A\) and \(SI_i^B\) (with \(SI_i=SI_i^A+SI_i^B\)), and we only have data on one of the components, \(SI_i^A\). Both \(SI_i^A\) and \(SI_i^B\) are uncorrelated with \(e\). We are considering running an OLS regression of \(y\) on a constant and \(SI^A\).
+\begin{enumerate}[label=(\alph*)]
+    \item Derive an expression of the form, \(y_i=a+bSI_i^A+\text{other terms}\).
+    \item Use your answer to part (a) to determine whether an OLS regression of \(y\) on a constant and \(SI^A\) will produce an unbiased estimate of the impact of social infrastructure on income if:
+    \begin{enumerate}[label=(\roman*)]
+        \item \(SI^A\) and \(SI^B\) are uncorrelated.
+        \item \(SI^A\) and \(SI^B\) are positively correlated.
+    \end{enumerate}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{11}
+Briefly explain whether each of the following statements concerning a cross-country regression of income per person on a measure of social infrastructure is true or false:
+\begin{enumerate}[label=(\alph*)]
+    \item ``If the regression is estimated by ordinary least squares, it shows the effect of social infrastructure on output per person.''
+    \item ``If the regression is estimated by instrumental variables using variables that are not affected by social infrastructure as instruments, it shows the effect of social infrastructure on output per person.''
+    \item ``If the regression is estimated by ordinary least squares and has a high \(R^2\), this means that there are no important influences on output per person that are omitted from the regression; thus in this case, the coefficient estimate from the regression is likely to be close to the true effect of social infrastructure on output per person.''
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{12}[\textbf{Convergence regressions.}]
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Convergence.} Let \(y_i\) denote log output per worker in country \(i\). Suppose all countries have the same balanced-growth-path level of log income per worker, \(y^*\). Suppose also that \(y_i\) evolves according to \(\text{d}y_i\left(t\right)/dt=-\lambda\left[y_i\left(t\right)-y^*\right]\).
+    \begin{enumerate}[label=(\roman*)]
+        \item What is \(y_i\left(t\right)\) as a function of \(y_i\left(0\right)\), \(y^*\), \(\lambda\), and \(t\)?
+        \item Suppose that \(y_i\left(t\right)\) in fact equals the expression you derived in part (i) plus a mean-zero random disturbance that is uncorrelated with \(y_i\left(0\right)\). Consider a cross-country growth regression of the form \(y_i\left(t\right)-y_i\left(0\right)=\alpha+\beta y_i\left(0\right)+\varepsilon_i\). What is the relation between \(\beta\), the coefficient on \(y_i\left(0\right)\) in the regression, and \(\lambda\), the speed of convergence?  Given this, how could you estimate \(\lambda\) from an estimate of \(\beta\)?
+        \par \remarkaccent{Hint:} For a univariate OLS regression, the coefficient on the right-hand-side variable equals the covariance between the right-hand-side and left-hand-side variables divided by the variance of the right-hand-side variable.
+        \item If \(\beta\) in part (ii) is negative (so that rich countries on average grow less than poor countries), is \(\operatorname{Var}\left(y_i\left(t\right)\right)\) necessarily less than \(\operatorname{Var}\left(y_i\left(0\right)\right)\), so that the cross-country variance of income is falling? Explain. If \(\beta\) is positive, is \(\operatorname{Var}\left(y_i\left(t\right)\right)\) necessarily more than \(\operatorname{Var}\left(y_i\left(0\right)\right)\)? Explain.
+    \end{enumerate}
+    \item \textbf{Conditional convergence.} Suppose \(y_i^*=a+bX_i\), and that
+    \begin{align*}
+        \dfrac{\text{d} y_i\left(t\right)}{\text{d} t}=-\lambda\left[y_i\left(t\right)-y_i^*\right]
+    \end{align*}
+    \begin{enumerate}[label=(\roman*)]
+        \item What is \(y_i\left(t\right)\) as a function of \(y_i\left(0\right)\), \(X_i\), \(\lambda\), and \(t\)?
+        \item Suppose that \(y_i\left(0\right)=y_i^*+u_i\) and that \(y_i\left(t\right)\) equals the expression you derived in part (i) plus a mean-zero random disturbance, \(e_i\), where \(X_i\), \(u_i\), and \(e_i\) are uncorrelated with one another. Consider a cross-country growth regression of the form \(y_i\left(t\right)-y_i\left(0\right)=\alpha+\beta y_i\left(0\right)+\varepsilon_i\). Suppose one attempts to infer \(\lambda\) from the estimate of \(\beta\) using the formula in part (a)(ii). Will this lead to a correct estimate of \(\lambda\), an overestimate, or an underestimate?
+        \item Consider a cross-country growth regression of the form \(y_i\left(t\right)-y_i\left(0\right)=\alpha+\beta y_i\left(0\right)+\gamma X_i+\varepsilon_i\). Under the same assumptions as in part (ii), how could one estimate \(b\), the effect of \(X\) on the balanced-growth-path value of \(y\), from estimates of \(\beta\) and \(\gamma\)?
+    \end{enumerate}
+\end{enumerate}
+\end{problem}

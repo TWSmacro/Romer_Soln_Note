@@ -1,0 +1,246 @@
+\courseunit{1}
+\emergencystretch=2em
+
+\begin{problem}{1}[\textbf{Basic properties of growth rates.}]
+Use the fact that the growth rate of a variable equals the time derivative of its log to show:
+\begin{enumerate}[label=(\alph*)]
+    \item The growth rate of the product of two variables equals the sum of their growth rates.
+    That is, if \(Z\left(t\right)=X\left(t\right)Y\left(t\right)\), then
+    \begin{align*}
+        \dfrac{\dot Z\left(t\right)}{Z\left(t\right)} = 
+        \dfrac{\dot X\left(t\right)}{X\left(t\right)} + 
+        \dfrac{\dot Y\left(t\right)}{Y\left(t\right)}
+    \end{align*}
+    \item The growth rate of the ratio of two variables equals the difference of their growth rates.
+    That is, if \(Z\left(t\right)=X\left(t\right)/Y\left(t\right)\), then
+    \begin{align*}
+        \dfrac{\dot Z\left(t\right)}{Z\left(t\right)} = 
+        \dfrac{\dot X\left(t\right)}{X\left(t\right)} - 
+        \dfrac{\dot Y\left(t\right)}{Y\left(t\right)}
+    \end{align*}
+    \item If \(Z\left(t\right)=a\,X\left(t\right)^{\alpha}\), then
+    \(\dot{Z}\left(t\right)/Z\left(t\right)=\alpha\,\dot{X}\left(t\right)/X\left(t\right)\).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{2}
+Suppose that the growth rate of some variable, \(X\), is constant and equal to \(a>0\) from time 0
+to time \(t_1\); drops to 0 at time \(t_1\); rises gradually from 0 to \(a\) from time \(t_1\)
+to time \(t_2\); and is constant and equal to \(a\) after time \(t_2\).
+\begin{enumerate}[label=(\alph*)]
+    \item Sketch a graph of the growth rate of \(X\) as a function of time.
+    \item Sketch a graph of \(\ln X\) as a function of time.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+Describe how, if at all, each of the following developments affects the break-even and actual
+investment lines in our basic diagram for the Solow model:
+\begin{enumerate}[label=(\alph*)]
+    \item The rate of depreciation falls.
+    \item The rate of technological progress rises.
+    \item The production function is Cobb--Douglas, \(f\left(k\right)=k^{\alpha}\), and
+    capital's share, \(\alpha\), rises.
+    \item Workers exert more effort, so that output per unit of effective labor for a given value
+    of capital per unit of effective labor is higher than before.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+Consider an economy with technological progress but without population growth that is on its balanced
+growth path. Now suppose there is a one-time jump in the number of workers.
+\begin{enumerate}[label=(\alph*)]
+    \item At the time of the jump, does output per unit of effective labor rise, fall, or stay
+    the same? Why?
+    \item After the initial change (if any) in output per unit of effective labor when the new
+    workers appear, is there any further change in output per unit of effective labor? If so,
+    does it rise or fall? Why?
+    \item Once the economy has again reached a balanced growth path, is output per unit of
+    effective labor higher, lower, or the same as it was before the new workers appeared? Why?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{5}
+Suppose that the production function is Cobb--Douglas.
+\begin{enumerate}[label=(\alph*)]
+    \item Find expressions for \(k^*\), \(y^*\), and \(c^*\) as functions of the parameters
+    of the model, \(s\), \(n\), \(\delta\), \(g\), and \(\alpha\).
+    \item What is the golden-rule value of \(k\)?
+    \item What saving rate is needed to yield the golden-rule capital stock?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{6}
+Consider a Solow economy that is on its balanced growth path. Assume for simplicity that there is
+no technological progress. Now suppose that the rate of population growth falls.
+\begin{enumerate}[label=(\alph*)]
+    \item What happens to the balanced-growth-path values of capital per worker, output per worker,
+    and consumption per worker? Sketch the paths of these variables as the economy moves to its new
+    balanced growth path.
+    \item Describe the effect of the fall in population growth on the path of output (that is,
+    total output, not output per worker).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{7}
+Find the elasticity of output per unit of effective labor on the balanced growth path, \(y^*\),
+with respect to the rate of population growth, \(n\). If \(\alpha_K\left(k^*\right)=1/3\),
+\(g=2\%\), and \(\delta=3\%\), by about how much does a fall in \(n\) from 2 percent to
+1 percent raise \(y^*\)?
+\end{problem}
+
+\begin{problem}{8}
+Suppose that investment as a fraction of output in the United States rises permanently from 0.15
+to 0.18. Assume that capital's share is \(1/3\).
+\begin{enumerate}[label=(\alph*)]
+    \item By about how much does output eventually rise relative to what it would have been without the rise in investment?
+    \item By about how much does consumption rise relative to what it would have been without the rise in investment?
+    \item What is the immediate effect of the rise in investment on consumption? About how long
+    does it take for consumption to return to what it would have been without the rise in investment?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{9}[\textbf{Factor payments in the Solow model.}]
+Assume that both labor and capital are paid their marginal products. Let \(w\) denote
+\(\partial F\left(K,AL\right)/\partial L\) and \(r\) denote
+\(\left[\partial F\left(K,AL\right)/\partial K\right]-\delta\).
+\begin{enumerate}[label=(\alph*)]
+    \item Show that the marginal product of labor, \(w\), is \(A\left[f\left(k\right)-k\,f'\left(k\right)\right]\).
+    \item Show that if both capital and labor are paid their marginal products, constant returns
+    to scale imply that the total amount paid to the factors of production equals total net output.
+    That is, show that under constant returns, \(wL+rK=F\left(K,AL\right)-\delta K\).
+    \item The return to capital (\(r\)) is roughly constant over time, as are the shares of output
+    going to capital and to labor. Does a Solow economy on a balanced growth path exhibit these
+    properties? What are the growth rates of \(w\) and \(r\) on a balanced growth path?
+    \item Suppose the economy begins with a level of \(k\) less than \(k^*\). As \(k\) moves
+    toward \(k^*\), is \(w\) growing at a rate greater than, less than, or equal to its growth
+    rate on the balanced growth path? What about \(r\)?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{10}
+\problemsource{\parencite{piketty2014capital,piketty-zucman2014capital,rognlie2015deciphering}}
+This problem asks you to use a Solow-style model to investigate some ideas that have been discussed
+in the context of Thomas Piketty's recent work. Consider an economy described by the assumptions of the Solow model, except that
+factors are paid their marginal products (as in the previous problem), and all labor income is
+consumed and all other income is saved. Thus,
+\(C\left(t\right)=L\left(t\right)\left[\partial Y\left(t\right)/\partial L\left(t\right)\right]\).
+\begin{enumerate}[label=(\alph*)]
+    \item Show that the properties of the production function and our assumptions about the behavior
+    of \(L\) and \(A\) imply that the capital-output ratio, \(K/Y\), is rising if and only if
+    the growth rate of \(K\) is greater than \(n+g\)--that is, if and only if \(k\) is rising.
+    \item Assume that the initial conditions are such that \(\partial Y/\partial K\) at \(t=0\)
+    is strictly greater than \(n+g+\delta\). Describe the qualitative behavior of the capital-output
+    ratio over time. (For example, does it grow or fall without bound? Gradually approach some
+    constant level from above or below? Something else?) Explain your reasoning.
+    \item Many popular summaries of Piketty's work describe his thesis as: Since the return to
+    capital exceeds the growth rate of the economy, the capital-output ratio tends to grow without
+    bound. By the assumptions in part (b), this economy starts in a situation where the return to
+    capital exceeds the economy's growth rate. If you found in (b) that \(K/Y\) grows without
+    bound, explain intuitively whether the driving force of this unbounded growth is that the return
+    to capital exceeds the economy's growth rate. Alternatively, if you found in (b) that \(K/Y\)
+    does not grow without bound, explain intuitively what is wrong with the statement that the return
+    to capital exceeding the economy's growth rate tends to cause \(K/Y\) to grow without bound.
+    \item Suppose \(F\left(\,\cdot\,\right)\) is Cobb--Douglas and that the initial situation is as in
+    part (b). Describe the qualitative behavior over time of the share of net capital income (that is,
+    \(K\left(t\right)\left[\partial Y\left(t\right)/\partial K\left(t\right)-\delta\right]\))
+    in net output (that is, \(Y\left(t\right)-\delta K\left(t\right)\)). Explain your reasoning.
+    Is the common statement that an excess of the return to capital over the economy's growth rate
+    causes capital's share to rise over time correct in this case?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{11}
+Consider Problem 1.10. Suppose there is a marginal increase in \(K\).
+\begin{enumerate}[label=(\alph*)]
+    \item Derive an expression (in terms of \(K/Y\), \(\delta\), the marginal product of capital
+    \(F_K\), and the elasticity of substitution between capital and effective labor in the gross
+    production function \(F\left(\,\cdot\,\right)\)) that determines whether a marginal increase
+    in \(K\) increases, reduces, or has no effect on the share of net capital income in net output.
+    \item Suppose the capital-output ratio is 3, \(\delta=3\%\), and the rate of return on capital
+    (\(F_K-\delta\)) = 5\%. How large must the elasticity of substitution in the gross production
+    function be for the share of net capital income in net output to rise when \(K\) rises?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{12}
+Consider the same setup as at the start of Problem 1.10: the economy is described by the assumptions
+of the Solow model, except that factors are paid their marginal products and all labor income is
+consumed and all other income is saved. Show that the economy converges to a balanced growth path,
+and that the balanced-growth-path level of \(k\) equals the golden-rule level of \(k\). What is
+the intuition for this result?
+\end{problem}
+
+\begin{problem}{13}
+Go through steps analogous to those in equations (1.29)--(1.32) to find how quickly \(y\) converges
+to \(y^*\) in the vicinity of the balanced growth path.
+\par \remarkaccent{Hint:} Since \(y=f\left(k\right)\), we can write \(k=g\left(y\right)\), where \(g\left(\,\cdot\,\right)=f^{-1}\left(\,\cdot\,\right)\).
+\end{problem}
+
+\begin{problem}{14}[\textbf{Embodied technological progress.}]
+\problemsource{\parencite{solow1960investment,sato1966adjustment}}
+One view of technological progress is that the
+productivity of capital goods built at \(t\) depends on the state of technology at \(t\) and is
+unaffected by subsequent technological progress. This is known as \emph{embodied technological
+progress} (technological progress must be ``embodied'' in new capital before it can raise output).
+This problem asks you to investigate its effects.
+\begin{enumerate}[label=(\alph*)]
+    \item As a preliminary, let us modify the basic Solow model to make technological progress
+    capital-augmenting rather than labor-augmenting. So that a balanced growth path exists, assume
+    that the production function is Cobb--Douglas:
+    \begin{align*}
+    Y\left(t\right)
+    &=\left[A\left(t\right)K\left(t\right)\right]^{\alpha}L\left(t\right)^{1-\alpha}
+    \end{align*}
+    Assume that \(A\) grows at rate \(\mu\): \(\dot{A}\left(t\right)=\mu A\left(t\right)\).
+    Show that the economy converges to a balanced growth path, and find the growth rates of \(Y\)
+    and \(K\) on the balanced growth path.
+    \par \remarkaccent{Hint:} Show that we can write
+    \(Y/\left(A^{\phi}L\right)\) as a function of \(K/\left(A^{\phi}L\right)\), where
+    \(\phi=\alpha/\left(1-\alpha\right)\). Then analyze the dynamics of
+    \(K/\left(A^{\phi}L\right)\).
+    \item Now consider embodied technological progress. Specifically, let the production function be
+    \(Y\left(t\right)=J\left(t\right)^{\alpha}L\left(t\right)^{1-\alpha}\), where \(J\left(t\right)\)
+    is the effective capital stock. The dynamics of \(J\left(t\right)\) are given by
+    \(\dot{J}\left(t\right)=s\,A\left(t\right)Y\left(t\right)-\delta J\left(t\right)\).
+    The presence of the \(A\left(t\right)\) term in this expression means that the productivity
+    of investment at \(t\) depends on the technology at \(t\). Show that the economy converges
+    to a balanced growth path. What are the growth rates of \(Y\) and \(J\) on the balanced
+    growth path?
+    \par \remarkaccent{Hint:} Let \(\bar{J}\left(t\right)\equiv J\left(t\right)/A\left(t\right)\). Then use the same approach as in (a), focusing on \(\bar{J}/\left(A^{\phi}L\right)\) instead of \(K/\left(A^{\phi}\,L\right)\).
+    \item What is the elasticity of output on the balanced growth path with respect to \(s\)?
+    \item In the vicinity of the balanced growth path, how rapidly does the economy converge to the balanced growth path?
+    \item Compare your results for (c) and (d) with the corresponding results in the text for
+    the basic Solow model.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{15}
+Consider a Solow economy on its balanced growth path. Suppose the growth-accounting techniques
+described in Section 1.7 are applied to this economy.
+\begin{enumerate}[label=(\alph*)]
+    \item What fraction of growth in output per worker does growth accounting attribute to growth
+    in capital per worker? What fraction does it attribute to technological progress?
+    \item How can you reconcile your results in (a) with the fact that the Solow model implies that
+    the growth rate of output per worker on the balanced growth path is determined solely by the rate
+    of technological progress?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{16}
+\begin{enumerate}[label=(\alph*)]
+    \item In the model of convergence and measurement error in equations (1.39) and (1.40), suppose
+    the true value of \(b\) is \(-1\). Does a regression of
+    \(\ln\left(Y/N\right)_{1979}-\ln\left(Y/N\right)_{1870}\) on a constant and
+    \(\ln\left(Y/N\right)_{1870}\) yield a biased estimate of \(b\)? Explain.
+    \item Suppose there is measurement error in measured 1979 income per capita but not in 1870
+    income per capita. Does a regression of
+    \(\ln\left(Y/N\right)_{1979}-\ln\left(Y/N\right)_{1870}\) on a constant and
+    \(\ln\left(Y/N\right)_{1870}\) yield a biased estimate of \(b\)? Explain.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{17}
+Derive equation (1.50).
+\par \remarkaccent{Hint:} Follow steps analogous to those in equations [1.47] and [1.48].
+\end{problem}
