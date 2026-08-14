@@ -20,9 +20,22 @@ Use the fact that the growth rate of a variable equals the time derivative of it
         \dfrac{\dot Y\left(t\right)}{Y\left(t\right)}
     \end{align*}
     \item If \(Z\left(t\right)=a\,X\left(t\right)^{\alpha}\), then
-    \(\dot{Z}\left(t\right)/Z\left(t\right)=\alpha\,\dot{X}\left(t\right)/X\left(t\right)\).
+    \begin{align*}
+        \dfrac{\dot Z\left(t\right)}{Z\left(t\right)} =
+        \alpha\,\dfrac{\dot X\left(t\right)}{X\left(t\right)}
+    \end{align*}
 \end{enumerate}
 \end{problem}
+
+\begin{note}
+    Because instantaneous growth \(g\) on continuous-time is naturally expressed in exponential form, \(\lim\limits_{n\to\infty}\left(1+g/n\right)^{nt}=e^{gt}\), the rules above reflect a fundamental duality: logarithms turn products into sums, while exponentials turn sums into products.
+\end{note}
+
+\begin{note}
+    This problem gives four useful rules for growth rates. For products, add the growth rates. For ratios, subtract them. For powers, multiply the growth rate by the exponent. Multiplying a variable by a constant does not change its growth rate. These rules make growth-rate calculations much easier.
+
+    What about sums and differences, such as \(\dot{\left(X\pm Y\right)}\)? They also have growth-rate formulas, but these formulas are less useful and are not needed here. See the \emph{Advanced Macroeconomics Notes} for details.
+\end{note}
 
 \begin{problem}{2}
 Suppose that the growth rate of some variable, \(X\), is constant and equal to \(a>0\) from time 0
