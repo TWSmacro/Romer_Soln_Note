@@ -1,6 +1,6 @@
 LATEXMK := latexmk
 MAIN := main.tex
-LATEXMK_FLAGS := -xelatex -outdir=.
+LATEXMK_FLAGS := -xelatex -synctex=1 -interaction=nonstopmode -file-line-error -outdir=.
 
 .PHONY: pdf clean distclean
 

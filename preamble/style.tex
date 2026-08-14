@@ -1,4 +1,8 @@
-% Visual system.
+% ============================================================
+% 一、基础视觉系统与全局正文排版
+% 统一定义正文、辅助文字、分隔线及各类内容块的主题颜色，
+% 同时设置正文颜色、行距、段首缩进和段间距。
+% ============================================================
 \definecolor{Ink}{HTML}{232323}
 \definecolor{Muted}{HTML}{706C63}
 \definecolor{Rule}{HTML}{DDD5C7}
@@ -12,6 +16,25 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 
+% ============================================================
+% 二、行内公式结束后的固定间距
+% 在 \) 结束数学模式后加入不可断开的水平间距，避免公式与
+% 随后的中英文标点贴得过近。只需修改下方长度即可统一调整。
+% ============================================================
+\newlength{\InlineMathRightSpace}
+\setlength{\InlineMathRightSpace}{0.1em}
+
+\let\OriginalInlineMathClose\)
+\renewcommand{\)}{%
+    \OriginalInlineMathClose
+    \nobreak\hspace{\InlineMathRightSpace}%
+}
+
+% ============================================================
+% 三、超链接、页面基础样式与脚注格式
+% 设置 PDF 元数据和链接颜色，清空默认页眉页脚横线，并将脚注
+% 编号统一显示为方括号形式。
+% ============================================================
 \hypersetup{
     colorlinks=true,
     linkcolor=ProblemAccent,
@@ -38,6 +61,11 @@
     \makebox[1.5em][l]{\normalfont\thefootnote}#1%
 }
 
+% ============================================================
+% 四、页脚跳转导航与页侧课程信息
+% 题号和单元信息先写入辅助文件，再在页脚生成上一单元、题号
+% 快速跳转和下一单元链接；页面右侧同时绘制竖排课程信息。
+% ============================================================
 \newcommand{\sideinfosep}{\quad{\color{Rule}/}\quad}
 \newcommand{\problemjumpsep}{\hspace{0.45em}{\color{Rule}\(\cdot\)}\hspace{0.45em}}
 \newlength{\CourseFooterWidth}
@@ -167,6 +195,10 @@
     \fi
 }
 
+% ============================================================
+% 五、章节标题与图表标题
+% 控制节标题的字体、颜色和上下间距，并统一图表标题的标签样式。
+% ============================================================
 \titleformat{\section}
     {\Large\bfseries\scshape\color{Ink}\raggedright}
     {}
@@ -180,8 +212,11 @@
     labelsep=period
 }
 
-% Romer-style reference list: one column, strong author-year lead-in,
-% hanging entries, and automatic alphabetical dividers.
+% ============================================================
+% 六、参考文献表格式
+% 使用 Romer 风格的单栏参考文献：作者和年份突出显示，条目采用
+% 悬挂缩进，并按作者姓氏首字母自动插入分组标题。
+% ============================================================
 \renewcommand*{\bibfont}{\normalfont\normalsize\setstretch{1.12}\raggedright}
 \setlength{\bibhang}{2em}
 \setlength{\bibitemsep}{0.48\baselineskip}
@@ -280,6 +315,11 @@
          \item}%
 }
 
+% ============================================================
+% 七、列表与课程封面
+% 设置项目列表和编号列表的缩进，并定义课程封面的信息行、联系
+% 方式、助教信息及完整封面生成命令。
+% ============================================================
 \setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
 \setlist[enumerate]{leftmargin=1.7em,itemsep=2pt,topsep=3pt}
 
@@ -355,6 +395,11 @@
     \clearpage
 }
 
+% ============================================================
+% 八、单元状态、题号状态与单元首页
+% 保存当前单元和题目的编号状态，建立稳定的超链接锚点，并生成
+% 每个单元的目录条目、页眉标记和大号单元标题。
+% ============================================================
 \newcommand{\CurrentCourseUnit}{}
 \newcommand{\CurrentCourseUnitSerial}{0}
 \newcommand{\CurrentProblemLocalNumber}{}
@@ -364,8 +409,8 @@
 \renewcommand{\theproblem}{\CurrentProblemNumber}
 \renewcommand{\theHproblem}{courseunit.\arabic{courseunitserial}.problem.\arabic{problem}}
 
-% Use \courseunit{1} for an untitled unit, or \courseunit{1}[Short title]
-% when a unit needs a title.
+% 无标题单元使用 \courseunit{1}；需要标题时使用
+% \courseunit{1}[Short title]。
 \NewDocumentCommand{\courseunit}{m o}{%
     \clearpage
     \coursesideinfotrue
@@ -400,6 +445,11 @@
     \vspace{12pt}
 }
 
+% ============================================================
+% 九、来源说明与悬挂式内容块标签
+% sourceblock 用于显示来源说明；blocklabel 将 Problem、Answer 等
+% 标签悬挂在正文左侧，同时保持编号从正文左边界开始。
+% ============================================================
 \NewDocumentCommand{\sourceblock}{O{0.86\textwidth}m}{%
     \par\vspace{4pt}%
     \begin{center}
@@ -433,6 +483,12 @@
     \blocknumber{\large\bfseries\scshape\color{#1}}{#3}%
 }
 
+% ============================================================
+% 十、题目、答案、评注与注释环境
+% problem 和 answer 使用带编号的悬挂标签；solution 是 answer 的
+% 别名；remark 跟随当前题号；note 不带题号且正文与普通正文对齐。
+% 可选标题仅在实际提供时显示，并在标题后添加句点。
+% ============================================================
 \NewDocumentEnvironment{problem}{m O{}}
     {%
         \Needspace{5\baselineskip}%
@@ -485,8 +541,8 @@
         \makebox[0pt][r]{%
             {\small\bfseries\scshape\color{RemarkAccent}\RemarkLabel\hspace{0.6em}}%
         }%
-        \blocknumber{\small\bfseries\scshape\color{RemarkAccent}}{\CurrentProblemNumber
-            \ifblank{#1}{}{~#1}.}%
+        \blocknumber{\small\bfseries\scshape\color{RemarkAccent}}{\CurrentProblemNumber%
+            \ifblank{#1}{}{~#1.}}%
         \hspace{0.45em}\small\color{Muted}\ignorespaces
     }
     {%
@@ -495,5 +551,20 @@
     }
 
 \NewDocumentEnvironment{note}{O{}}
-    {\begin{remark}[#1]}
-    {\end{remark}}
+    {%
+        \Needspace{3\baselineskip}%
+        \par\vspace{4pt}%
+        \begingroup
+        \noindent
+        \makebox[0pt][r]{%
+            {\small\bfseries\scshape\color{RemarkAccent}\RemarkLabel\hspace{0.6em}}%
+        }%
+        \ifblank{#1}{}{%
+            {\small\bfseries\scshape\color{RemarkAccent}#1.}\hspace{0.45em}%
+        }%
+        \small\color{Muted}\ignorespaces
+    }
+    {%
+        \par\endgroup
+        \ignorespacesafterend
+    }
