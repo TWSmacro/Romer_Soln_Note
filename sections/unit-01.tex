@@ -11,6 +11,7 @@ Use the fact that the growth rate of a variable equals the time derivative of it
         \dfrac{\dot Z\left(t\right)}{Z\left(t\right)} = 
         \dfrac{\dot X\left(t\right)}{X\left(t\right)} + 
         \dfrac{\dot Y\left(t\right)}{Y\left(t\right)}
+        \problemeqtag
     \end{align*}
     \item The growth rate of the ratio of two variables equals the difference of their growth rates.
     That is, if \(Z\left(t\right)=X\left(t\right)/Y\left(t\right)\), then
@@ -18,26 +19,95 @@ Use the fact that the growth rate of a variable equals the time derivative of it
         \dfrac{\dot Z\left(t\right)}{Z\left(t\right)} = 
         \dfrac{\dot X\left(t\right)}{X\left(t\right)} - 
         \dfrac{\dot Y\left(t\right)}{Y\left(t\right)}
+        \problemeqtag
     \end{align*}
     \item If \(Z\left(t\right)=a\,X\left(t\right)^{\alpha}\), then
     \begin{align*}
         \dfrac{\dot Z\left(t\right)}{Z\left(t\right)} =
         \alpha\,\dfrac{\dot X\left(t\right)}{X\left(t\right)}
+        \problemeqtag
     \end{align*}
 \end{enumerate}
 \end{problem}
 
-\begin{note}
-    Because instantaneous growth \(g\) on continuous-time is naturally expressed in exponential form, \(\lim\limits_{n\to\infty}\left(1+g/n\right)^{nt}=e^{gt}\), the rules above reflect a fundamental duality: logarithms turn products into sums, while exponentials turn sums into products.
+\begin{solution}
+For any positive differentiable variable \(X(t)\), define its instantaneous growth rate by
+\begin{align*}
+    g_X(t)\equiv \frac{\dot X(t)}{X(t)}
+    =\frac{\d \ln X(t)}{\d t}.
+    \problemeqtag\label{eq:p11-growth-definition}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item If \(Z(t)=X(t)Y(t)\), then
+    \begin{align*}
+        \ln Z(t)&=\ln X(t)+\ln Y(t),\\
+        \frac{\d\ln Z(t)}{\d t}
+        &=\frac{\d\ln X(t)}{\d t}
+        +\frac{\d\ln Y(t)}{\d t}.
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        \boxed{
+        \frac{\dot Z(t)}{Z(t)}
+        =\frac{\dot X(t)}{X(t)}
+        +\frac{\dot Y(t)}{Y(t)}}.
+    \end{align*}
+
+    \item If \(Z(t)=X(t)/Y(t)\), then
+    \begin{align*}
+        \ln Z(t)&=\ln X(t)-\ln Y(t),\\
+        \frac{\d\ln Z(t)}{\d t}
+        &=\frac{\d\ln X(t)}{\d t}
+        -\frac{\d\ln Y(t)}{\d t}.
+    \end{align*}
+    Hence,
+    \begin{align*}
+        \boxed{
+        \frac{\dot Z(t)}{Z(t)}
+        =\frac{\dot X(t)}{X(t)}
+        -\frac{\dot Y(t)}{Y(t)}}.
+    \end{align*}
+
+    \item Assume \(a>0\) and let \(Z(t)=aX(t)^\alpha\), where \(a\) and
+    \(\alpha\) are constants. Taking logs and then differentiating gives
+    \begin{align*}
+        \ln Z(t)&=\ln a+\alpha\ln X(t),\\
+        \frac{\d\ln Z(t)}{\d t}
+        &=\frac{\d}{\d t}\bigl[\ln a+\alpha\ln X(t)\bigr]\\
+        &=0+\alpha\frac{\d\ln X(t)}{\d t}.
+    \end{align*}
+    Using the growth-rate identity in \eqref{eq:p11-growth-definition} for
+    both \(Z(t)\) and \(X(t)\), we obtain
+    \begin{align*}
+        \boxed{
+        \frac{\dot Z(t)}{Z(t)}
+        =\alpha\frac{\dot X(t)}{X(t)}}.
+    \end{align*}
+    Thus a time-invariant multiplicative constant changes the level of a variable,
+    but not its growth rate.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Why logarithms work]
+    Because instantaneous growth in continuous time is naturally expressed in exponential
+    form, \(\lim_{m\to\infty}(1+g/m)^{mt}=e^{gt}\), the rules above reflect a useful
+    duality: logarithms turn products into sums, while exponentials turn sums into products.
 \end{note}
 
-\begin{note}
-    This problem gives four useful rules for growth rates. For products, add the growth rates. For ratios, subtract them. For powers, multiply the growth rate by the exponent. Multiplying a variable by a constant does not change its growth rate. These rules make growth-rate calculations much easier.
-
-    What about sums and differences, such as \(\dot{\left(X\pm Y\right)}\)? They also have growth-rate formulas, but these formulas are less useful and are not needed here. See the \emph{Advanced Macroeconomics Notes} for details.
+\begin{note}[Four growth-rate rules]
+    For products, add the growth rates. For ratios, subtract them. For powers,
+    multiply the growth rate by the exponent. Multiplying a variable by a constant
+    does not change its growth rate.
 \end{note}
 
-\begin{problem}{2}
+\begin{note}[Sums and differences]
+    Sums and differences also have growth-rate formulas, but there is no analogous
+    unweighted rule. For example, the growth rate of \(X+Y\) is a level-weighted
+    average of the growth rates of \(X\) and \(Y\).
+\end{note}
+
+\begin{problem}{2}[\textbf{Growth rates and log levels.}]
 Suppose that the growth rate of some variable, \(X\), is constant and equal to \(a>0\) from time 0
 to time \(t_1\); drops to 0 at time \(t_1\); rises gradually from 0 to \(a\) from time \(t_1\)
 to time \(t_2\); and is constant and equal to \(a\) after time \(t_2\).
@@ -47,7 +117,109 @@ to time \(t_2\); and is constant and equal to \(a\) after time \(t_2\).
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{3}
+\begin{solution}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{4pt}
+Let
+\begin{align*}
+    \gamma_X(t)\equiv\frac{\dot X(t)}{X(t)}
+    =\frac{\d\ln X(t)}{\d t}.
+    \problemeqtag\label{eq:p12-growth-definition}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item The question does not specify the exact shape of the gradual increase between
+    \(t_1\) and \(t_2\). For a concrete sketch, suppose it is linear. Then
+    \begin{align*}
+        \gamma_X(t)=
+        \begin{cases}
+            a, & 0\leq t<t_1,\\[3pt]
+            \dfrac{a(t-t_1)}{t_2-t_1}, & t_1\leq t\leq t_2,\\[7pt]
+            a, & t>t_2.
+        \end{cases}
+        \problemeqtag\label{eq:p12-growth-path}
+    \end{align*}
+    Thus the growth rate is initially horizontal at \(a\), jumps down to zero at
+    \(t_1\), rises to \(a\), and is horizontal again after \(t_2\).
+
+    \item Since the slope of \(\ln X(t)\) equals \(\gamma_X(t)\),
+    \begin{align*}
+        \ln X(t)-\ln X(0)=\int_0^t\gamma_X(\tau)\,\d\tau.
+        \problemeqtag\label{eq:p12-log-integral}
+    \end{align*}
+    Substituting the linear path in \eqref{eq:p12-growth-path} into
+    \eqref{eq:p12-log-integral} gives
+    \begin{align*}
+        \ln X(t)=
+        \begin{cases}
+            \ln X(0)+at,
+                &0\leq t\leq t_1,\\[3pt]
+            \ln X(0)+at_1+
+                \dfrac{a(t-t_1)^2}{2(t_2-t_1)},
+                &t_1\leq t\leq t_2,\\[9pt]
+            \ln X(0)+at_1+\dfrac{a(t_2-t_1)}{2}+a(t-t_2),
+                &t\geq t_2.
+        \end{cases}
+        \problemeqtag
+    \end{align*}
+    Hence \(\ln X(t)\) is linear with slope \(a\) before \(t_1\). It remains
+    continuous at \(t_1\), but its slope drops to zero. Between \(t_1\) and \(t_2\)
+    it is increasing and convex, and after \(t_2\) it is again linear with slope \(a\).
+\end{enumerate}
+
+The two paths derived above are collected in the figure below. The left panel
+shows the assumed growth-rate path, and the right panel shows its implication
+for the level of \(\ln X(t)\).
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.72cm,y=0.42cm,>=stealth]
+            \draw[->,color=Muted] (0,0)--(7.2,0) node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,5.2)
+                node[above] {\scriptsize $\dot X/X$};
+            \draw[dashed,color=Rule] (2,0)--(2,2);
+            \draw[dashed,color=Rule] (5,0)--(5,2);
+            \draw[very thick,color=AnswerAccent] (0,2)--(2,2);
+            \draw[very thick,color=AnswerAccent] (2,0)--(5,2)--(7,2);
+            \draw[color=AnswerAccent,fill=white,thick] (2,2) circle (1.8pt);
+            \fill[color=AnswerAccent] (2,0) circle (1.8pt);
+            \node[left] at (0,2) {\scriptsize $a$};
+            \node[below] at (2,0) {\scriptsize $t_1$};
+            \node[below] at (5,0) {\scriptsize $t_2$};
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.72cm,y=0.42cm,>=stealth]
+            \draw[->,color=Muted] (0,0)--(7.2,0) node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,5.2)
+                node[above] {\scriptsize $\ln X$};
+            \draw[dashed,color=Rule] (2,0)--(2,2);
+            \draw[dashed,color=Rule] (5,0)--(5,3.08);
+            \draw[very thick,color=AnswerAccent] (0,0.4)--(2,2);
+            \draw[very thick,color=AnswerAccent,domain=2:5,samples=45]
+                plot (\x,{2+0.12*(\x-2)*(\x-2)});
+            \draw[very thick,color=AnswerAccent] (5,3.08)--(7,4.52);
+            \node[below] at (2,0) {\scriptsize $t_1$};
+            \node[below] at (5,0) {\scriptsize $t_2$};
+        \end{tikzpicture}
+    \end{minipage}
+    \caption{The growth rate of \(X\) and the corresponding path of \(\ln X\).
+    The straight portions of the right-hand panel have slope \(a\).}
+\end{figure}
+\end{solution}
+
+\begin{note}[Reading a log-level graph]
+    A jump in a growth rate changes the slope of the log-level path, not its level.
+    Thus \(\ln X(t)\) has a kink at \(t_1\), not a jump or an inflection point.
+\end{note}
+
+\begin{problem}{3}[\textbf{Comparative statics in the Solow diagram.}]
 Describe how, if at all, each of the following developments affects the break-even and actual
 investment lines in our basic diagram for the Solow model:
 \begin{enumerate}[label=(\alph*)]
@@ -60,7 +232,200 @@ investment lines in our basic diagram for the Solow model:
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{4}
+\begin{solution}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{4pt}
+The law of motion for capital per unit of effective labor is
+\begin{align*}
+    \dot k=sf(k)-(n+g+\delta)k.
+    \problemeqtag\label{eq:p13-law-of-motion}
+\end{align*}
+The balanced-growth-path value \(k^*\) is determined by
+\begin{align*}
+    sf(k^*)=(n+g+\delta)k^*.
+    \problemeqtag\label{eq:p13-steady-state}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item By \eqref{eq:p13-law-of-motion}, a fall in \(\delta\) reduces
+    \(n+g+\delta\), so the break-even investment
+    line becomes flatter. The actual investment curve \(sf(k)\) is unchanged. At the old
+    \(k^*\), actual investment now exceeds break-even investment, and therefore
+    \begin{align*}
+        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}.
+    \end{align*}
+
+    \item A rise in \(g\) increases \(n+g+\delta\), so the break-even investment line
+    becomes steeper. The actual investment curve is unchanged. At the old \(k^*\), break-even
+    investment now exceeds actual investment, and therefore
+    \begin{align*}
+        \boxed{k^*_{\mathrm{new}}<k^*_{\mathrm{old}}}.
+    \end{align*}
+
+    \item With \(f(k)=k^\alpha\), actual investment is \(sk^\alpha\), while the
+    break-even line is unaffected. For a fixed \(k\),
+    \begin{align*}
+        \frac{\partial(sk^\alpha)}{\partial\alpha}=sk^\alpha\ln k.
+        \problemeqtag
+    \end{align*}
+    Thus an increase in \(\alpha\) lowers actual investment when \(0<k<1\), leaves it
+    unchanged at \(k=1\), and raises it when \(k>1\). The actual investment curve
+    therefore rotates around \(k=1\); it does not shift uniformly upward or downward.
+
+    Solving the steady-state condition \eqref{eq:p13-steady-state} for the
+    Cobb--Douglas case gives
+    \begin{align*}
+        k^*=\left(\frac{s}{n+g+\delta}\right)^{1/(1-\alpha)}.
+        \problemeqtag
+    \end{align*}
+    Taking logs and differentiating with respect to \(\alpha\) gives
+    \begin{align*}
+        \frac{\partial\ln k^*}{\partial\alpha}
+        =\frac{\ln\!\left(s/(n+g+\delta)\right)}{(1-\alpha)^2}.
+        \problemeqtag
+    \end{align*}
+    Consequently,
+    \begin{align*}
+        \boxed{
+        \begin{array}{lll}
+            s>n+g+\delta &\Longrightarrow& k^*\text{ rises},\\
+            s<n+g+\delta &\Longrightarrow& k^*\text{ falls},\\
+            s=n+g+\delta &\Longrightarrow& k^*=1\text{ and is unchanged}.
+        \end{array}}
+    \end{align*}
+    Without additional information, the effect on \(k^*\) is ambiguous.
+
+    \item Let the higher effort level raise output at every relevant \(k\), so that the
+    new production function satisfies \(\widetilde f(k)>f(k)\). Actual investment shifts
+    upward from \(sf(k)\) to \(s\widetilde f(k)\), while the break-even line is unchanged.
+    Hence
+    \begin{align*}
+        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}.
+    \end{align*}
+\end{enumerate}
+
+The four comparative-static cases are collected in the figure below. In each
+panel, the vertical guides mark the old and new balanced-growth-path values of
+capital per unit of effective labor.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.57cm,y=0.42cm,>=stealth]
+            \node[color=Muted] at (3.5,6.75) {\small (a) \(\delta\downarrow\)};
+            \draw[->,color=Muted] (0,0)--(7.35,0) node[right] {\scriptsize $k$};
+            \draw[->,color=Muted] (0,0)--(0,6.05)
+                node[above] {\scriptsize investment};
+            \draw[very thick,color=AnswerAccent,domain=0:7,samples=55]
+                plot (\x,{1.4*sqrt(\x)});
+            \draw[thick,color=ProblemAccent] (0,0)--(7,5.6);
+            \draw[thick,dashed,color=RemarkAccent] (0,0)--(7,3.85);
+            \draw[dotted,color=Rule] (3.06,0)--(3.06,2.45);
+            \draw[dotted,color=Rule] (6.48,0)--(6.48,3.56);
+            \fill[color=ProblemAccent] (3.06,2.45) circle (2pt);
+            \fill[color=RemarkAccent] (6.48,3.56) circle (2pt);
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.57cm,y=0.42cm,>=stealth]
+            \node[color=Muted] at (3.5,6.75) {\small (b) \(g\uparrow\)};
+            \draw[->,color=Muted] (0,0)--(7.35,0) node[right] {\scriptsize $k$};
+            \draw[->,color=Muted] (0,0)--(0,6.05)
+                node[above] {\scriptsize investment};
+            \draw[very thick,color=AnswerAccent,domain=0:7,samples=55]
+                plot (\x,{1.4*sqrt(\x)});
+            \draw[thick,color=ProblemAccent] (0,0)--(7,3.85);
+            \draw[thick,dashed,color=RemarkAccent] (0,0)--(7,5.6);
+            \draw[dotted,color=Rule] (6.48,0)--(6.48,3.56);
+            \draw[dotted,color=Rule] (3.06,0)--(3.06,2.45);
+            \fill[color=ProblemAccent] (6.48,3.56) circle (2pt);
+            \fill[color=RemarkAccent] (3.06,2.45) circle (2pt);
+        \end{tikzpicture}
+    \end{minipage}
+
+    \vspace{7pt}
+
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.57cm,y=0.42cm,>=stealth]
+            \node[color=Muted] at (3.5,6.75) {\small (c) \(\alpha\uparrow\)};
+            \draw[->,color=Muted] (0,0)--(7.35,0) node[right] {\scriptsize $k$};
+            \draw[->,color=Muted] (0,0)--(0,6.05)
+                node[above] {\scriptsize investment};
+            \draw[thick,color=ProblemAccent] (0,0)--(7,6.3);
+            \draw[very thick,color=AnswerAccent,domain=0:7,samples=55]
+                plot (\x,{1.4*sqrt(\x)});
+            \draw[very thick,dashed,color=RemarkAccent,domain=0:7,samples=55]
+                plot (\x,{1.4*(\x)^0.68});
+            \draw[dotted,color=Rule] (1,0)--(1,1.4);
+            \node[below] at (1,0) {\scriptsize $1$};
+            \draw[dotted,color=Rule] (2.42,0)--(2.42,2.18);
+            \draw[dotted,color=Rule] (3.99,0)--(3.99,3.59);
+            \fill[color=ProblemAccent] (2.42,2.18) circle (2pt);
+            \fill[color=RemarkAccent] (3.99,3.59) circle (2pt);
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.57cm,y=0.42cm,>=stealth]
+            \node[color=Muted] at (3.5,6.75) {\small (d) effort \(\uparrow\)};
+            \draw[->,color=Muted] (0,0)--(7.35,0) node[right] {\scriptsize $k$};
+            \draw[->,color=Muted] (0,0)--(0,6.05)
+                node[above] {\scriptsize investment};
+            \draw[thick,color=ProblemAccent] (0,0)--(7,4.55);
+            \draw[very thick,color=AnswerAccent,domain=0:7,samples=55]
+                plot (\x,{1.1*sqrt(\x)});
+            \draw[very thick,dashed,color=RemarkAccent,domain=0:7,samples=55]
+                plot (\x,{1.5*sqrt(\x)});
+            \draw[dotted,color=Rule] (2.86,0)--(2.86,1.86);
+            \draw[dotted,color=Rule] (5.33,0)--(5.33,3.46);
+            \fill[color=ProblemAccent] (2.86,1.86) circle (2pt);
+            \fill[color=RemarkAccent] (5.33,3.46) circle (2pt);
+        \end{tikzpicture}
+    \end{minipage}
+
+    \vspace{5pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \draw[very thick,color=AnswerAccent] (0,0.35)--(0.9,0.35);
+        \node[anchor=west,color=Muted] at (1.05,0.35)
+            {\scriptsize baseline actual investment};
+        \draw[thick,color=ProblemAccent] (5.45,0.35)--(6.35,0.35);
+        \node[anchor=west,color=Muted] at (6.5,0.35)
+            {\scriptsize baseline break-even investment};
+        \draw[very thick,dashed,color=RemarkAccent] (0,-0.15)--(0.9,-0.15);
+        \node[anchor=west,color=Muted] at (1.05,-0.15)
+            {\scriptsize curve after the parameter change};
+        \fill[color=ProblemAccent] (5.65,-0.15) circle (2pt);
+        \node[anchor=west,color=Muted] at (5.85,-0.15)
+            {\scriptsize old BGP};
+        \fill[color=RemarkAccent] (8.0,-0.15) circle (2pt);
+        \node[anchor=west,color=Muted] at (8.2,-0.15)
+            {\scriptsize new BGP};
+    \end{tikzpicture}
+    \caption{Comparative statics in the Solow diagram. Vertical guides locate the
+    old and new balanced-growth-path capital stocks.}
+\end{figure}
+\end{solution}
+
+\begin{note}[Diagram strategy]
+    First identify which curve changes. Parameters \(n\), \(g\), and \(\delta\) rotate
+    the break-even line; productivity or effort changes the actual-investment curve.
+\end{note}
+
+\begin{note}[Changing an exponent]
+    In part (c), a higher \(\alpha\) rotates rather than uniformly shifts \(sk^\alpha\):
+    it lowers the curve when \(0<k<1\), leaves it unchanged at \(k=1\), and raises it
+    when \(k>1\).
+\end{note}
+
+\begin{problem}{4}[\textbf{A one-time increase in the labor force.}]
 Consider an economy with technological progress but without population growth that is on its balanced
 growth path. Now suppose there is a one-time jump in the number of workers.
 \begin{enumerate}[label=(\alph*)]
@@ -74,7 +439,137 @@ growth path. Now suppose there is a one-time jump in the number of workers.
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{5}
+\begin{solution}
+Let the one-time increase in labor occur at \(t_0\). Immediately before the shock,
+the economy is on a balanced growth path, and
+\begin{align*}
+    k(t_0^-)=\frac{K(t_0^-)}{A(t_0^-)L(t_0^-)}=k^*.
+    \problemeqtag
+\end{align*}
+Suppose \(L(t_0^+)=mL(t_0^-)\), where \(m>1\). Capital \(K\) and technology
+\(A\) cannot jump at that instant, so \(K(t_0^+)=K(t_0^-)\) and
+\(A(t_0^+)=A(t_0^-)\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Immediately after the increase in workers,
+    \begin{align*}
+        k(t_0^+)
+        &=\frac{K(t_0^+)}{A(t_0^+)L(t_0^+)}\\
+        &=\frac{K(t_0^-)}{A(t_0^-)mL(t_0^-)}\\
+        &=\frac{k(t_0^-)}{m}
+        =\frac{k^*}{m}
+        <k^*.
+        \problemeqtag\label{eq:p14-impact-capital}
+    \end{align*}
+    Since \(y=f(k)\) and \(f'(k)>0\),
+    \begin{align*}
+        y(t_0^+)=f\!\left(k(t_0^+)\right)
+        <f\!\left(k(t_0^-)\right)=y(t_0^-)=y^*.
+        \problemeqtag
+    \end{align*}
+    Thus output per unit of effective labor falls immediately: the existing capital stock
+    is spread across more effective labor.
+
+    \item Because there is no population growth, the post-shock law of motion remains
+    \begin{align*}
+        \dot k=sf(k)-(g+\delta)k.
+        \problemeqtag
+    \end{align*}
+    The one-time change in the level of \(L\) does not alter either curve in the Solow
+    diagram. Since \eqref{eq:p14-impact-capital} shows that
+    \(k(t_0^+)<k^*\),
+    \begin{align*}
+        sf\!\left(k(t_0^+)\right)>(g+\delta)k(t_0^+),
+    \end{align*}
+    so \(\dot k>0\). Capital per unit of effective labor rises toward \(k^*\), and
+    \(y=f(k)\) rises with it.
+
+    \item The balanced-growth-path condition is still
+    \begin{align*}
+        sf(k^*)=(g+\delta)k^*.
+        \problemeqtag
+    \end{align*}
+    Since none of the parameters in this equation has changed, the long-run values of
+    \(k^*\) and \(y^*=f(k^*)\) are unchanged. Therefore,
+    \begin{align*}
+        \boxed{y^*_{\mathrm{new}}=y^*_{\mathrm{old}}}.
+    \end{align*}
+\end{enumerate}
+
+The transition after the one-time labor increase is summarized in the figure
+below. A single long arrow represents the instantaneous jump, whereas successive
+arrowheads represent the economy's gradual movement under the unchanged law of motion.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=0.9cm,y=0.60cm,>=stealth]
+        \draw[->,color=Muted] (0,0)--(7.1,0) node[right] {\scriptsize $k$};
+        \draw[->,color=Muted] (0,0)--(0,5.4)
+            node[above] {\scriptsize investment};
+        \draw[very thick,color=AnswerAccent,domain=0:6.6,samples=50]
+            plot (\x,{1.7*sqrt(\x)});
+        \draw[thick,color=ProblemAccent] (0,0)--(6.7,4.63);
+        \draw[dashed,color=Rule] (1.55,0)--(1.55,2.12);
+        \draw[dashed,color=Rule] (6.05,0)--(6.05,4.18);
+        \fill[color=ProblemAccent] (6.05,4.18) circle (2pt);
+        \node[below] at (1.55,0) {\scriptsize $k(t_0^+)$};
+        \node[below] at (6.05,0) {\scriptsize $k^*$};
+
+        % The impact effect is instantaneous: one long leftward arrow.
+        \draw[->,very thick,color=RemarkAccent] (5.75,1.12)--(1.82,1.12);
+
+        % Arrowheads are placed at equal time intervals. Their shrinking gaps
+        % show that the transition slows as the economy approaches k^*.
+        \draw[semithick,color=RemarkAccent] (1.82,0.55)--(5.75,0.55);
+        \foreach \x in {2.00,2.52,3.00,3.44,3.84,4.20,4.52,4.80,5.04,5.25,5.43,5.59,5.75}{
+            \draw[very thick,color=RemarkAccent]
+                (\x-0.14,0.40)--(\x,0.55)--(\x-0.14,0.70);
+        }
+    \end{tikzpicture}
+
+    \vspace{1pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \draw[->,very thick,color=RemarkAccent] (1.0,0)--(0,0);
+        \node[anchor=west,color=Muted] at (1.15,0)
+            {\scriptsize instantaneous one-time jump};
+        \draw[semithick,color=RemarkAccent] (5.24,0)--(6.24,0);
+        \foreach \x in {5.35,5.63,5.86,6.06,6.24}{
+            \draw[very thick,color=RemarkAccent]
+                (\x-0.11,-0.12)--(\x,0)--(\x-0.11,0.12);
+        }
+        \node[anchor=west,color=Muted] at (6.48,0)
+            {\scriptsize transition: equal time intervals};
+    \end{tikzpicture}
+
+    \vspace{1pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \draw[very thick,color=AnswerAccent] (0,0)--(1,0);
+        \node[anchor=west,color=Muted] at (1.15,0)
+            {\scriptsize actual investment \(sf(k)\)};
+        \draw[thick,color=ProblemAccent] (5.2,0)--(6.2,0);
+        \node[anchor=west,color=Muted] at (6.35,0)
+            {\scriptsize break-even investment \((g+\delta)k\)};
+    \end{tikzpicture}
+    \caption{A one-time increase in \(L\) moves the economy left of \(k^*\), but
+    does not shift either curve. The shrinking gaps between successive rightward
+    arrowheads indicate that the transition slows as \(k\) approaches \(k^*\).}
+\end{figure}
+\end{solution}
+
+\begin{note}[Aggregation]
+    Do not confuse total output \(Y\) with output per unit of effective labor \(y\).
+    More workers generally raise \(Y\) on impact even though \(y=Y/(AL)\) falls.
+\end{note}
+
+\begin{note}[Level versus growth shock]
+    This is a one-time level shock to \(L\), not a permanent change in population
+    growth. It moves the economy away from its old balanced growth path without
+    shifting either curve in the Solow diagram.
+\end{note}
+
+\begin{problem}{5}[\textbf{The golden rule of the Cobb--Douglas Solow model.}]
 Suppose that the production function is Cobb--Douglas.
 \begin{enumerate}[label=(\alph*)]
     \item Find expressions for \(k^*\), \(y^*\), and \(c^*\) as functions of the parameters
@@ -84,7 +579,116 @@ Suppose that the production function is Cobb--Douglas.
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{6}
+\begin{solution}
+Let the intensive-form production function be
+\begin{align*}
+    f(k)=k^\alpha,
+    \qquad 0<\alpha<1.
+    \problemeqtag
+\end{align*}
+The law of motion for capital per unit of effective labor is
+\begin{align*}
+    \dot k=sk^\alpha-(n+g+\delta)k.
+    \problemeqtag
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item On the balanced growth path, \(\dot k=0\). Thus
+    \begin{align*}
+        s(k^*)^\alpha=(n+g+\delta)k^*.
+        \problemeqtag
+    \end{align*}
+    For the positive steady state, divide by \(k^*\) and rearrange:
+    \begin{align*}
+        (k^*)^{1-\alpha}=\frac{s}{n+g+\delta}.
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        \boxed{
+        k^*=\left(\frac{s}{n+g+\delta}\right)^{1/(1-\alpha)}}.
+        \problemeqtag
+    \end{align*}
+
+    Since \(y=f(k)=k^\alpha\),
+    \begin{align*}
+        \boxed{
+        y^*=\left(\frac{s}{n+g+\delta}\right)^{\alpha/(1-\alpha)}}.
+        \problemeqtag
+    \end{align*}
+    Finally, \(c=(1-s)y\), and hence
+    \begin{align*}
+        \boxed{
+        c^*=(1-s)
+        \left(\frac{s}{n+g+\delta}\right)^{\alpha/(1-\alpha)}}.
+        \problemeqtag
+    \end{align*}
+
+    \item On a balanced growth path, investment equals break-even investment.
+    Consumption per unit of effective labor can therefore be written as
+    \begin{align*}
+        c(k)=f(k)-(n+g+\delta)k=k^\alpha-(n+g+\delta)k.
+        \problemeqtag\label{eq:p15-consumption}
+    \end{align*}
+    The golden-rule capital stock maximizes consumption in
+    \eqref{eq:p15-consumption}. The first-order condition is
+    \begin{align*}
+        \frac{\d c(k)}{\d k}
+        =\alpha k^{\alpha-1}-(n+g+\delta)=0,
+    \end{align*}
+    or equivalently
+    \begin{align*}
+        f'(k_{\mathrm{GR}})=n+g+\delta.
+        \problemeqtag\label{eq:p15-golden-rule-condition}
+    \end{align*}
+    Solving for \(k_{\mathrm{GR}}\) gives
+    \begin{align*}
+        \boxed{
+        k_{\mathrm{GR}}
+        =\left(\frac{\alpha}{n+g+\delta}\right)^{1/(1-\alpha)}}.
+        \problemeqtag
+    \end{align*}
+    Moreover,
+    \begin{align*}
+        \frac{\d^2c(k)}{\d k^2}
+        =\alpha(\alpha-1)k^{\alpha-2}<0,
+    \end{align*}
+    so this critical point is the unique maximum.
+
+    \item A saving rate \(s_{\mathrm{GR}}\) supports the golden-rule capital stock if
+    \begin{align*}
+        s_{\mathrm{GR}}f(k_{\mathrm{GR}})
+        =(n+g+\delta)k_{\mathrm{GR}}.
+        \problemeqtag
+    \end{align*}
+    Since \(f(k)=k^\alpha\),
+    \begin{align*}
+        s_{\mathrm{GR}}
+        =(n+g+\delta)k_{\mathrm{GR}}^{1-\alpha}.
+    \end{align*}
+    For Cobb--Douglas production, \eqref{eq:p15-golden-rule-condition} implies
+    \(k_{\mathrm{GR}}^{1-\alpha}=\alpha/(n+g+\delta)\). Hence
+    \begin{align*}
+        \boxed{s_{\mathrm{GR}}=\alpha}.
+        \problemeqtag
+    \end{align*}
+    Under competitive factor pricing, \(\alpha\) is also capital's gross share of output.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Steady state versus golden rule]
+    The steady-state condition \(sf(k^*)=(n+g+\delta)k^*\) determines the capital
+    stock generated by a given saving rate. The golden-rule condition
+    \(f'(k_{\mathrm{GR}})=n+g+\delta\) instead identifies the capital stock that
+    maximizes steady-state consumption.
+\end{note}
+
+\begin{note}[Cobb--Douglas shortcut]
+    The result \(s_{\mathrm{GR}}=\alpha\) is specific to Cobb--Douglas production.
+    Under competitive factor pricing, it says that the golden-rule saving rate equals
+    capital's gross share of output.
+\end{note}
+
+\begin{problem}{6}[\textbf{A permanent fall in population growth.}]
 Consider a Solow economy that is on its balanced growth path. Assume for simplicity that there is
 no technological progress. Now suppose that the rate of population growth falls.
 \begin{enumerate}[label=(\alph*)]
@@ -96,14 +700,345 @@ no technological progress. Now suppose that the rate of population growth falls.
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{7}
+\begin{solution}
+Because there is no technological progress, \(A\) is constant. We can normalize
+it to one and write
+\begin{align*}
+    k\equiv\frac{K}{L},
+    \qquad
+    y\equiv\frac{Y}{L}=f(k),
+    \qquad
+    c\equiv\frac{C}{L}=(1-s)f(k).
+    \problemeqtag
+\end{align*}
+Suppose the population growth rate falls permanently at \(t_0\) from
+\(n_{\mathrm{old}}\) to \(n_{\mathrm{new}}<n_{\mathrm{old}}\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Capital per worker evolves according to
+    \begin{align*}
+        \dot k=sf(k)-(n+\delta)k.
+        \problemeqtag\label{eq:p16-law-of-motion}
+    \end{align*}
+    Before the change, the economy is on its balanced growth path, so
+    \begin{align*}
+        sf\!\left(k^*_{\mathrm{old}}\right)
+        =(n_{\mathrm{old}}+\delta)k^*_{\mathrm{old}}.
+        \problemeqtag
+    \end{align*}
+    Equation \eqref{eq:p16-law-of-motion} shows that the fall in \(n\) rotates
+    the break-even investment line downward from
+    \((n_{\mathrm{old}}+\delta)k\) to
+    \((n_{\mathrm{new}}+\delta)k\). It does not change \(sf(k)\).
+    Therefore, at the old steady state,
+    \begin{align*}
+        \dot k(t_0^+)
+        &=sf\!\left(k^*_{\mathrm{old}}\right)
+          -(n_{\mathrm{new}}+\delta)k^*_{\mathrm{old}}\\
+        &=(n_{\mathrm{old}}-n_{\mathrm{new}})k^*_{\mathrm{old}}>0.
+        \problemeqtag
+    \end{align*}
+    Thus capital per worker rises monotonically until it reaches the new
+    balanced-growth-path value:
+    \begin{align*}
+        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}.
+    \end{align*}
+
+    A change in a growth rate does not create an instantaneous level jump in
+    \(K\) or \(L\). Hence
+    \begin{align*}
+        k(t_0^+)=k(t_0^-)=k^*_{\mathrm{old}}.
+        \problemeqtag
+    \end{align*}
+    After \(t_0\), \(k\) rises gradually. Since \(f'(k)>0\) and \(s\) is
+    unchanged, output and consumption per worker also rise gradually:
+    \begin{align*}
+        \boxed{
+        y^*_{\mathrm{new}}>y^*_{\mathrm{old}},
+        \qquad
+        c^*_{\mathrm{new}}>c^*_{\mathrm{old}}}.
+    \end{align*}
+
+    \item Total output satisfies \(Y=Ly\), so
+    \begin{align*}
+        \frac{\dot Y}{Y}
+        =\frac{\dot L}{L}+\frac{\dot y}{y}
+        =n+\frac{\dot y}{y}.
+        \problemeqtag\label{eq:p16-output-growth}
+    \end{align*}
+    On the initial balanced growth path, \(\dot y=0\), so
+    \eqref{eq:p16-output-growth} becomes
+    \begin{align*}
+        \left.\frac{\dot Y}{Y}\right|_{\mathrm{old\ BGP}}
+        =n_{\mathrm{old}}.
+        \problemeqtag
+    \end{align*}
+    On the new balanced growth path, \(\dot y=0\) again, and therefore
+    \begin{align*}
+        \left.\frac{\dot Y}{Y}\right|_{\mathrm{new\ BGP}}
+        =n_{\mathrm{new}}.
+        \problemeqtag
+    \end{align*}
+
+    There is no jump in \(Y\) at \(t_0\). Immediately after the change,
+    \(K\) is still growing at its old balanced-growth-path rate
+    \(n_{\mathrm{old}}\), while labor grows at \(n_{\mathrm{new}}\). Growth
+    accounting therefore gives
+    \begin{align*}
+        \frac{\dot Y(t_0^+)}{Y(t_0^+)}
+        =\alpha_K\!\left(k^*_{\mathrm{old}}\right)n_{\mathrm{old}}
+        +\left[1-\alpha_K\!\left(k^*_{\mathrm{old}}\right)\right]
+        n_{\mathrm{new}},
+        \problemeqtag
+    \end{align*}
+    which lies strictly between \(n_{\mathrm{new}}\) and
+    \(n_{\mathrm{old}}\). During the transition, output continues to grow,
+    but its growth rate gradually approaches \(n_{\mathrm{new}}\). Hence total
+    output falls increasingly below the path it would have followed if
+    population growth had remained at \(n_{\mathrm{old}}\), even though output
+    per worker is higher.
+\end{enumerate}
+
+The steady-state comparison and the transition paths from part (a) are
+collected in the first figure below. The second figure separates the actual
+path of total output in part (b) from the no-change counterfactual.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.62cm,y=0.52cm,>=stealth]
+            \node[color=Muted] at (3.5,6.35) {\small steady-state comparison};
+            \draw[->,color=Muted] (0,0)--(7.35,0) node[right] {\scriptsize $k$};
+            \draw[->,color=Muted] (0,0)--(0,6.0);
+            \node[rotate=90,color=Muted] at (-0.62,3.0)
+                {\scriptsize investment / worker};
+            \draw[very thick,color=AnswerAccent,domain=0:7,samples=55]
+                plot (\x,{1.4*sqrt(\x)});
+            \draw[thick,color=ProblemAccent] (0,0)--(7,5.6);
+            \draw[thick,dashed,color=RemarkAccent] (0,0)--(7,3.85);
+            \draw[dotted,color=Rule] (3.06,0)--(3.06,2.45);
+            \draw[dotted,color=Rule] (6.48,0)--(6.48,3.56);
+            \fill[color=ProblemAccent] (3.06,2.45) circle (2pt);
+            \fill[color=RemarkAccent] (6.48,3.56) circle (2pt);
+            \node[below] at (3.06,0) {\scriptsize $k^*_{\mathrm{old}}$};
+            \node[below] at (6.48,0) {\scriptsize $k^*_{\mathrm{new}}$};
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.68cm,y=1.45cm,>=stealth]
+            \node[color=Muted] at (3.45,2.30) {\small transition after $t_0$};
+            \draw[->,color=Muted] (0,0)--(7.0,0) node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,2.1);
+            \node[rotate=90,color=Muted] at (-0.46,1.05)
+                {\scriptsize normalized level};
+            \draw[dashed,color=Rule] (1,0)--(1,1.95);
+            \node[below] at (1,0) {\scriptsize $t_0$};
+            \draw[dotted,color=Rule] (1,1.72)--(6.7,1.72);
+            \draw[dotted,color=Rule] (1,1.38)--(6.7,1.38);
+            \draw[very thick,color=RemarkAccent] (0,1)--(1,1);
+            \draw[very thick,color=RemarkAccent,domain=1:6.45,samples=60]
+                plot (\x,{1+0.72*(1-exp(-1.25*(\x-1)))});
+            \draw[very thick,color=AnswerAccent] (0,1)--(1,1);
+            \draw[very thick,color=AnswerAccent,domain=1:6.45,samples=60]
+                plot (\x,{1+0.38*(1-exp(-1.25*(\x-1)))});
+            \node[anchor=south west,color=Muted] at (0.10,1.02)
+                {\scriptsize $1$};
+        \end{tikzpicture}
+
+        \vspace{3pt}
+
+        \begin{tikzpicture}[x=1cm,y=1cm]
+            \draw[very thick,color=RemarkAccent] (0,0.20)--(0.8,0.20);
+            \node[anchor=west,color=Muted] at (0.95,0.20)
+                {\scriptsize $k/k^*_{\mathrm{old}}$};
+            \draw[very thick,color=AnswerAccent] (0,-0.20)--(0.8,-0.20);
+            \node[anchor=west,color=Muted] at (0.95,-0.20)
+                {\scriptsize $y/y^*_{\mathrm{old}}=c/c^*_{\mathrm{old}}$};
+        \end{tikzpicture}
+    \end{minipage}
+
+    \vspace{8pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \draw[very thick,color=AnswerAccent] (0,0.25)--(0.9,0.25);
+        \node[anchor=west,color=Muted] at (1.05,0.25)
+            {\scriptsize actual investment $sf(k)$};
+        \draw[thick,color=ProblemAccent] (4.65,0.25)--(5.55,0.25);
+        \node[anchor=west,color=Muted] at (5.70,0.25)
+            {\scriptsize old break-even investment};
+        \draw[thick,dashed,color=RemarkAccent] (0,-0.22)--(0.9,-0.22);
+        \node[anchor=west,color=Muted] at (1.05,-0.22)
+            {\scriptsize new break-even investment};
+        \fill[color=ProblemAccent] (5.05,-0.22) circle (2pt);
+        \node[anchor=west,color=Muted] at (5.25,-0.22)
+            {\scriptsize old BGP};
+        \fill[color=RemarkAccent] (7.15,-0.22) circle (2pt);
+        \node[anchor=west,color=Muted] at (7.35,-0.22)
+            {\scriptsize new BGP};
+    \end{tikzpicture}
+    \caption{A permanent fall in population growth raises capital, output, and
+    consumption per worker. These variables do not jump at \(t_0\); they rise
+    gradually toward their new balanced-growth-path levels.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=1.05cm,y=0.82cm,>=stealth]
+        \draw[->,color=Muted] (0,0)--(7.4,0) node[right] {\scriptsize time};
+        \draw[->,color=Muted] (0,0)--(0,5.5) node[above] {\scriptsize $\ln Y$};
+        \draw[dashed,color=Rule] (2,0)--(2,5.0);
+        \node[below] at (2,0) {\scriptsize $t_0$};
+        \draw[very thick,color=AnswerAccent] (0,0.4)--(2,1.7);
+        \draw[very thick,color=AnswerAccent,domain=2:7,samples=70]
+            plot (\x,{1.7+0.25*(\x-2)+0.28*(1-exp(-1.4*(\x-2)))});
+        \draw[thick,dashed,color=ProblemAccent] (2,1.7)--(7,4.95);
+        \draw[thick,dotted,color=RemarkAccent] (2,1.7)--(7,2.95);
+    \end{tikzpicture}
+
+    \vspace{6pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \draw[very thick,color=AnswerAccent] (0,0.25)--(0.9,0.25);
+        \node[anchor=west,color=Muted] at (1.05,0.25)
+            {\scriptsize actual path};
+        \draw[thick,dashed,color=ProblemAccent] (3.35,0.25)--(4.25,0.25);
+        \node[anchor=west,color=Muted] at (4.40,0.25)
+            {\scriptsize no-change counterfactual};
+        \draw[thick,dotted,color=RemarkAccent] (0,-0.22)--(0.9,-0.22);
+        \node[anchor=west,color=Muted] at (1.05,-0.22)
+            {\scriptsize reference line with slope $n_{\mathrm{new}}$};
+    \end{tikzpicture}
+
+    \par\vspace{4pt}
+    \caption{Total output is continuous at \(t_0\). Its growth rate falls below
+    \(n_{\mathrm{old}}\) immediately and converges gradually to
+    \(n_{\mathrm{new}}\).}
+\end{figure}
+\end{solution}
+
+\begin{note}[Continuity]
+    A fall in the \emph{growth rate} of labor does not reduce the level of labor
+    on impact. Per-worker variables are therefore continuous at \(t_0\), unlike
+    the one-time level increase in \(L\) studied in Problem 1.4.
+\end{note}
+
+\begin{problem}{7}[\textbf{The population-growth elasticity of steady-state output.}]
 Find the elasticity of output per unit of effective labor on the balanced growth path, \(y^*\),
 with respect to the rate of population growth, \(n\). If \(\alpha_K\left(k^*\right)=1/3\),
 \(g=2\%\), and \(\delta=3\%\), by about how much does a fall in \(n\) from 2 percent to
 1 percent raise \(y^*\)?
 \end{problem}
 
-\begin{problem}{8}
+\begin{solution}
+The balanced-growth-path conditions are
+\begin{align*}
+    y^*&=f(k^*),\problemeqtag\\
+    sf(k^*)&=(n+g+\delta)k^*.
+    \problemeqtag\label{eq:p17-steady-state}
+\end{align*}
+Differentiate the steady-state condition \eqref{eq:p17-steady-state} with
+respect to \(n\):
+\begin{align*}
+    sf'(k^*)\frac{\partial k^*}{\partial n}
+    &=k^*+(n+g+\delta)\frac{\partial k^*}{\partial n}.
+\end{align*}
+Collecting the terms that contain \(\partial k^*/\partial n\) gives
+\begin{align*}
+    \left[sf'(k^*)-(n+g+\delta)\right]
+    \frac{\partial k^*}{\partial n}
+    =k^*,
+\end{align*}
+and hence
+\begin{align*}
+    \frac{\partial k^*}{\partial n}
+    =\frac{k^*}{sf'(k^*)-(n+g+\delta)}.
+\end{align*}
+Use the steady-state condition to write
+\begin{align*}
+    s=\frac{(n+g+\delta)k^*}{f(k^*)}.
+\end{align*}
+Then
+\begin{align*}
+    sf'(k^*)
+    &=(n+g+\delta)\frac{k^*f'(k^*)}{f(k^*)}\\
+    &=(n+g+\delta)\alpha_K(k^*),
+\end{align*}
+where
+\begin{align*}
+    \alpha_K(k^*)\equiv\frac{k^*f'(k^*)}{f(k^*)}.
+    \problemeqtag
+\end{align*}
+Therefore,
+\begin{align*}
+    \frac{\partial k^*}{\partial n}
+    =-\frac{k^*}
+    {(n+g+\delta)\left[1-\alpha_K(k^*)\right]}<0.
+    \problemeqtag
+\end{align*}
+
+Since \(y^*=f(k^*)\), the elasticity of \(y^*\) with respect to \(n\) is
+\begin{align*}
+    \varepsilon_{y^*,n}
+    &\equiv\frac{n}{y^*}\frac{\partial y^*}{\partial n}\\
+    &=\frac{n}{f(k^*)}f'(k^*)\frac{\partial k^*}{\partial n}\\
+    &=\boxed{
+    -\frac{n}{n+g+\delta}
+    \frac{\alpha_K(k^*)}{1-\alpha_K(k^*)}}.
+    \problemeqtag\label{eq:p17-output-elasticity}
+\end{align*}
+
+For a rough calculation, evaluate \eqref{eq:p17-output-elasticity} at the midpoint
+\(\bar n=1.5\%\):
+\begin{align*}
+    \varepsilon_{y^*,n}
+    &\approx
+    -\frac{0.015}{0.015+0.02+0.03}
+    \frac{1/3}{1-1/3}\\
+    &=-0.115\approx-0.12.
+\end{align*}
+The fall from \(2\%\) to \(1\%\) is a \(50\%\) fall relative to the initial
+rate. The conventional textbook-style elasticity calculation therefore gives
+\begin{align*}
+    \frac{\Delta y^*}{y^*}
+    \approx(-0.12)(-0.50)=0.06.
+\end{align*}
+Thus the standard rough answer is
+\begin{align*}
+    \boxed{y^*\text{ rises by about }6\%.}
+\end{align*}
+
+There is a small numerical subtlety because this is a large change in \(n\).
+If \(\alpha_K=1/3\) is treated as constant over the interval, a
+base-consistent log-change calculation gives
+\begin{align*}
+    \Delta\ln y^*
+    &\approx-\frac{1/3}{1-1/3}
+    \ln\!\left(
+    \frac{0.01+0.02+0.03}{0.02+0.02+0.03}
+    \right)\\
+    &=\frac{1}{2}\ln\!\left(\frac{0.07}{0.06}\right)
+    \approx0.077,
+\end{align*}
+which corresponds to an increase of about \(8\%\). The difference reflects
+the crudeness of applying a local elasticity to a \(50\%\) change.
+\end{solution}
+
+\begin{note}[Local versus finite changes]
+    For grading against the standard solution, the expected back-of-the-envelope
+    answer is about \(6\%\). A consistent finite-change calculation is closer to
+    \(8\%\) because halving \(n\) is not a small change.
+\end{note}
+
+\begin{note}[Economic intuition]
+    Population growth enters through \(n+g+\delta\), so a change in \(n\) alters only
+    part of the total break-even-investment rate. Plausible differences in population
+    growth therefore have only modest level effects on \(y^*\).
+\end{note}
+
+\begin{problem}{8}[\textbf{A permanent increase in the investment rate.}]
 Suppose that investment as a fraction of output in the United States rises permanently from 0.15
 to 0.18. Assume that capital's share is \(1/3\).
 \begin{enumerate}[label=(\alph*)]
@@ -113,6 +1048,174 @@ to 0.18. Assume that capital's share is \(1/3\).
     does it take for consumption to return to what it would have been without the rise in investment?
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+Let \(s_{\mathrm{old}}=0.15\) and \(s_{\mathrm{new}}=0.18\). The proportional
+increase in the investment rate is
+\begin{align*}
+    \frac{s_{\mathrm{new}}-s_{\mathrm{old}}}{s_{\mathrm{old}}}
+    =\frac{0.03}{0.15}=0.20.
+\end{align*}
+Thus the saving rate rises by \(20\%\), not by \(3\%\); the latter number is
+the change in percentage points.
+
+\begin{enumerate}[label=(\alph*)]
+    \item From equation (1.28) in the text, the balanced-growth-path elasticity
+    of output with respect to the saving rate is
+    \begin{align*}
+        \varepsilon_{y^*,s}
+        \equiv\frac{s}{y^*}\frac{\partial y^*}{\partial s}
+        =\frac{\alpha_K(k^*)}{1-\alpha_K(k^*)}.
+        \problemeqtag\label{eq:p18-output-elasticity}
+    \end{align*}
+    With \(\alpha_K=1/3\), \eqref{eq:p18-output-elasticity} becomes
+    \begin{align*}
+        \varepsilon_{y^*,s}
+        =\frac{1/3}{1-1/3}=\frac{1}{2}.
+    \end{align*}
+    Hence the elasticity approximation gives
+    \begin{align*}
+        \frac{\Delta y^*}{y^*}
+        \approx\frac{1}{2}(0.20)=0.10.
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        \boxed{\text{Long-run output is about }10\%\text{ higher.}}
+    \end{align*}
+    If a Cobb--Douglas production function with capital share \(1/3\) is used
+    to calculate the finite change exactly, then
+    \begin{align*}
+        \frac{y^*_{\mathrm{new}}}{y^*_{\mathrm{old}}}
+        =\left(\frac{s_{\mathrm{new}}}{s_{\mathrm{old}}}\right)^{(1/3)/(2/3)}
+        =\sqrt{1.2}
+        \approx1.095,
+    \end{align*}
+    so the exact increase is \(9.5\%\), which confirms the approximation.
+
+    \item Balanced-growth-path consumption per unit of effective labor is
+    \begin{align*}
+        c^*=(1-s)y^*.
+        \problemeqtag\label{eq:p18-steady-consumption}
+    \end{align*}
+    Therefore, using \eqref{eq:p18-steady-consumption},
+    \begin{align*}
+        \frac{c^*_{\mathrm{new}}}{c^*_{\mathrm{old}}}
+        &=\frac{1-s_{\mathrm{new}}}{1-s_{\mathrm{old}}}
+          \frac{y^*_{\mathrm{new}}}{y^*_{\mathrm{old}}}\\
+        &=\frac{0.82}{0.85}\sqrt{1.2}\\
+        &\approx1.057.
+    \end{align*}
+    Thus
+    \begin{align*}
+        \boxed{\text{Long-run consumption is about }6\%\text{ higher.}}
+    \end{align*}
+    Consumption rises less than output because the economy devotes a larger
+    fraction of its higher output to investment.
+
+    \item At the instant the saving rate rises, \(K\), \(A\), \(L\), and hence
+    \(y\), cannot jump. Consumption does jump because the consumed fraction of
+    output falls immediately:
+    \begin{align*}
+        \frac{c(t_0^+)}{c(t_0^-)}
+        &=\frac{(1-s_{\mathrm{new}})y(t_0)}
+                {(1-s_{\mathrm{old}})y(t_0)}\\
+        &=\frac{0.82}{0.85}
+        \approx0.965.
+    \end{align*}
+    Hence
+    \begin{align*}
+        \boxed{\text{Consumption falls immediately by about }3.5\%.}
+    \end{align*}
+
+    To estimate the recovery time, use the text's benchmark
+    \(n+g+\delta\approx0.06\). The local convergence rate is
+    \begin{align*}
+        \lambda
+        &=\left[1-\alpha_K(k^*)\right](n+g+\delta)\\
+        &=\left(1-\frac13\right)(0.06)=0.04.
+        \problemeqtag
+    \end{align*}
+    Normalize consumption on the old path to one, and define
+    \begin{align*}
+        x_0&\equiv\frac{c(t_0^+)}{c^*_{\mathrm{old}}}
+        =\frac{0.82}{0.85}\approx0.965,\\
+        x^*_{\mathrm{new}}
+        &\equiv\frac{c^*_{\mathrm{new}}}{c^*_{\mathrm{old}}}
+        \approx1.057.
+    \end{align*}
+    The linearized transition is
+    \begin{align*}
+        x(t)-x^*_{\mathrm{new}}
+        \approx e^{-\lambda(t-t_0)}
+        \left(x_0-x^*_{\mathrm{new}}\right).
+        \problemeqtag\label{eq:p18-consumption-transition}
+\end{align*}
+    Consumption has returned to its old path when \(x(t)=1\). Substituting
+    this condition into \eqref{eq:p18-consumption-transition} gives
+    \begin{align*}
+        e^{-\lambda(t-t_0)}
+        &=\frac{x^*_{\mathrm{new}}-1}
+        {x^*_{\mathrm{new}}-x_0}\\
+        &\approx\frac{1.057-1}{1.057-0.965}
+        \approx0.62.
+    \end{align*}
+    Taking logs gives
+    \begin{align*}
+        t-t_0
+        &\approx-\frac{\ln(0.62)}{0.04}\\
+        &\approx12\text{ years}.
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        \boxed{\text{Consumption returns to its old path after roughly }12\text{ years.}}
+    \end{align*}
+\end{enumerate}
+
+The impact effect and the gradual recovery of consumption in part (c) are
+summarized in the figure below. The horizontal benchmark is the consumption
+path that would have prevailed without the increase in investment.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=1.0cm,y=0.85cm,>=stealth]
+        \draw[->,color=Muted] (0,0)--(7.4,0) node[right] {\scriptsize time};
+        \draw[->,color=Muted] (0,0)--(0,4.25)
+            node[above] {\scriptsize $c(t)/c^*_{\mathrm{old}}$};
+        \draw[dashed,color=Rule] (1,0)--(1,3.85);
+        \node[below] at (1,0) {\scriptsize $t_0$};
+        \draw[dashed,color=ProblemAccent] (0,2.20)--(7.0,2.20);
+        \node[left] at (0,2.20) {\scriptsize $1.000$};
+        \draw[dotted,color=RemarkAccent] (1,3.40)--(7.0,3.40);
+        \node[left] at (0,3.40) {\scriptsize $1.057$};
+        \node[left] at (0,1.40) {\scriptsize $0.965$};
+        \draw[very thick,color=AnswerAccent] (0,2.20)--(1,2.20);
+        \draw[very thick,color=ProblemAccent,->] (1,2.14)--(1,1.46);
+        \draw[color=AnswerAccent,fill=white,thick] (1,2.20) circle (2pt);
+        \fill[color=ProblemAccent] (1,1.40) circle (2pt);
+        \draw[very thick,color=AnswerAccent,domain=1:7,samples=70]
+            plot (\x,{3.40-2.00*exp(-0.50*(\x-1))});
+        \draw[dotted,color=Rule] (2.02,0)--(2.02,2.20);
+        \node[below] at (2.02,0) {\scriptsize $t^*$};
+    \end{tikzpicture}
+
+    \vspace{6pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \draw[very thick,color=AnswerAccent] (0,0.22)--(0.9,0.22);
+        \node[anchor=west,color=Muted] at (1.05,0.22)
+            {\scriptsize consumption after the increase in $s$};
+        \draw[thick,dashed,color=ProblemAccent] (5.65,0.22)--(6.55,0.22);
+        \node[anchor=west,color=Muted] at (6.70,0.22)
+            {\scriptsize old path};
+        \draw[thick,dotted,color=RemarkAccent] (0,-0.22)--(0.9,-0.22);
+        \node[anchor=west,color=Muted] at (1.05,-0.22)
+            {\scriptsize new balanced-growth-path level};
+    \end{tikzpicture}
+    \caption{Consumption falls on impact, crosses its old path at
+    \(t^*\approx t_0+12\) years, and then approaches a level about \(6\%\)
+    above the old path.}
+\end{figure}
+\end{solution}
 
 \begin{problem}{9}[\textbf{Factor payments in the Solow model.}]
 Assume that both labor and capital are paid their marginal products. Let \(w\) denote
@@ -132,7 +1235,160 @@ Assume that both labor and capital are paid their marginal products. Let \(w\) d
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{10}
+\begin{solution}
+Write the constant-returns production function in intensive form:
+\begin{align*}
+    Y=F(K,AL)=ALf(k),
+    \qquad
+    k\equiv\frac{K}{AL}.
+    \problemeqtag
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item The wage is the marginal product of labor, holding \(K\) and \(A\)
+    fixed. First,
+    \begin{align*}
+        \frac{\partial k}{\partial L}
+        =\frac{\partial}{\partial L}\left(\frac{K}{AL}\right)
+        =-\frac{K}{AL^2}
+        =-\frac{k}{L}.
+    \end{align*}
+    Apply the product and chain rules to \(Y=ALf(k)\):
+    \begin{align*}
+        w
+        \equiv\frac{\partial Y}{\partial L}
+        &=A f(k)+ALf'(k)\frac{\partial k}{\partial L}\\
+        &=A f(k)+ALf'(k)\left(-\frac{k}{L}\right)\\
+        &=\boxed{A\left[f(k)-kf'(k)\right]}.
+        \problemeqtag\label{eq:p19-wage}
+    \end{align*}
+
+    \item First derive the marginal product of capital. Since
+    \begin{align*}
+        \frac{\partial k}{\partial K}=\frac{1}{AL},
+    \end{align*}
+    we have
+    \begin{align*}
+        \frac{\partial Y}{\partial K}
+        =ALf'(k)\frac{1}{AL}=f'(k).
+        \problemeqtag
+    \end{align*}
+    Therefore the net return to capital is
+    \begin{align*}
+        r=f'(k)-\delta.
+        \problemeqtag
+    \end{align*}
+    Total labor income is
+    \begin{align*}
+        wL
+        &=AL\left[f(k)-kf'(k)\right]\\
+        &=ALf(k)-ALk f'(k)\\
+        &=Y-Kf'(k),
+    \end{align*}
+    where \(ALk=K\). Total net capital income is
+    \begin{align*}
+        rK=Kf'(k)-\delta K.
+    \end{align*}
+    Adding the two payments gives
+    \begin{align*}
+        wL+rK
+        &=Y-Kf'(k)+Kf'(k)-\delta K\\
+        &=\boxed{F(K,AL)-\delta K}.
+        \problemeqtag\label{eq:p19-factor-exhaustion}
+    \end{align*}
+    Equation \eqref{eq:p19-factor-exhaustion} is Euler's theorem for a
+    constant-returns production function, with
+    depreciation deducted from capital's payment.
+
+    \item On a balanced growth path, \(k=k^*\) is constant. Hence
+    \begin{align*}
+        r=f'(k^*)-\delta
+        \problemeqtag
+    \end{align*}
+    is constant, so
+    \begin{align*}
+        \boxed{\frac{\dot r}{r}=0}.
+        \problemeqtag
+    \end{align*}
+    Evaluating the wage formula \eqref{eq:p19-wage} at \(k^*\) gives
+    \begin{align*}
+        w=A\left[f(k^*)-k^*f'(k^*)\right].
+        \problemeqtag
+    \end{align*}
+    The expression in brackets is constant on the balanced growth path, while
+    \(A\) grows at rate \(g\). Therefore,
+    \begin{align*}
+        \boxed{\frac{\dot w}{w}=g}.
+        \problemeqtag
+    \end{align*}
+
+    The factor shares are constant as well. For example, \(r\) is constant,
+    and both \(K\) and \(Y\) grow at \(n+g\), so
+    \begin{align*}
+        \frac{\d}{\d t}\ln\!\left(\frac{rK}{Y}\right)
+        =0+(n+g)-(n+g)=0.
+        \problemeqtag
+    \end{align*}
+    Likewise, \(w\) grows at \(g\), \(L\) grows at \(n\), and \(Y\) grows at
+    \(n+g\), so \(wL/Y\) is constant. The shares in net output are also
+    constant because \(Y-\delta K\), \(wL\), and \(rK\) all grow at
+    \(n+g\) on the balanced growth path.
+
+    \item Let
+    \begin{align*}
+        h(k)\equiv f(k)-kf'(k),
+        \problemeqtag
+    \end{align*}
+    so that \(w=Ah(k)\). Its derivative is
+    \begin{align*}
+        h'(k)
+        =f'(k)-\left[f'(k)+kf''(k)\right]
+        =-kf''(k).
+    \end{align*}
+    Thus
+    \begin{align*}
+        \frac{\dot w}{w}
+        &=\frac{\dot A}{A}+\frac{h'(k)\dot k}{h(k)}\\
+        &=g-\frac{kf''(k)\dot k}{f(k)-kf'(k)}.
+        \problemeqtag
+    \end{align*}
+    When \(k<k^*\), stability implies \(\dot k>0\). With diminishing marginal
+    returns, \(f''(k)<0\), and labor's gross marginal product satisfies
+    \(f(k)-kf'(k)>0\). Therefore,
+    \begin{align*}
+        \boxed{\frac{\dot w}{w}>g}.
+    \end{align*}
+    The wage grows faster than on the balanced growth path because workers
+    benefit from both technological progress and capital deepening.
+
+    For the net return to capital,
+    \begin{align*}
+        r=f'(k)-\delta,
+        \qquad
+        \dot r=f''(k)\dot k<0.
+        \problemeqtag
+    \end{align*}
+    If \(r>0\), its proportional growth rate is
+    \begin{align*}
+        \frac{\dot r}{r}
+        =\frac{f''(k)\dot k}{f'(k)-\delta}<0.
+        \problemeqtag
+    \end{align*}
+    Hence
+    \begin{align*}
+        \boxed{r\text{ falls during the transition, so its growth rate is below }0.}
+    \end{align*}
+    It approaches the constant balanced-growth-path return from above.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Net versus gross return]
+    The problem defines \(r=f'(k)-\delta\), the \emph{net} return. Therefore
+    \(\dot r/r=f''(k)\dot k/[f'(k)-\delta]\); using \(f'(k)\) in the denominator
+    would instead be the growth rate of the gross marginal product of capital.
+\end{note}
+
+\begin{problem}{10}[\textbf{Returns, growth, and the capital-output ratio.}]
 \problemsource{\parencite{piketty2014capital,piketty-zucman2014capital,rognlie2015deciphering}}
 This problem asks you to use a Solow-style model to investigate some ideas that have been discussed
 in the context of Thomas Piketty's recent work. Consider an economy described by the assumptions of the Solow model, except that
@@ -164,7 +1420,300 @@ consumed and all other income is saved. Thus,
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{11}
+\begin{solution}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{4pt}
+Let \(F_K\equiv\partial F(K,AL)/\partial K\), and define capital's gross
+output elasticity by
+\begin{align*}
+    \alpha_K(t)\equiv\frac{F_K(t)K(t)}{Y(t)}.
+    \problemeqtag
+\end{align*}
+Because the production function has constant returns to scale, labor income
+plus gross capital income exhausts output. Since all labor income is consumed,
+\begin{align*}
+    Y-C=F_KK.
+    \problemeqtag
+\end{align*}
+The capital accumulation equation is therefore
+\begin{align*}
+    \dot K
+    &=Y-C-\delta K\\
+    &=\left(F_K-\delta\right)K.
+    \problemeqtag\label{eq:p110-capital-accumulation}
+\end{align*}
+Thus the growth rate of capital equals the net return to capital:
+\begin{align*}
+    \frac{\dot K}{K}=F_K-\delta.
+    \problemeqtag
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Differentiate \(Y=F(K,AL)\) with respect to time:
+    \begin{align*}
+        \dot Y=F_K\dot K+F_{AL}\,\dot{(AL)}.
+    \end{align*}
+    Divide by \(Y\), multiply and divide the first term by \(K\), and multiply
+    and divide the second term by \(AL\):
+    \begin{align*}
+        \frac{\dot Y}{Y}
+        &=\frac{F_KK}{Y}\frac{\dot K}{K}
+        +\frac{F_{AL}(AL)}{Y}\frac{\dot{(AL)}}{AL}.
+    \end{align*}
+    Constant returns imply
+    \begin{align*}
+        \frac{F_KK}{Y}+\frac{F_{AL}(AL)}{Y}=1,
+        \problemeqtag
+    \end{align*}
+    and \(AL\) grows at \(n+g\). Hence
+    \begin{align*}
+        \frac{\dot Y}{Y}
+        =\alpha_K\frac{\dot K}{K}
+        +(1-\alpha_K)(n+g).
+        \problemeqtag
+    \end{align*}
+    The growth rate of the capital-output ratio is therefore
+    \begin{align*}
+        \frac{\d}{\d t}\ln\!\left(\frac{K}{Y}\right)
+        &=\frac{\dot K}{K}-\frac{\dot Y}{Y}\\
+        &=(1-\alpha_K)
+        \left[\frac{\dot K}{K}-(n+g)\right].
+        \problemeqtag
+    \end{align*}
+    With \(0<\alpha_K<1\), this expression is positive if and only if
+    \begin{align*}
+        \frac{\dot K}{K}>n+g.
+    \end{align*}
+    Finally, since \(k=K/(AL)\),
+    \begin{align*}
+        \frac{\dot k}{k}=\frac{\dot K}{K}-(n+g).
+        \problemeqtag
+    \end{align*}
+    Thus
+    \begin{align*}
+        \boxed{
+        \frac{K}{Y}\text{ rises}
+        \quad\Longleftrightarrow\quad
+        \frac{\dot K}{K}>n+g
+        \quad\Longleftrightarrow\quad
+        \dot k>0.}
+    \end{align*}
+
+    \item In intensive form, \(F_K=f'(k)\). Using the accumulation equation
+    \eqref{eq:p110-capital-accumulation},
+    \begin{align*}
+        \frac{\dot k}{k}
+        &=\frac{\dot K}{K}-(n+g)\\
+        &=f'(k)-(n+g+\delta).
+        \problemeqtag
+    \end{align*}
+    The assumption in the question is
+    \begin{align*}
+        f'(k(0))>n+g+\delta,
+    \end{align*}
+    so \(\dot k(0)>0\). Under the usual Solow assumptions,
+    \(f''(k)<0\), so the marginal product \(f'(k)\) falls as \(k\) rises.
+    Let \(\bar k\) denote the unique value satisfying
+    \begin{align*}
+        f'(\bar k)=n+g+\delta.
+        \problemeqtag
+    \end{align*}
+    Then
+    \begin{align*}
+        k<\bar k&\Longrightarrow\dot k>0,\\
+        k>\bar k&\Longrightarrow\dot k<0.
+    \end{align*}
+    Since the initial condition implies \(k(0)<\bar k\), capital per unit of
+    effective labor rises monotonically toward \(\bar k\).
+
+    Moreover,
+    \begin{align*}
+        \frac{K}{Y}=\frac{k}{f(k)},
+        \problemeqtag\label{eq:p110-capital-output-level}
+    \end{align*}
+    and
+    \begin{align*}
+        \frac{\d\ln[k/f(k)]}{\d\ln k}
+        =1-\frac{kf'(k)}{f(k)}
+        =1-\alpha_K(k)>0.
+        \problemeqtag\label{eq:p110-capital-output-elasticity}
+    \end{align*}
+    Therefore \(K/Y\) rises whenever \(k\) rises and converges to the finite
+    value \(\bar k/f(\bar k)\). Hence
+    \begin{align*}
+        \boxed{\frac{K}{Y}\text{ approaches a finite constant from below.}}
+    \end{align*}
+
+    \item At the start of the transition,
+    \begin{align*}
+        r\equiv F_K-\delta>n+g.
+        \problemeqtag
+    \end{align*}
+    Since \(\dot K/K=r\), capital initially grows faster than effective labor,
+    and \(K/Y\) rises. But the return \(r\) is not fixed: as \(k\) rises,
+    diminishing marginal returns reduce \(F_K=f'(k)\), and hence reduce \(r\).
+    The process stops when
+    \begin{align*}
+        r=n+g,
+        \problemeqtag
+    \end{align*}
+    equivalently when \(f'(k)=n+g+\delta\). At that point \(k\) and \(K/Y\)
+    are constant.
+
+    Thus the statement that \(r\) exceeding the economy's growth rate causes
+    \(K/Y\) to grow without bound incorrectly treats the return to capital as
+    exogenous. In this model,
+    \begin{align*}
+        \boxed{\text{capital accumulation lowers }r\text{ until the excess return disappears.}}
+    \end{align*}
+
+    \item With Cobb--Douglas production,
+    \begin{align*}
+        Y=K^\alpha(AL)^{1-\alpha},
+        \qquad 0<\alpha<1,
+        \problemeqtag
+    \end{align*}
+    so
+    \begin{align*}
+        F_K=\alpha\frac{Y}{K}.
+        \problemeqtag
+    \end{align*}
+    Net capital income is
+    \begin{align*}
+        K(F_K-\delta)
+        =\alpha Y-\delta K,
+        \problemeqtag
+    \end{align*}
+    while net output is \(Y-\delta K\). Let
+    \begin{align*}
+        \beta\equiv\frac{K}{Y}.
+        \problemeqtag
+    \end{align*}
+    The share of net capital income in net output is
+    \begin{align*}
+        \theta_K^{\mathrm{net}}
+        &\equiv\frac{\alpha Y-\delta K}{Y-\delta K}\\
+        &=\frac{\alpha-\delta\beta}{1-\delta\beta}.
+        \problemeqtag
+    \end{align*}
+    Differentiate with respect to \(\beta\):
+    \begin{align*}
+        \frac{\d\theta_K^{\mathrm{net}}}{\d\beta}
+        &=\frac{-\delta(1-\delta\beta)
+        -(\alpha-\delta\beta)(-\delta)}{(1-\delta\beta)^2}\\
+        &=\frac{\delta(\alpha-1)}{(1-\delta\beta)^2}<0.
+        \problemeqtag
+    \end{align*}
+    Equations \eqref{eq:p110-capital-output-level} and
+    \eqref{eq:p110-capital-output-elasticity} show that \(\beta=K/Y\) rises
+    monotonically. Therefore,
+    \begin{align*}
+        \boxed{\theta_K^{\mathrm{net}}\text{ falls monotonically toward a constant.}}
+    \end{align*}
+    Thus, in the Cobb--Douglas case, an initial excess of the return to capital
+    over the economy's growth rate is associated with a \emph{fall}, not a rise,
+    in capital's share of net output.
+\end{enumerate}
+
+The qualitative paths established in parts (b)--(d) are collected in the
+figure below. Each horizontal guide marks the corresponding long-run value.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.66cm,y=0.36cm,>=stealth]
+            \path[use as bounding box] (-2.1,-0.45) rectangle (8.0,6.25);
+            \node[color=Muted] at (3.25,5.90) {\small (a) capital intensity};
+            \draw[->,color=Muted] (0,0)--(6.8,0) node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,5.0) node[above] {\scriptsize $k$};
+            \draw[dashed,color=Rule] (0,4.2)--(6.45,4.2);
+            \draw[very thick,color=AnswerAccent,domain=0:6.3,samples=60]
+                plot (\x,{1.2+3.0*(1-exp(-0.65*\x))/(1-exp(-0.65*6.3))});
+            \fill[color=ProblemAccent] (0,1.2) circle (2pt);
+            \fill[color=RemarkAccent] (6.3,4.2) circle (2pt);
+            \node[left] at (0,4.2) {\scriptsize $\bar k$};
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.66cm,y=0.36cm,>=stealth]
+            \path[use as bounding box] (-2.1,-0.45) rectangle (8.0,6.25);
+            \node[color=Muted] at (3.25,5.90) {\small (b) capital-output ratio};
+            \draw[->,color=Muted] (0,0)--(6.8,0) node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,5.0) node[above] {\scriptsize $K/Y$};
+            \draw[dashed,color=Rule] (0,4.0)--(6.45,4.0);
+            \draw[very thick,color=AnswerAccent,domain=0:6.3,samples=60]
+                plot (\x,{1.3+2.7*(1-exp(-0.65*\x))/(1-exp(-0.65*6.3))});
+            \fill[color=ProblemAccent] (0,1.3) circle (2pt);
+            \fill[color=RemarkAccent] (6.3,4.0) circle (2pt);
+            \node[left] at (0,4.0) {\scriptsize $\bar k/f(\bar k)$};
+        \end{tikzpicture}
+    \end{minipage}
+
+    \vspace{7pt}
+
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.66cm,y=0.36cm,>=stealth]
+            \path[use as bounding box] (-2.1,-0.45) rectangle (8.0,6.25);
+            \node[color=Muted] at (3.25,5.90) {\small (c) net return to capital};
+            \draw[->,color=Muted] (0,0)--(6.8,0) node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,5.0) node[above] {\scriptsize $r$};
+            \draw[dashed,color=Rule] (0,2.0)--(6.45,2.0);
+            \draw[very thick,color=AnswerAccent,domain=0:6.3,samples=60]
+                plot (\x,{4.2-2.2*(1-exp(-0.65*\x))/(1-exp(-0.65*6.3))});
+            \fill[color=ProblemAccent] (0,4.2) circle (2pt);
+            \fill[color=RemarkAccent] (6.3,2.0) circle (2pt);
+            \node[left] at (0,2.0) {\scriptsize $n+g$};
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.66cm,y=0.36cm,>=stealth]
+            \path[use as bounding box] (-2.1,-0.45) rectangle (8.0,6.25);
+            \node[color=Muted] at (3.25,5.90) {\small (d) net capital share};
+            \draw[->,color=Muted] (0,0)--(6.8,0) node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,5.0)
+                node[above] {\scriptsize $\theta_K^{\mathrm{net}}$};
+            \draw[dashed,color=Rule] (0,2.2)--(6.45,2.2);
+            \draw[very thick,color=AnswerAccent,domain=0:6.3,samples=60]
+                plot (\x,{4.3-2.1*(1-exp(-0.65*\x))/(1-exp(-0.65*6.3))});
+            \fill[color=ProblemAccent] (0,4.3) circle (2pt);
+            \fill[color=RemarkAccent] (6.3,2.2) circle (2pt);
+        \end{tikzpicture}
+    \end{minipage}
+
+    \vspace{5pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \fill[color=ProblemAccent] (0,0) circle (2pt);
+        \node[anchor=west,color=Muted] at (0.22,0)
+            {\scriptsize initial value};
+        \fill[color=RemarkAccent] (3.0,0) circle (2pt);
+        \node[anchor=west,color=Muted] at (3.22,0)
+            {\scriptsize long-run value};
+        \draw[very thick,color=AnswerAccent] (6.0,0)--(6.9,0);
+        \node[anchor=west,color=Muted] at (7.05,0)
+            {\scriptsize transition path};
+    \end{tikzpicture}
+    \caption{With \(f'(k(0))>n+g+\delta\), capital intensity and the
+    capital-output ratio rise, while the net return falls to \(n+g\). Under
+    Cobb--Douglas production, capital's share of net output also falls.}
+\end{figure}
+\end{solution}
+
+\begin{note}[Transition, not a parameter restriction]
+    The comparison \(r>g_Y\) is not a permanent parameter restriction here.
+    It is a transitional inequality: capital deepening lowers the marginal
+    product of capital until \(r=n+g\) on the balanced growth path.
+\end{note}
+
+\begin{problem}{11}[\textbf{Net capital shares and the elasticity of substitution.}]
 Consider Problem 1.10. Suppose there is a marginal increase in \(K\).
 \begin{enumerate}[label=(\alph*)]
     \item Derive an expression (in terms of \(K/Y\), \(\delta\), the marginal product of capital
@@ -177,7 +1726,96 @@ Consider Problem 1.10. Suppose there is a marginal increase in \(K\).
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{12}
+\begin{solution}
+Let
+\begin{align*}
+    \theta_K^{\mathrm{net}}
+    &\equiv \frac{K(F_K-\delta)}{Y-\delta K}
+    =\frac{F_K-\delta}{Y/K-\delta}
+    \problemeqtag\label{eq:p111-net-share}
+\end{align*}
+denote capital's share of net output. We maintain the usual assumptions that
+\(F_K>\delta\), \(Y/K>\delta\), and \(F_{KK}<0\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Along a constant-returns-to-scale production function, the elasticity
+    of substitution between capital and effective labor can be written as
+    \begin{align*}
+        \sigma
+        &=-\frac{\partial\ln(K/Y)}{\partial\ln F_K}
+        =\frac{\partial\ln(Y/K)}{\partial\ln F_K}.
+        \problemeqtag\label{eq:p111-sigma}
+    \end{align*}
+    Hence
+    \begin{align*}
+        \frac{\partial(Y/K)}{\partial F_K}
+        =\sigma\frac{Y/K}{F_K}.
+        \problemeqtag\label{eq:p111-output-capital-derivative}
+    \end{align*}
+
+    Differentiate \eqref{eq:p111-net-share} with respect to \(F_K\):
+    \begin{align*}
+        \frac{\partial\theta_K^{\mathrm{net}}}{\partial F_K}
+        &=\frac{1}{Y/K-\delta}
+        -\frac{F_K-\delta}{(Y/K-\delta)^2}
+        \frac{\partial(Y/K)}{\partial F_K}\\
+        &=\frac{(Y/K-\delta)
+        -\sigma(F_K-\delta)(Y/K)/F_K}
+        {(Y/K-\delta)^2}.
+        \problemeqtag\label{eq:p111-share-derivative}
+    \end{align*}
+    Since \(F_K\) falls when \(K\) rises, the sign of the response to \(K\)
+    is the opposite of the sign in \eqref{eq:p111-share-derivative}. Therefore,
+    \begin{align*}
+        \boxed{
+        \begin{array}{rcl}
+        \theta_K^{\mathrm{net}}\text{ rises with }K
+        &\Longleftrightarrow&
+        \displaystyle \sigma>
+        \frac{F_K[1-\delta(K/Y)]}{F_K-\delta},\\[7pt]
+        \theta_K^{\mathrm{net}}\text{ is locally unchanged}
+        &\Longleftrightarrow&
+        \displaystyle \sigma=
+        \frac{F_K[1-\delta(K/Y)]}{F_K-\delta},\\[7pt]
+        \theta_K^{\mathrm{net}}\text{ falls with }K
+        &\Longleftrightarrow&
+        \displaystyle \sigma<
+        \frac{F_K[1-\delta(K/Y)]}{F_K-\delta}.
+        \end{array}}
+        \problemeqtag\label{eq:p111-threshold}
+    \end{align*}
+
+    \item The net return is \(F_K-\delta=0.05\), so
+    \(F_K=0.08\). Substituting \(K/Y=3\) and \(\delta=0.03\) into
+    \eqref{eq:p111-threshold} gives
+    \begin{align*}
+        \sigma
+        &>\frac{0.08[1-(0.03)(3)]}{0.08-0.03}
+        =\frac{0.0728}{0.05}
+        =1.456.
+    \end{align*}
+    Thus
+    \begin{align*}
+        \boxed{\sigma>1.456}
+    \end{align*}
+    is required for a marginal increase in \(K\) to raise capital's share of
+    net output.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Sign check]
+    The derivative in \eqref{eq:p111-share-derivative} is taken with respect
+    to \(F_K\), not \(K\). Diminishing marginal returns imply
+    \(\partial F_K/\partial K<0\), so the final inequality reverses.
+\end{note}
+
+\begin{note}[Gross versus net]
+    \(F_K\) is the gross marginal product, whereas \(F_K-\delta\) is the net
+    return. Likewise, the relevant denominator is net output \(Y-\delta K\),
+    not gross output \(Y\).
+\end{note}
+
+\begin{problem}{12}[\textbf{Factor-income saving and the golden rule.}]
 Consider the same setup as at the start of Problem 1.10: the economy is described by the assumptions
 of the Solow model, except that factors are paid their marginal products and all labor income is
 consumed and all other income is saved. Show that the economy converges to a balanced growth path,
@@ -185,11 +1823,140 @@ and that the balanced-growth-path level of \(k\) equals the golden-rule level of
 the intuition for this result?
 \end{problem}
 
-\begin{problem}{13}
+\begin{solution}
+Constant returns to scale and marginal-product factor pricing imply that gross
+capital income is \(F_KK\). Since all labor income is consumed and all other
+income is saved, capital accumulation satisfies
+\begin{align*}
+    \dot K=(F_K-\delta)K.
+    \problemeqtag\label{eq:p112-capital-law}
+\end{align*}
+Let \(k=K/(AL)\). Because \(AL\) grows at rate \(n+g\) and
+\(F_K=f'(k)\), equation \eqref{eq:p112-capital-law} yields
+\begin{align*}
+    \dot k
+    =\bigl[f'(k)-(n+g+\delta)\bigr]k.
+    \problemeqtag\label{eq:p112-intensive-law}
+\end{align*}
+Apart from the zero-capital steady state, the balanced-growth-path value
+\(k^*>0\) is determined by
+\begin{align*}
+    f'(k^*)=n+g+\delta.
+    \problemeqtag\label{eq:p112-bgp}
+\end{align*}
+Since \(f''(k)<0\),
+\begin{align*}
+    k<k^*&\Longrightarrow f'(k)>n+g+\delta
+    \Longrightarrow \dot k>0,\\
+    k>k^*&\Longrightarrow f'(k)<n+g+\delta
+    \Longrightarrow \dot k<0.
+\end{align*}
+Thus every path with positive initial capital converges to \(k^*\). Once
+\(k\) is constant, both \(K\) and \(Y\) grow at rate \(n+g\), so the limiting
+path is a balanced growth path.
+
+Consumption per unit of effective labor at any constant \(k\) is
+\begin{align*}
+    c(k)=f(k)-(n+g+\delta)k.
+\end{align*}
+The golden-rule capital stock maximizes \(c(k)\), and its first-order condition is
+\begin{align*}
+    f'(k_{\mathrm{GR}})=n+g+\delta.
+    \problemeqtag\label{eq:p112-golden-rule}
+\end{align*}
+Equations \eqref{eq:p112-bgp} and \eqref{eq:p112-golden-rule} are identical;
+hence
+\begin{align*}
+    \boxed{k^*=k_{\mathrm{GR}}.}
+\end{align*}
+
+The intuition follows directly from saving behavior. Saving per unit of
+effective labor is capital's gross income, \(f'(k)k\), while break-even
+investment is \((n+g+\delta)k\). Capital rises when the former exceeds the
+latter and falls when it is smaller. The adjustment ends precisely where the
+marginal product of capital equals the resource cost of maintaining one more
+unit of \(k\), which is the golden-rule condition.
+\end{solution}
+
+\begin{note}[Interpretation]
+    The saving rate is endogenous in this model: households save all capital
+    income and consume all labor income. It should not be treated as the fixed
+    \(s\) of the basic Solow model.
+\end{note}
+
+\begin{problem}{13}[\textbf{The convergence rate of output.}]
 Go through steps analogous to those in equations (1.29)--(1.32) to find how quickly \(y\) converges
 to \(y^*\) in the vicinity of the balanced growth path.
 \par \remarkaccent{Hint:} Since \(y=f\left(k\right)\), we can write \(k=g\left(y\right)\), where \(g\left(\,\cdot\,\right)=f^{-1}\left(\,\cdot\,\right)\).
 \end{problem}
+
+\begin{solution}
+Let \(k=g(y)=f^{-1}(y)\). Differentiating \(y=f(k)\) and using the Solow
+law of motion gives
+\begin{align*}
+    \dot y
+    &=f'(k)\dot k\\
+    &=f'(k)\bigl[sf(k)-(n+g+\delta)k\bigr]
+    \equiv H(y).
+    \problemeqtag\label{eq:p113-output-law}
+\end{align*}
+At \(y^*=f(k^*)\), \(H(y^*)=0\). A first-order approximation around
+\(y^*\) is therefore
+\begin{align*}
+    \dot y(t)
+    \simeq H'(y^*)[y(t)-y^*]
+    \equiv-\lambda_y[y(t)-y^*].
+    \problemeqtag\label{eq:p113-linearization}
+\end{align*}
+The solution to the linearized equation is
+\begin{align*}
+    y(t)-y^*
+    \simeq e^{-\lambda_y t}[y(0)-y^*].
+    \problemeqtag\label{eq:p113-path}
+\end{align*}
+
+It remains to calculate \(H'(y^*)\). By the chain rule,
+\begin{align*}
+    H'(y^*)
+    &=\left.
+    \frac{\partial\dot y}{\partial k}
+    \frac{\partial k}{\partial y}
+    \right|_{k=k^*}\\
+    &=\left.
+    \left\{
+    f''(k)[sf(k)-(n+g+\delta)k]
+    +f'(k)[sf'(k)-(n+g+\delta)]
+    \right\}\frac{1}{f'(k)}
+    \right|_{k=k^*}\\
+    &=sf'(k^*)-(n+g+\delta),
+    \problemeqtag\label{eq:p113-derivative}
+\end{align*}
+where the steady-state condition
+\(sf(k^*)=(n+g+\delta)k^*\) eliminates the first term.
+\Needspace{7\baselineskip}
+Consequently,
+\begin{align*}
+    \lambda_y
+    &=(n+g+\delta)-sf'(k^*)\\
+    &=(n+g+\delta)
+    \left[1-\frac{k^*f'(k^*)}{f(k^*)}\right]\\
+    &=\bigl[1-\alpha_K(k^*)\bigr](n+g+\delta).
+    \problemeqtag\label{eq:p113-convergence-rate}
+\end{align*}
+Thus
+\begin{align*}
+    \boxed{\lambda_y=\lambda_k
+    =\bigl[1-\alpha_K(k^*)\bigr](n+g+\delta).}
+\end{align*}
+Output per unit of effective labor therefore converges locally at exactly the
+same rate as capital per unit of effective labor.
+\end{solution}
+
+\begin{note}[Economic intuition]
+    Near the balanced growth path, \(y-y^*\simeq
+    f'(k^*)(k-k^*)\). This local proportionality is why the two gaps shrink at
+    the same exponential rate even though \(y\) and \(k\) have different units.
+\end{note}
 
 \begin{problem}{14}[\textbf{Embodied technological progress.}]
 \problemsource{\parencite{solow1960investment,sato1966adjustment}}
@@ -229,7 +1996,230 @@ This problem asks you to investigate its effects.
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{15}
+\begin{solution}
+Let
+\[
+    \phi\equiv\frac{\alpha}{1-\alpha}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Define capital and output relative to \(A^\phi L\):
+    \[
+        \kappa(t)\equiv\frac{K(t)}{A(t)^\phi L(t)},
+        \qquad
+        y(t)\equiv\frac{Y(t)}{A(t)^\phi L(t)}.
+    \]
+    Since \(1+\phi=1/(1-\alpha)\), dividing the production function by
+    \(A^\phi L\) gives
+    \begin{align*}
+        y(t)=\kappa(t)^\alpha.
+        \problemeqtag\label{eq:p114-capital-augmenting-production}
+    \end{align*}
+    The normalizing factor \(A^\phi L\) grows at rate \(\phi\mu+n\).
+    Using \(\dot K=sY-\delta K\), the law of motion for \(\kappa\) is
+    \begin{align*}
+        \dot\kappa
+        =s\kappa^\alpha-(n+\phi\mu+\delta)\kappa.
+        \problemeqtag\label{eq:p114-kappa-law}
+    \end{align*}
+    The unique positive steady state is
+    \begin{align*}
+        \kappa^*
+        =\left(\frac{s}{n+\phi\mu+\delta}\right)^{1/(1-\alpha)}.
+        \problemeqtag\label{eq:p114-kappa-star}
+    \end{align*}
+    For \(0<\kappa<\kappa^*\), actual investment exceeds break-even
+    investment and \(\dot\kappa>0\); for \(\kappa>\kappa^*\), the reverse
+    holds. Thus \(\kappa\to\kappa^*\) and, by
+    \eqref{eq:p114-capital-augmenting-production}, \(y\to y^*\).
+
+    Since \(K=A^\phi L\kappa\) and \(Y=A^\phi Ly\), the balanced-growth-path
+    growth rates are
+    \[
+        \boxed{g_K^{\mathrm{BGP}}=g_Y^{\mathrm{BGP}}=n+\phi\mu.}
+    \]
+
+    \item Under embodied technological progress, define
+    \(\bar J\equiv J/A\). Its law of motion is
+    \begin{align*}
+        \dot{\bar J}
+        &=\frac{\dot J}{A}-\mu\bar J
+        =sY-(\delta+\mu)\bar J.
+        \problemeqtag\label{eq:p114-jbar-law}
+    \end{align*}
+    The production function becomes
+    \(Y=(A\bar J)^\alpha L^{1-\alpha}\), which has the same form as in
+    part (a). Define
+    \[
+        j(t)\equiv\frac{\bar J(t)}{A(t)^\phi L(t)}
+        =\frac{J(t)}{A(t)^{1+\phi}L(t)}.
+    \]
+    Then
+    \begin{align*}
+        y(t)=j(t)^\alpha,
+        \qquad
+        y(t)\equiv\frac{Y(t)}{A(t)^\phi L(t)}.
+        \problemeqtag\label{eq:p114-embodied-production}
+    \end{align*}
+    Combining \eqref{eq:p114-jbar-law} with the growth rate of
+    \(A^\phi L\) yields
+    \begin{align*}
+        \dot j
+        =sj^\alpha-\bigl[n+\delta+(1+\phi)\mu\bigr]j.
+        \problemeqtag\label{eq:p114-j-law}
+    \end{align*}
+    Thus the unique positive steady state is
+    \begin{align*}
+        j^*
+        =\left(
+        \frac{s}{n+\delta+(1+\phi)\mu}
+        \right)^{1/(1-\alpha)},
+        \problemeqtag\label{eq:p114-j-star}
+    \end{align*}
+    and the same sign argument as in part (a) shows that \(j\to j^*\).
+
+    On the balanced growth path, \(y\) and \(j\) are constant. Hence
+    \[
+        \boxed{g_Y^{\mathrm{BGP}}=n+\phi\mu,}
+        \qquad
+        \boxed{g_J^{\mathrm{BGP}}=n+(1+\phi)\mu.}
+    \]
+    The growth rate of \(J\) is higher because \(J=A^{1+\phi}Lj\), whereas
+    output is \(Y=A^\phi Ly\).
+
+    \item From \eqref{eq:p114-embodied-production} and
+    \eqref{eq:p114-j-star},
+    \[
+        y^*=\left(
+        \frac{s}{n+\delta+(1+\phi)\mu}
+        \right)^{\alpha/(1-\alpha)}.
+    \]
+    Since \(Y=A^\phi Ly\), the elasticity of balanced-growth-path output
+    with respect to \(s\) is
+    \begin{align*}
+        \boxed{
+        \frac{\partial\ln Y^{\mathrm{BGP}}}{\partial\ln s}
+        =\frac{\partial\ln y^*}{\partial\ln s}
+        =\frac{\alpha}{1-\alpha}.}
+        \problemeqtag\label{eq:p114-saving-elasticity}
+    \end{align*}
+
+    \item Let
+    \(B\equiv n+\delta+(1+\phi)\mu\). Linearizing
+    \eqref{eq:p114-j-law} around \(j^*\) gives
+    \[
+        \dot j\simeq
+        \bigl[s\alpha(j^*)^{\alpha-1}-B\bigr](j-j^*).
+    \]
+    The steady-state condition implies
+    \(s(j^*)^{\alpha-1}=B\). Therefore,
+    \begin{align*}
+        \boxed{
+        \lambda_{\mathrm{emb}}
+        =(1-\alpha)\bigl[n+\delta+(1+\phi)\mu\bigr].}
+        \problemeqtag\label{eq:p114-convergence}
+    \end{align*}
+    Locally,
+    \[
+        j(t)-j^*\simeq e^{-\lambda_{\mathrm{emb}}t}[j(0)-j^*].
+    \]
+    Because \(y=j^\alpha\) is smooth and strictly increasing, \(y\) converges
+    at the same rate.
+
+    \item For Cobb--Douglas production, the basic Solow model gives
+    \[
+        \frac{\partial\ln y^*}{\partial\ln s}
+        =\frac{\alpha}{1-\alpha},
+        \qquad
+        \lambda_{\mathrm{basic}}=(1-\alpha)(n+\mu+\delta).
+    \]
+    Thus embodiment leaves the saving elasticity unchanged. It increases the
+    convergence rate, since
+    \[
+        \lambda_{\mathrm{emb}}-\lambda_{\mathrm{basic}}
+        =\alpha\mu>0.
+    \]
+\end{enumerate}
+
+The two convergence mechanisms are summarized in the figure below. Both use
+the same concave actual-investment schedule; embodiment adds the extra
+\(\mu\bar J\) dilution term visible in \eqref{eq:p114-jbar-law}, making the
+break-even line steeper in normalized units.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.57cm,y=0.46cm,>=stealth]
+            \path[use as bounding box] (-0.9,-0.55) rectangle (8.0,7.0);
+            \node[color=Muted] at (3.5,6.65)
+                {\small (a) capital-augmenting technology};
+            \draw[->,color=Muted] (0,0)--(7.35,0)
+                node[right] {\scriptsize $\kappa$};
+            \draw[->,color=Muted] (0,0)--(0,5.55)
+                node[above] {\scriptsize investment};
+            \draw[very thick,color=AnswerAccent,domain=0:7,samples=60]
+                plot (\x,{1.4*sqrt(\x)});
+            \draw[thick,color=ProblemAccent] (0,0)--(7,5.25);
+            \draw[dotted,color=Rule] (3.48,0)--(3.48,2.61);
+            \fill[color=RemarkAccent] (3.48,2.61) circle (2pt);
+            \node[below] at (3.48,0) {\scriptsize $\kappa^*$};
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\textwidth}
+        \centering
+        \begin{tikzpicture}[x=0.57cm,y=0.46cm,>=stealth]
+            \path[use as bounding box] (-0.9,-0.55) rectangle (8.0,7.0);
+            \node[color=Muted] at (3.5,6.65)
+                {\small (b) embodied technology};
+            \draw[->,color=Muted] (0,0)--(7.35,0)
+                node[right] {\scriptsize $j$};
+            \draw[->,color=Muted] (0,0)--(0,5.55)
+                node[above] {\scriptsize investment};
+            \draw[very thick,color=AnswerAccent,domain=0:7,samples=60]
+                plot (\x,{1.4*sqrt(\x)});
+            \draw[thick,color=ProblemAccent] (0,0)--(6.1,5.49);
+            \draw[dotted,color=Rule] (2.42,0)--(2.42,2.18);
+            \fill[color=RemarkAccent] (2.42,2.18) circle (2pt);
+            \node[below] at (2.42,0) {\scriptsize $j^*$};
+        \end{tikzpicture}
+    \end{minipage}
+
+    \vspace{6pt}
+
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \draw[very thick,color=AnswerAccent] (0,0)--(1,0);
+        \node[anchor=west,color=Muted] at (1.15,0)
+            {\scriptsize actual investment};
+        \draw[thick,color=ProblemAccent] (4.15,0)--(5.15,0);
+        \node[anchor=west,color=Muted] at (5.30,0)
+            {\scriptsize break-even investment};
+        \fill[color=RemarkAccent] (8.6,0) circle (2pt);
+        \node[anchor=west,color=Muted] at (8.8,0)
+            {\scriptsize BGP};
+    \end{tikzpicture}
+    \caption{Normalized dynamics under capital-augmenting and embodied
+    technological progress. The break-even schedules are
+    \((n+\phi\mu+\delta)\kappa\) and
+    \([n+\delta+(1+\phi)\mu]j\), respectively.}
+\end{figure}
+\end{solution}
+
+\begin{note}[Notation]
+    \(J\) is the effective capital stock, \(\bar J=J/A\) removes the
+    productivity of the investment vintage, and
+    \(j=J/(A^{1+\phi}L)\) is the stationary normalized variable. Mixing these
+    three objects leads to incorrect growth rates.
+\end{note}
+
+\begin{note}[Economic intuition]
+    As the frontier \(A\) rises, existing embodied capital loses ground
+    relative to newly produced capital goods. This adds \(\mu\) to normalized
+    break-even investment and makes convergence faster than in the basic model.
+\end{note}
+
+\begin{problem}{15}[\textbf{Growth accounting versus growth causality.}]
 Consider a Solow economy on its balanced growth path. Suppose the growth-accounting techniques
 described in Section 1.7 are applied to this economy.
 \begin{enumerate}[label=(\alph*)]
@@ -241,7 +2231,72 @@ described in Section 1.7 are applied to this economy.
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{16}
+\begin{solution}
+Let \(\alpha_K(t)\equiv F_K(t)K(t)/Y(t)\) denote capital's output
+elasticity. Growth accounting for output per worker gives
+\begin{align*}
+    \frac{\dot Y}{Y}-\frac{\dot L}{L}
+    =\alpha_K(t)
+    \left(\frac{\dot K}{K}-\frac{\dot L}{L}\right)
+    +R(t),
+    \problemeqtag\label{eq:p115-growth-accounting}
+\end{align*}
+where \(R(t)\) is the Solow residual.
+
+\begin{enumerate}[label=(\alph*)]
+    \item On the Solow balanced growth path,
+    \begin{align*}
+        \frac{\dot Y}{Y}-\frac{\dot L}{L}
+        =\frac{\dot K}{K}-\frac{\dot L}{L}
+        =g.
+        \problemeqtag\label{eq:p115-bgp-growth}
+    \end{align*}
+    Substituting \eqref{eq:p115-bgp-growth} into
+    \eqref{eq:p115-growth-accounting} gives
+    \begin{align*}
+        g=\alpha_K(k^*)g+R,
+        \qquad
+        R=[1-\alpha_K(k^*)]g.
+        \problemeqtag\label{eq:p115-decomposition}
+    \end{align*}
+    Thus growth accounting attributes
+    \begin{align*}
+        \boxed{\alpha_K(k^*)\text{ of growth to capital deepening}}
+    \end{align*}
+    and
+    \begin{align*}
+        \boxed{1-\alpha_K(k^*)\text{ of growth to technological progress}.}
+    \end{align*}
+    With the common calibration \(\alpha_K=1/3\), the shares are one-third
+    and two-thirds, respectively.
+
+    \item There is no contradiction because growth accounting records
+    \emph{proximate} contributions, whereas the Solow model identifies the
+    \emph{underlying} source of sustained growth. Growth in \(A\) raises output
+    per worker directly. For a fixed saving rate, it also induces capital per
+    worker to grow at rate \(g\), so part of technology's total effect operates
+    through capital deepening. Growth accounting assigns this induced channel
+    to capital rather than to the technological change that caused it.
+
+    Hence the accounting decomposition is correct, but it should not be read as
+    a causal decomposition of the ultimate sources of balanced-growth-path
+    growth.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Accounting versus causality]
+    The term \(\alpha_K g\) answers how much current capital deepening
+    contributes mechanically to output growth. It does not answer why capital
+    deepening occurs.
+\end{note}
+
+\begin{note}[Solow residual]
+    Labor-augmenting technology grows at rate \(g\), but the residual in
+    \eqref{eq:p115-decomposition} is \((1-\alpha_K)g\). The remaining
+    \(\alpha_K g\) appears in the capital-deepening term.
+\end{note}
+
+\begin{problem}{16}[\textbf{Measurement error in convergence regressions.}]
 \begin{enumerate}[label=(\alph*)]
     \item In the model of convergence and measurement error in equations (1.39) and (1.40), suppose
     the true value of \(b\) is \(-1\). Does a regression of
@@ -254,7 +2309,129 @@ described in Section 1.7 are applied to this economy.
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{17}
+\begin{solution}
+Write true log income per capita in 1870 as \(x_i^*\), measured log income
+as \(x_i\), and true 1979 log income as \(z_i^*\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Equations (1.39) and (1.40) are
+    \begin{align*}
+        z_i^*-x_i^*&=a+bx_i^*+\varepsilon_i,
+        \problemeqtag\label{eq:p116-true-model}\\
+        x_i&=x_i^*+u_i,
+        \problemeqtag\label{eq:p116-initial-measurement}
+    \end{align*}
+    where \(u_i\) is uncorrelated with \(x_i^*\) and
+    \(\varepsilon_i\). The regression uses measured growth
+    \(z_i^*-x_i\). Substituting \(x_i^*=x_i-u_i\) into
+    \eqref{eq:p116-true-model} gives
+    \begin{align*}
+        z_i^*-x_i
+        =a+bx_i+\varepsilon_i-(1+b)u_i.
+        \problemeqtag\label{eq:p116-observed-regression}
+    \end{align*}
+    In general, \(x_i=x_i^*+u_i\) is correlated with the composite error.
+    Indeed,
+    \begin{align*}
+        \operatorname{Cov}
+        \left(x_i,\varepsilon_i-(1+b)u_i\right)
+        =-(1+b)\operatorname{Var}(u_i).
+        \problemeqtag\label{eq:p116-error-covariance}
+    \end{align*}
+    When the true \(b=-1\), however, the measurement-error term disappears
+    from \eqref{eq:p116-observed-regression}; the regression error is simply
+    \(\varepsilon_i\), which is uncorrelated with \(x_i\). Therefore,
+    \begin{align*}
+        \boxed{b=-1\Longrightarrow\text{the OLS slope is unbiased}.}
+    \end{align*}
+
+    \item Now suppose 1870 income is measured without error, so \(x_i=x_i^*\),
+    but measured 1979 income is \(z_i=z_i^*+v_i\). Measured growth satisfies
+    \begin{align*}
+        z_i-x_i
+        =a+bx_i+\varepsilon_i+v_i.
+        \problemeqtag\label{eq:p116-late-measurement}
+    \end{align*}
+    Under classical measurement error,
+    \(\operatorname{E}[v_i\mid x_i]=0\). Thus the new composite error
+    \(\varepsilon_i+v_i\) remains uncorrelated with the regressor, and
+    \begin{align*}
+        \boxed{\text{measurement error only in 1979 income does not bias }\hat b.}
+    \end{align*}
+    It raises the variance of the regression error and therefore reduces
+    precision.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Why initial-income error is special]
+    Measured 1870 income enters both sides with opposite signs. A positive
+    error makes a country look richer initially and slower growing, mechanically
+    favoring convergence unless \(b=-1\).
+\end{note}
+
+\begin{note}[Classical-error qualification]
+    Part (b) requires mean-zero 1979 error uncorrelated with initial income and
+    the structural disturbance. Systematic error can still bias OLS.
+\end{note}
+
+\begin{problem}{17}[\textbf{Growth without resource and land limitations.}]
 Derive equation (1.50).
 \par \remarkaccent{Hint:} Follow steps analogous to those in equations [1.47] and [1.48].
 \end{problem}
+
+\begin{solution}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{4pt}
+The hypothetical economy removes resource and land limitations by assuming
+that resources, land, and labor all grow at rate \(n\):
+\[
+    g_R=g_T=g_L=n,
+    \qquad g_A=g.
+\]
+The capital accumulation equation gives \(g_K=s(Y/K)-\delta\). A constant
+balanced-growth-path value of \(g_K\) therefore requires \(Y/K\) to be
+constant, and hence
+\begin{align*}
+    g_K^{\mathrm{BGP}}=g_Y^{\mathrm{BGP}}.
+    \problemeqtag\label{eq:p117-equal-growth}
+\end{align*}
+
+Log-differentiating the production function gives
+\begin{align*}
+    g_Y
+    =\alpha g_K+\beta g_R+\gamma g_T
+    +(1-\alpha-\beta-\gamma)(g_A+g_L).
+    \problemeqtag\label{eq:p117-growth-accounting}
+\end{align*}
+Substitute \(g_R=g_T=g_L=n\) and \(g_A=g\):
+\begin{align*}
+    g_Y
+    &=\alpha g_K+(\beta+\gamma)n
+    +(1-\alpha-\beta-\gamma)(n+g)\\
+    &=\alpha g_K+(1-\alpha)n
+    +(1-\alpha-\beta-\gamma)g.
+    \problemeqtag\label{eq:p117-no-limits-growth}
+\end{align*}
+Imposing \eqref{eq:p117-equal-growth} yields
+\begin{align*}
+    (1-\alpha)\widetilde g_Y^{\mathrm{BGP}}
+    &=(1-\alpha)n+(1-\alpha-\beta-\gamma)g,\\
+    \widetilde g_Y^{\mathrm{BGP}}
+    &=n+\frac{1-\alpha-\beta-\gamma}{1-\alpha}g.
+    \problemeqtag\label{eq:p117-total-growth}
+\end{align*}
+The tilde distinguishes the hypothetical economy from the economy with fixed
+land and declining resource use.
+Output per worker grows at total-output growth minus population growth.
+Therefore,
+\begin{align*}
+    \boxed{
+    \widetilde g_{Y/L}^{\mathrm{BGP}}
+    =\widetilde g_Y^{\mathrm{BGP}}-n
+    =\frac{1-\alpha-\beta-\gamma}{1-\alpha}g.}
+    \problemeqtag
+\end{align*}
+This is equation (1.50).
+\end{solution}

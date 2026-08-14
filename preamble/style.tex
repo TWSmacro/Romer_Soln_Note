@@ -408,6 +408,12 @@
 \newcounter{problem}
 \renewcommand{\theproblem}{\CurrentProblemNumber}
 \renewcommand{\theHproblem}{courseunit.\arabic{courseunitserial}.problem.\arabic{problem}}
+\renewcommand{\theHequation}{\theHproblem.equation.\arabic{equation}}
+\newcommand{\problemeqtag}{\refstepcounter{equation}\tag{\theequation}}
+\renewcommand{\thefigure}{\CurrentCourseUnit.\arabic{figure}}
+\renewcommand{\thetable}{\CurrentCourseUnit.\arabic{table}}
+\renewcommand{\theHfigure}{courseunit.\arabic{courseunitserial}.figure.\arabic{figure}}
+\renewcommand{\theHtable}{courseunit.\arabic{courseunitserial}.table.\arabic{table}}
 
 % 无标题单元使用 \courseunit{1}；需要标题时使用
 % \courseunit{1}[Short title]。
@@ -421,6 +427,8 @@
     \hypertarget{courseunit-\CurrentCourseUnitSerial}{}%
     \recordcourseunitjump
     \setcounter{problem}{0}%
+    \setcounter{figure}{0}%
+    \setcounter{table}{0}%
     \renewcommand{\CurrentProblemLocalNumber}{}%
     \renewcommand{\CurrentProblemNumber}{}%
     \IfNoValueTF{#2}
@@ -494,6 +502,7 @@
         \Needspace{5\baselineskip}%
         \renewcommand{\CurrentProblemLocalNumber}{#1}%
         \renewcommand{\CurrentProblemNumber}{\CurrentCourseUnit.#1}%
+        \setcounter{equation}{0}%
         \refstepcounter{problem}%
         \par\vspace{14pt}%
         \hypertarget{problem-\theHproblem}{}%
@@ -558,7 +567,7 @@
         \noindent
         \makebox[0pt][r]{%
             {\small\bfseries\scshape\color{RemarkAccent}\RemarkLabel\hspace{0.6em}}%
-        }%
+        }\nobreak%
         \ifblank{#1}{}{%
             {\small\bfseries\scshape\color{RemarkAccent}#1.}\hspace{0.45em}%
         }%

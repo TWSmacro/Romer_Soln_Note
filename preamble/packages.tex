@@ -5,7 +5,9 @@
     \usepackage[utf8]{inputenc}
 \else
     \usepackage{xeCJK}
-    \setCJKmainfont{Source Han Serif SC}
+    \IfFontExistsTF{Source Han Serif SC}
+        {\setCJKmainfont{Source Han Serif SC}}
+        {\setCJKmainfont{Songti SC}}
 \fi
 \usepackage[scaled=1.02]{newpxtext}
 \usepackage{amsmath}
