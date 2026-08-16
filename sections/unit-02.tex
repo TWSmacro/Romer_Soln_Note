@@ -1,6 +1,10 @@
 % !TeX root = ../main.tex
 \courseunit{2}
 \emergencystretch=2em
+\newcommand{\rckmotion}[4]{%
+    \fill[color=black!72] (#1,#2) circle (1.25pt);
+    \draw[->,semithick,color=black!72] (#1,#2)--++(#3,#4);
+}
 
 \begin{problem}{1}
 Consider \(N\) firms each with the constant-returns-to-scale production function \(Y=F\left(K,AL\right)\), or (using the intensive form) \(Y=AL\,f\left(k\right)\). Assume \(f'\left(\,\cdot\,\right)>0\), \(f''\left(\,\cdot\,\right)<0\). Assume that all firms can hire labor at wage \(wA\) and rent capital at cost \(r\), and that all firms have the same value of \(A\).
@@ -9,6 +13,90 @@ Consider \(N\) firms each with the constant-returns-to-scale production function
     \item Show that the total output of the \(N\) cost-minimizing firms equals the output that a single firm with the same production function has if it uses all the labor and capital used by the \(N\) firms.
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+It is useful to treat effective labor, \(AL\), as one input. Let
+\(X\equiv AL\), so that \(k=K/X\) and output is \(Y=Xf(k)\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item For any proposed capital intensity \(k\), producing \(Y\) requires
+    \[
+        X=\frac{Y}{f(k)},
+        \qquad
+        K=kX=\frac{kY}{f(k)}.
+    \]
+    The resulting total cost is therefore
+    \begin{align*}
+        \operatorname{Cost}(Y,k)
+        =wX+rK
+        =Y\frac{w+rk}{f(k)}.
+        \problemeqtag\label{eq:p21-unit-cost}
+    \end{align*}
+    Thus \(Y\) only multiplies unit cost; it cannot affect the value of \(k\)
+    that minimizes cost.
+
+    For an interior optimum, differentiate the last term in
+    \eqref{eq:p21-unit-cost} with respect to \(k\):
+    \begin{align*}
+        \frac{\d}{\d k}\left(\frac{w+rk}{f(k)}\right)
+        &=\frac{rf(k)-(w+rk)f'(k)}{[f(k)]^2}=0.
+    \end{align*}
+    Rearranging gives the usual tangency condition
+    \begin{align*}
+        \frac{r}{w}
+        =\frac{f'(k)}{f(k)-kf'(k)}.
+        \problemeqtag\label{eq:p21-tangency}
+    \end{align*}
+    The numerator on the right is the marginal product of capital; the
+    denominator is the marginal product of effective labor.
+
+    To verify uniqueness rather than merely state the first-order condition,
+    differentiate the right-hand side of \eqref{eq:p21-tangency}:
+    \begin{align*}
+        \frac{\d}{\d k}
+        \left[\frac{f'(k)}{f(k)-kf'(k)}\right]
+        =\frac{f''(k)f(k)}{[f(k)-kf'(k)]^2}<0.
+        \problemeqtag\label{eq:p21-uniqueness}
+    \end{align*}
+    Hence the marginal-product ratio is strictly decreasing in \(k\), so a
+    given positive factor-price ratio \(r/w\) can be matched by at most one
+    value, denoted \(\bar k\). Under the chapter's standard interiority and
+    Inada assumptions, such a value exists. It is independent of \(Y\), and
+    because every firm faces the same \(r\), \(w\), and \(A\), every firm
+    chooses the same \(\bar k\).
+
+    \item Let \(K_i\), \(L_i\), and \(Y_i\) denote firm \(i\)'s choices and
+    output. Since \(K_i/(AL_i)=\bar k\), aggregation gives
+    \begin{align*}
+        \sum_{i=1}^{N}Y_i
+        &=\sum_{i=1}^{N}AL_i f(\bar k)
+          =A\left(\sum_{i=1}^{N}L_i\right)f(\bar k)\\
+        &=A L f\!\left(\frac{K}{AL}\right)
+          =F(K,AL),
+        \qquad
+        K\equiv\sum_{i=1}^{N}K_i,
+        \quad L\equiv\sum_{i=1}^{N}L_i.
+        \problemeqtag\label{eq:p21-aggregation}
+    \end{align*}
+    The second line uses
+    \(K/(AL)=\sum_i K_i/[A\sum_i L_i]=\bar k\). Thus the \(N\)
+    cost-minimizing firms produce exactly what one firm would produce with
+    their combined capital and labor.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Why output drops out]
+    Constant returns to scale separates the firm's decision into a scale
+    choice and an input-ratio choice. Output \(Y\) scales total cost in
+    \eqref{eq:p21-unit-cost}, while relative factor prices determine
+    capital intensity.
+\end{note}
+
+\begin{note}[When aggregation works]
+    The result uses common technology, a common value of \(A\), common factor
+    prices, and constant returns. If firms chose different capital intensities,
+    the final equality in \eqref{eq:p21-aggregation} would generally fail.
+\end{note}
 
 \begin{problem}{2}[\textbf{The elasticity of substitution with constant-relative-risk-aversion utility.}]
 Consider an individual who lives for two periods and whose utility is given by equation (2.43). Let \(P_1\) and \(P_2\) denote the prices of consumption in the two periods, and let \(W\) denote the value of the individual's lifetime income; thus the budget constraint is \(P_1\,C_1+P_2\,C_2=W\).
@@ -19,10 +107,78 @@ Consider an individual who lives for two periods and whose utility is given by e
         -\dfrac{P_1/P_2}{C_1/C_2}\dfrac{\partial\left(C_1/C_2\right)}{\partial\left(P_1/P_2\right)}
         \quad \text{or} \quad
         -\dfrac{\partial\ln\left(C_1/C_2\right)}{\partial\ln\left(P_1/P_2\right)}
+        \problemeqtag
     \end{align*}
     Show that with the utility function (2.43), the elasticity of substitution between \(C_1\) and \(C_2\) is \(1/\theta\).
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+The utility function in equation (2.43) is
+\[
+    U(C_1,C_2)
+    =\frac{C_1^{1-\theta}}{1-\theta}
+    +\frac{1}{1+\rho}\frac{C_2^{1-\theta}}{1-\theta}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Attach multiplier \(\lambda\) to the lifetime budget constraint.
+    The two first-order conditions are
+    \begin{align*}
+        C_1^{-\theta}=\lambda P_1,
+        \qquad
+        \frac{1}{1+\rho}C_2^{-\theta}=\lambda P_2.
+        \problemeqtag\label{eq:p22-focs}
+    \end{align*}
+    Dividing the first condition in \eqref{eq:p22-focs} by the second and
+    solving for the consumption ratio yields
+    \begin{align*}
+        \frac{C_1}{C_2}
+        =\phi,
+        \qquad
+        \phi\equiv
+        (1+\rho)^{1/\theta}
+        \left(\frac{P_2}{P_1}\right)^{1/\theta}.
+        \problemeqtag\label{eq:p22-ratio}
+    \end{align*}
+    Substituting \(C_1=\phi C_2\) into
+    \(P_1C_1+P_2C_2=W\) gives the Marshallian demands
+    \begin{align*}
+        \boxed{
+        C_1^*=\frac{\phi W}{P_1\phi+P_2},
+        \qquad
+        C_2^*=\frac{W}{P_1\phi+P_2}.}
+        \problemeqtag\label{eq:p22-demands}
+    \end{align*}
+    Both choices are positive when \(P_1,P_2,W>0\), and strict concavity of
+    utility makes this interior optimum unique.
+
+    \item Take logs of \eqref{eq:p22-ratio} and write the relative price as
+    \(P_1/P_2\):
+    \begin{align*}
+        \ln\!\left(\frac{C_1}{C_2}\right)
+        =\frac{1}{\theta}\ln(1+\rho)
+        -\frac{1}{\theta}\ln\!\left(\frac{P_1}{P_2}\right).
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        \boxed{
+        -\frac{\partial\ln(C_1/C_2)}
+        {\partial\ln(P_1/P_2)}
+        =\frac{1}{\theta}.}
+    \end{align*}
+    Thus a larger \(\theta\) means that relative consumption responds less
+    to a relative-price change. The formulas also apply to the logarithmic
+    limiting case \(\theta=1\).
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Income versus substitution]
+    Lifetime wealth \(W\) scales both consumption choices in
+    \eqref{eq:p22-demands}; it does not affect \(C_1/C_2\). Relative prices
+    determine the intertemporal allocation, and \(1/\theta\) measures the
+    strength of that response.
+\end{note}
 
 \begin{problem}{3}
 \begin{enumerate}[label=(\alph*)]
@@ -31,13 +187,211 @@ Consider an individual who lives for two periods and whose utility is given by e
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+Write
+\[
+    C_{\mathrm{before}}\equiv C(t_0^-),
+    \qquad
+    C_{\mathrm{after}}\equiv C(t_0^+).
+\]
+The distinction between the two policies is whether an additional dollar
+saved by one household changes the amount taken from that household.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Choose a small number \(\varepsilon>0\), and compare the two dates
+    \(t_0-\varepsilon\) and \(t_0+\varepsilon\). Let \(\Delta>0\) denote a
+    small amount by which the household reduces its total consumption at
+    \(t_0-\varepsilon\). The household invests this amount and consumes the
+    proceeds at \(t_0+\varepsilon\).
+
+    Because half of the household's wealth is confiscated at \(t_0\), only
+    one-half of this marginal saving survives. Including discounting and the
+    return earned over the short interval, optimality requires
+    \[
+        e^{-\rho(t_0-\varepsilon)}
+        u'\!\left(C(t_0-\varepsilon)\right)\Delta
+        =\frac12 e^{-\rho(t_0+\varepsilon)}
+        u'\!\left(C(t_0+\varepsilon)\right)
+        e^{R(t_0+\varepsilon)-R(t_0-\varepsilon)}\Delta.
+    \]
+    Here \(\Delta\) is the small amount of consumption shifted between the
+    two dates. \(\varepsilon\) measures how close the two comparison dates
+    are to \(t_0\), and \(R(t)=\int_0^t r(v)\,\d v\).
+
+    As \(\varepsilon\) approaches zero, the two dates approach \(t_0\) from
+    opposite sides, and the discounting and interest factors over the
+    vanishing interval approach one. Canceling \(\Delta\) then gives the jump
+    condition
+    \begin{align*}
+        u'(C_{\mathrm{before}})
+        =\frac12 u'(C_{\mathrm{after}}).
+        \problemeqtag\label{eq:p23-proportional-tax-jump}
+    \end{align*}
+    Since \(u'\) is decreasing, \eqref{eq:p23-proportional-tax-jump} implies
+    \(C_{\mathrm{after}}<C_{\mathrm{before}}\): consumption jumps down at
+    \(t_0\). With CRRA utility,
+    \(u'(C)=C^{-\theta}\), so the size of the jump is
+    \begin{align*}
+        \boxed{
+        \frac{C_{\mathrm{after}}}{C_{\mathrm{before}}}
+        =2^{-1/\theta}<1.}
+    \end{align*}
+    Anticipation raises consumption before the confiscation because saving
+    across \(t_0\) earns an exceptionally poor after-confiscation return.
+
+    \item Each household now takes the confiscated amount, one-half of
+    average wealth, as fixed. An extra dollar saved by this household does
+    not raise its tax bill, so the marginal dollar survives in full. Repeating
+    the same perturbation therefore gives
+    \[
+        u'(C_{\mathrm{before}})=u'(C_{\mathrm{after}}).
+    \]
+    Strict concavity implies
+    \[
+        \boxed{C_{\mathrm{after}}=C_{\mathrm{before}}.}
+    \]
+    Consumption is continuous at \(t_0\), even though the policy causes a
+    discrete loss of wealth. The anticipated loss affects the entire planned
+    consumption path, not the marginal return exactly at the confiscation
+    date.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Average versus own wealth]
+    In a symmetric equilibrium the two policies confiscate the same amount
+    from each household. Their marginal incentives differ: under part (a),
+    more own wealth raises confiscation; under part (b), one household treats
+    average wealth as given.
+\end{note}
+
+\begin{note}[What anticipation rules out]
+    A known discrete wealth loss need not make consumption discontinuous.
+    A jump is optimal only when the intertemporal marginal return itself has
+    a discrete wedge, as in part (a).
+\end{note}
+
 \begin{problem}{4}
 Assume that the instantaneous utility function \(u\left(C\right)\) in equation (2.2) is \(\ln C\). Consider the problem of a household maximizing (2.2) subject to (2.7). Find an expression for \(C\) at each time as a function of initial wealth plus the present value of labor income, the path of \(r\left(t\right)\), and the parameters of the utility function.
 \end{problem}
 
+\begin{solution}
+Let
+\[
+    R(t)\equiv\int_0^t r(v)\,\d v
+\]
+and use \(\mathcal W\) for the household's lifetime resources (to avoid
+confusing this object with Romer's wage \(W(t)\)):
+\begin{align*}
+    \mathcal W
+    \equiv \frac{K(0)}{H}
+    +\int_0^\infty e^{-R(t)}W(t)\frac{L(t)}{H}\,\d t.
+    \problemeqtag\label{eq:p24-lifetime-wealth}
+\end{align*}
+Because utility is increasing in consumption, the present-value budget
+constraint holds with equality:
+\[
+    \int_0^\infty e^{-R(t)}C(t)\frac{L(t)}{H}\,\d t
+    =\mathcal W.
+\]
+
+Attach multiplier \(\lambda\) to this constraint. Differentiating the
+Lagrangian with respect to consumption at date \(t\) gives
+\begin{align*}
+    e^{-\rho t}\frac{1}{C(t)}
+    =\lambda e^{-R(t)}.
+    \problemeqtag\label{eq:p24-foc}
+\end{align*}
+The common factor \(L(t)/H\) cancels from the first-order condition.
+Equation \eqref{eq:p24-foc} implies
+\[
+    C(t)=\lambda^{-1}e^{R(t)-\rho t}.
+\]
+
+Use \(L(t)=L(0)e^{nt}\) and substitute this path into the budget constraint:
+\begin{align*}
+    \mathcal W
+    &=\lambda^{-1}\frac{L(0)}{H}
+      \int_0^\infty e^{-(\rho-n)t}\,\d t
+      =\lambda^{-1}\frac{L(0)/H}{\rho-n}.
+\end{align*}
+The integral is finite because the log-utility case of Romer's parameter
+restriction is \(\rho>n\). Solving for \(\lambda\) gives the complete
+consumption path:
+\begin{align*}
+    \boxed{
+    C(t)=C(0)e^{R(t)-\rho t},
+    \qquad
+    C(0)=(\rho-n)\frac{\mathcal W}{L(0)/H}.}
+\end{align*}
+Thus initial consumption is the marginal propensity \(\rho-n\) times
+lifetime wealth per initial household member. The interest-rate path affects
+consumption after date 0 through \(R(t)\), but it does not affect this initial
+propensity to consume.
+\end{solution}
+
+\begin{note}[Why \(n\) enters]
+    \(C(t)\) is consumption per person, whereas \(\mathcal W\) is wealth per
+    household. A household has \(L(t)/H\) members, so population growth makes
+    its total consumption grow faster than its per-person consumption and
+    changes the propensity from \(\rho\) to \(\rho-n\).
+\end{note}
+
 \begin{problem}{5}
 Consider a household with utility given by (2.2)--(2.3). Assume that the real interest rate is constant, and let \(W\) denote the household's initial wealth plus the present value of its lifetime labor income (the right-hand side of [2.7]). Find the utility-maximizing path of \(C\), given \(r\), \(W\), and the parameters of the utility function.
 \end{problem}
+
+\begin{solution}
+Here \(W\) is the household's initial wealth plus the present value of its
+lifetime labor income. Since the real interest rate is constant, the binding
+budget constraint is
+\[
+    \int_0^\infty e^{-rt}C(t)\frac{L(t)}{H}\,\d t=W.
+\]
+The first-order condition for consumption at date \(t\) is
+\begin{align*}
+    e^{-\rho t}C(t)^{-\theta}
+    =\lambda e^{-rt}.
+    \problemeqtag\label{eq:p25-foc}
+\end{align*}
+Taking logs of \eqref{eq:p25-foc} and differentiating with respect to time
+gives the Euler equation. Integrating it gives the corresponding level path:
+\begin{align*}
+    \frac{\dot C(t)}{C(t)}
+    =\frac{r-\rho}{\theta},
+    \qquad
+    C(t)=C(0)e^{[(r-\rho)/\theta]t}.
+    \problemeqtag\label{eq:p25-euler-path}
+\end{align*}
+
+It remains to determine \(C(0)\). Since \(L(t)=L(0)e^{nt}\), substitution
+into the budget constraint gives
+\[
+    W=C(0)\frac{L(0)}{H}
+    \int_0^\infty
+    e^{-\{r-n-(r-\rho)/\theta\}t}\,\d t.
+\]
+For a finite interior solution, the convergence term must be positive. Define
+\begin{align*}
+    \eta
+    \equiv r-n-\frac{r-\rho}{\theta}
+    =\frac{\rho-r}{\theta}+r-n>0.
+    \problemeqtag\label{eq:p25-eta}
+\end{align*}
+The integral is \(1/\eta\), so
+\(C(0)=\eta W/[L(0)/H]\). Therefore the utility-maximizing path is
+\begin{align*}
+    \boxed{
+    C(t)=
+    \frac{W}{L(0)/H}
+    \left[\frac{\rho-r}{\theta}+r-n\right]
+    e^{[(r-\rho)/\theta]t}.}
+    \problemeqtag\label{eq:p25-final-path}
+\end{align*}
+When \(r>\rho\), consumption per person rises; when \(r<\rho\), it falls.
+For \(\theta=1\), the coefficient becomes \(\rho-n\), so
+\eqref{eq:p25-final-path} reduces to the constant-interest-rate case of
+Problem 2.4.
+\end{solution}
 
 \begin{problem}{6}[\textbf{Growth, saving, and \(r-g\).}]
 \textcite{piketty2014capital} argues that a fall in the growth rate of the economy is likely to lead to an increase in the difference between the real interest rate and the growth rate. This problem asks you to investigate this issue in the context of the Ramsey--Cass--Koopmans model. Specifically, consider a Ramsey--Cass--Koopmans economy that is on its balanced growth path, and suppose there is a permanent fall in \(g\).
@@ -52,6 +406,219 @@ Consider a household with utility given by (2.2)--(2.3). Assume that the real in
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+Let \(g_{\mathrm{old}}\) and \(g_{\mathrm{new}}\) denote the growth rates
+before and after the permanent change, with
+\(g_{\mathrm{new}}<g_{\mathrm{old}}\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Capital per unit of effective labor obeys
+    \begin{align*}
+        \dot k=f(k)-c-(n+g)k,
+        \qquad
+        \dot k=0
+        \iff c=f(k)-(n+g)k.
+        \problemeqtag\label{eq:p26-kdot}
+    \end{align*}
+    For every \(k>0\), a fall in \(g\) reduces break-even investment
+    \((n+g)k\). Hence the \(\dot k=0\) locus shifts upward, by more at
+    larger values of \(k\). It remains anchored at the origin.
+
+    \item The Euler equation for consumption per unit of effective labor is
+    \begin{align*}
+        \frac{\dot c}{c}
+        =\frac{f'(k)-\rho-\theta g}{\theta},
+        \qquad
+        \dot c=0
+        \iff f'(k^*)=\rho+\theta g.
+        \problemeqtag\label{eq:p26-cdot}
+    \end{align*}
+    A fall in \(g\) lowers the right-hand side of the steady-state condition.
+    Since \(f''(k)<0\), the marginal product is lower only at a larger
+    capital intensity. Thus the vertical \(\dot c=0\) locus shifts right:
+    \(k^*_{\mathrm{new}}>k^*_{\mathrm{old}}\).
+
+    \item Capital intensity is a state variable, so it cannot jump:
+    \(k(t_0^+)=k(t_0^-)=k^*_{\mathrm{old}}\). Consumption is a control
+    variable and must jump to the new saddle path. The new saddle path may
+    pass above, below, or exactly through the old balanced-growth point.
+    Therefore the impact change in \(c\) is ambiguous: \(c\) may rise, fall,
+    or remain unchanged at \(t_0\).
+
+    After the impact, both \(k\) and \(c\) rise along the new saddle path.
+    To verify that the new long-run value of \(c\) is higher, differentiate
+    \(c^*=f(k^*)-(n+g)k^*\) and use \eqref{eq:p26-cdot}:
+    \begin{align*}
+        \frac{\partial c^*}{\partial g}
+        &=\left[\rho-n-(1-\theta)g\right]
+          \frac{\partial k^*}{\partial g}-k^*\\
+        &=\left[\rho-n-(1-\theta)g\right]
+          \frac{\theta}{f''(k^*)}-k^*<0.
+        \problemeqtag\label{eq:p26-cstar-change}
+    \end{align*}
+    The sign uses Romer's maintained restriction
+    \(\rho-n-(1-\theta)g>0\). Hence a fall in \(g\) raises both
+    \(k^*\) and \(c^*\), even though the initial jump in \(c\) is not
+    determined.
+
+    \item On impact, \(k\) and therefore \(r=f'(k)\) do not change, while
+    \(g\) falls. Consequently,
+    \begin{align*}
+        (r-g)_{t_0^+}-(r-g)_{t_0^-}
+        =g_{\mathrm{old}}-g_{\mathrm{new}}>0.
+        \problemeqtag\label{eq:p26-impact-r-minus-g}
+    \end{align*}
+    Thus \(r-g\) rises immediately.
+
+    \item On a balanced growth path, \eqref{eq:p26-cdot} implies
+    \(r^*=f'(k^*)=\rho+\theta g\). Therefore,
+    \begin{align*}
+        r^*-g=\rho+(\theta-1)g,
+        \qquad
+        \frac{\partial(r^*-g)}{\partial g}=\theta-1.
+        \problemeqtag\label{eq:p26-long-run-r-minus-g}
+    \end{align*}
+    A fall in \(g\) raises long-run \(r-g\) if \(\theta<1\), leaves it
+    unchanged if \(\theta=1\), and lowers it if \(\theta>1\). The impact
+    answer in part (d) is unambiguous because \(r\) cannot jump; the
+    long-run answer is different because \(r\) adjusts as \(k\) changes.
+
+    \item Let \(s^*\) denote the fraction of output saved on the balanced
+    growth path. Since \(\dot k=0\), equation \eqref{eq:p26-kdot} gives
+    \begin{align*}
+        s^*
+        \equiv\frac{f(k^*)-c^*}{f(k^*)}
+        =\frac{(n+g)k^*}{f(k^*)}.
+        \problemeqtag\label{eq:p26-saving-rate}
+    \end{align*}
+    Differentiate the modified-golden-rule condition in
+    \eqref{eq:p26-cdot}:
+    \begin{align*}
+        f''(k^*)\frac{\partial k^*}{\partial g}=\theta
+        \quad\Longrightarrow\quad
+        \frac{\partial k^*}{\partial g}
+        =\frac{\theta}{f''(k^*)}<0.
+        \problemeqtag\label{eq:p26-kstar-derivative}
+    \end{align*}
+    Differentiating \eqref{eq:p26-saving-rate} and then using
+    \eqref{eq:p26-kstar-derivative} yields
+    \begin{align*}
+        \frac{\partial s^*}{\partial g}
+        =\frac{k^*}{f(k^*)}
+        +(n+g)\frac{f(k^*)-k^*f'(k^*)}{[f(k^*)]^2}
+        \frac{\theta}{f''(k^*)}.
+        \problemeqtag\label{eq:p26-general-saving-derivative}
+    \end{align*}
+    The first term is positive. The second is negative because
+    \(f(k^*)-k^*f'(k^*)>0\) and \(f''(k^*)<0\). Without additional
+    restrictions on production and preferences, the sign is ambiguous.
+
+    \item With \(f(k)=k^\alpha\), the condition
+    \(\alpha(k^*)^{\alpha-1}=\rho+\theta g\) implies
+    \((k^*)^{1-\alpha}=\alpha/(\rho+\theta g)\). Therefore
+    \begin{align*}
+        s^*
+        =\frac{(n+g)k^*}{(k^*)^\alpha}
+        =\frac{\alpha(n+g)}{\rho+\theta g}.
+        \problemeqtag\label{eq:p26-cobb-saving-rate}
+    \end{align*}
+    Differentiating gives
+    \begin{align*}
+        \boxed{
+        \frac{\partial s^*}{\partial g}
+        =\frac{\alpha(\rho-\theta n)}{(\rho+\theta g)^2}.}
+    \end{align*}
+    Thus a fall in \(g\) lowers the balanced-growth saving rate if
+    \(\rho>\theta n\), raises it if \(\rho<\theta n\), and leaves it
+    unchanged if \(\rho=\theta n\).
+\end{enumerate}
+
+The figure below summarizes the shifts in the two zero-motion loci, the
+resulting balanced-growth points, and local motion under the new system. The
+black point-arrows are phase-direction markers, not an impact jump in \(c\).
+No impact jump is drawn because part (c) shows that its direction is not
+determined without more information about the new saddle path.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=1.08cm,y=0.95cm,>=stealth]
+        \path[use as bounding box] (-1.15,-1.28) rectangle (9.85,6.55);
+        \draw[->,color=Muted] (0,0)--(9.25,0) node[right] {\scriptsize \(k\)};
+        \draw[->,color=Muted] (0,0)--(0,5.85) node[above] {\scriptsize \(c\)};
+
+        \draw[very thick,color=ProblemAccent,domain=0:8.75,samples=90]
+            plot (\x,{2.7*sqrt(\x)-0.75*\x});
+        \draw[very thick,color=AnswerAccent,domain=0:8.75,samples=90]
+            plot (\x,{2.7*sqrt(\x)-0.55*\x});
+
+        \draw[thick,dashed,color=ProblemAccent] (1.80,0)--(1.80,5.35);
+        \draw[thick,dashed,color=AnswerAccent] (3.50,0)--(3.50,5.35);
+
+        % Motion under the new system: one representative point in each phase region.
+        \rckmotion{0.95}{3.10}{-0.32}{0.32}
+        \rckmotion{1.05}{0.65}{0.32}{0.32}
+        \rckmotion{6.25}{4.25}{-0.32}{-0.32}
+        \rckmotion{6.35}{1.35}{0.32}{-0.32}
+
+        \pgfmathsetmacro{\cold}{2.7*sqrt(1.80)-0.75*1.80}
+        \pgfmathsetmacro{\cnew}{2.7*sqrt(3.50)-0.55*3.50}
+        \draw[dotted,color=Rule] (0,\cold)--(1.80,\cold);
+        \draw[dotted,color=Rule] (0,\cnew)--(3.50,\cnew);
+        \fill[color=ProblemAccent] (1.80,\cold) circle (2.4pt);
+        \fill[color=AnswerAccent] (3.50,\cnew) circle (2.4pt);
+        \draw[thin,color=Rule] (1.73,\cold-0.07)--(1.52,\cold-0.30);
+        \node[anchor=north east,color=Muted] at (1.47,\cold-0.34)
+            {\scriptsize \(E_{\mathrm{old}}\)};
+        \draw[thin,color=Rule] (3.56,\cnew+0.06)--(3.88,\cnew+0.36);
+        \node[anchor=south west,color=Muted] at (3.93,\cnew+0.39)
+            {\scriptsize \(E_{\mathrm{new}}\)};
+        \node[below,color=Muted] at (1.80,0)
+            {\scriptsize \(k^*_{\mathrm{old}}\)};
+        \node[below,color=Muted] at (3.50,0)
+            {\scriptsize \(k^*_{\mathrm{new}}\)};
+
+        \begin{scope}[shift={(0.75,-0.88)}]
+            \draw[very thick,color=ProblemAccent] (0,0.25)--(0.75,0.25);
+            \node[anchor=west,color=Muted] at (0.88,0.25)
+                {\scriptsize old \(\dot k=0\)};
+            \draw[very thick,color=AnswerAccent] (4.25,0.25)--(5.00,0.25);
+            \node[anchor=west,color=Muted] at (5.13,0.25)
+                {\scriptsize new \(\dot k=0\)};
+            \draw[thick,dashed,color=ProblemAccent] (0,-0.20)--(0.75,-0.20);
+            \node[anchor=west,color=Muted] at (0.88,-0.20)
+                {\scriptsize old \(\dot c=0\)};
+            \draw[thick,dashed,color=AnswerAccent] (4.25,-0.20)--(5.00,-0.20);
+            \node[anchor=west,color=Muted] at (5.13,-0.20)
+                {\scriptsize new \(\dot c=0\)};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{A permanent fall in \(g\) shifts the \(\dot k=0\) locus upward
+    and the \(\dot c=0\) locus to the right. Both balanced-growth-path
+    values \(k^*\) and \(c^*\) rise. Black point-arrows show motion under
+    the new system in each phase region.}
+\end{figure}
+\end{solution}
+
+\begin{note}[Impact versus long run]
+    At the instant of the shock, \(k\) and \(r=f'(k)\) are predetermined, so
+    \(r-g\) must rise. In the long run, capital accumulation changes \(r\),
+    and the sign depends on \(\theta-1\).
+\end{note}
+
+\begin{note}[Two opposing saving-rate effects]
+    A higher \(g\) directly raises the investment needed to keep \(k\)
+    constant, but it also lowers \(k^*\). These effects have opposite signs
+    in \eqref{eq:p26-general-saving-derivative}, which is why the general
+    answer is ambiguous.
+\end{note}
+
+\begin{note}[Cobb--Douglas shortcut]
+    Do not solve explicitly for \(k^*\) before finding \(s^*\). Combining
+    \(s^*=(n+g)(k^*)^{1-\alpha}\) with
+    \(\alpha(k^*)^{\alpha-1}=\rho+\theta g\) immediately eliminates
+    \(k^*\).
+\end{note}
+
 \begin{problem}{7}
 Describe how each of the following affects the \(\dot{c}=0\) and \(\dot{k}=0\) curves in Figure 2.5, and thus how they affect the balanced-growth-path values of \(c\) and \(k\):
 \begin{enumerate}[label=(\alph*)]
@@ -61,9 +628,298 @@ Describe how each of the following affects the \(\dot{c}=0\) and \(\dot{k}=0\) c
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+With zero depreciation, the two equations of motion are
+\begin{align*}
+    \frac{\dot c}{c}
+    &=\frac{f'(k)-\rho-\theta g}{\theta},
+    &
+    \dot c=0
+    &\iff f'(k^*)=\rho+\theta g,
+    \problemeqtag\label{eq:p27-cdot}\displaybreak[0]\\
+    \dot k
+    &=f(k)-c-(n+g)k,
+    &
+    \dot k=0
+    &\iff c=f(k)-(n+g)k.
+    \problemeqtag\label{eq:p27-kdot}
+\end{align*}
+Romer's parameter restriction implies
+\(f'(k^*)-(n+g)=\rho-n-(1-\theta)g>0\). Thus the balanced-growth
+point lies on the upward-sloping portion of the \(\dot k=0\) curve.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Suppose \(g>0\). A rise in \(\theta\) raises
+    \(\rho+\theta g\). Since \(f''(k)<0\), the higher marginal product
+    required by \eqref{eq:p27-cdot} occurs at a lower \(k\):
+    \[
+        \frac{\partial k^*}{\partial\theta}
+        =\frac{g}{f''(k^*)}<0.
+    \]
+    The vertical \(\dot c=0\) locus therefore shifts left, while the
+    \(\dot k=0\) locus in \eqref{eq:p27-kdot} is unchanged. Because the
+    latter locus is rising over the relevant range, both \(k^*\) and
+    \(c^*\) fall. If \(g=0\), \(\theta\) drops out of the zero-motion
+    conditions, so neither balanced-growth value changes.
+
+    \item Interpret a downward shift in the production function in the
+    standard way used for this exercise: at each \(k\), both \(f(k)\) and
+    \(f'(k)\) are lower. The fall in \(f(k)\) shifts the \(\dot k=0\)
+    curve downward. The fall in \(f'(k)\) means that the unchanged target
+    \(\rho+\theta g\) is reached at a lower \(k\), so the \(\dot c=0\)
+    locus shifts left. The new balanced-growth point has lower \(k^*\)
+    and lower \(c^*\).
+
+    \item Let the depreciation rate be \(\delta>0\). The equations of
+    motion become
+    \begin{align*}
+        \frac{\dot c}{c}
+        &=\frac{f'(k)-\delta-\rho-\theta g}{\theta},
+        &
+        \dot c=0
+        &\iff f'(k^*)=\rho+\theta g+\delta,
+        \problemeqtag\label{eq:p27-depreciation-cdot}\displaybreak[0]\\
+        \dot k
+        &=f(k)-c-(n+g+\delta)k,
+        &
+        \dot k=0
+        &\iff c=f(k)-(n+g+\delta)k.
+        \problemeqtag\label{eq:p27-depreciation-kdot}
+    \end{align*}
+    The higher required marginal product shifts the \(\dot c=0\) locus
+    left. Extra replacement investment, \(\delta k\), shifts the
+    \(\dot k=0\) curve downward, by more at larger \(k\). For completeness,
+    differentiating the two steady-state conditions gives
+    \[
+        \frac{\partial k^*}{\partial\delta}=\frac{1}{f''(k^*)}<0,
+        \qquad
+        \frac{\partial c^*}{\partial\delta}
+        =\bigl[\rho-n-(1-\theta)g\bigr]
+        \frac{1}{f''(k^*)}-k^*<0.
+    \]
+    Hence both balanced-growth values fall.
+\end{enumerate}
+
+Figure 2.2 places the three comparative-static experiments side by side.
+The zero-motion loci and old and new balanced-growth points are accompanied
+by four local direction markers for the new system; the impact jump in
+consumption is not needed to answer this problem.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=0.82cm,y=0.78cm,>=stealth]
+        \path[use as bounding box] (-0.85,-0.85) rectangle (14.85,11.75);
+
+        % Panel (a)
+        \begin{scope}[shift={(0,6.35)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.55)
+                {(a) A rise in \(\theta\)};
+            \draw[->,color=Muted] (0,0)--(6.15,0)
+                node[right] {\scriptsize \(k\)};
+            \draw[->,color=Muted] (0,0)--(0,4.15)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,color=Muted,domain=0:5.85,samples=80]
+                plot (\x,{2.35*sqrt(\x)-0.60*\x});
+            \draw[thick,dashed,color=AnswerAccent] (1.35,0)--(1.35,3.80);
+            \draw[thick,dashed,color=ProblemAccent] (2.70,0)--(2.70,3.80);
+            \pgfmathsetmacro{\canew}{2.35*sqrt(1.35)-0.60*1.35}
+            \pgfmathsetmacro{\caold}{2.35*sqrt(2.70)-0.60*2.70}
+            \fill[color=AnswerAccent] (1.35,\canew) circle (2.3pt);
+            \fill[color=ProblemAccent] (2.70,\caold) circle (2.3pt);
+            \draw[thin,color=Rule]
+                (1.40,\canew-0.06)--(1.70,\canew-0.42);
+            \node[anchor=north west,color=Muted] at (1.78,\canew-0.47)
+                {\scriptsize \(E_{\mathrm{new}}\)};
+            \node[anchor=south west,color=Muted] at (2.80,\caold+0.04)
+                {\scriptsize \(E_{\mathrm{old}}\)};
+            \rckmotion{0.62}{2.62}{-0.27}{0.27}
+            \rckmotion{0.70}{0.42}{0.27}{0.27}
+            \rckmotion{4.72}{3.12}{-0.27}{-0.27}
+            \rckmotion{4.82}{0.78}{0.27}{-0.27}
+            \draw[very thick,color=Muted] (0.35,-0.47)--(0.95,-0.47);
+            \node[anchor=west,color=Muted] at (1.06,-0.47)
+                {\scriptsize common \(\dot k=0\)};
+            \draw[thick,dashed,color=AnswerAccent] (3.63,-0.47)--(4.23,-0.47);
+            \node[anchor=west,color=Muted] at (4.34,-0.47)
+                {\scriptsize new \(\dot c=0\)};
+            \draw[thick,dashed,color=ProblemAccent] (3.63,-0.82)--(4.23,-0.82);
+            \node[anchor=west,color=Muted] at (4.34,-0.82)
+                {\scriptsize old \(\dot c=0\)};
+        \end{scope}
+
+        % Panel (b)
+        \begin{scope}[shift={(8.00,6.35)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.55)
+                {(b) Lower production};
+            \draw[->,color=Muted] (0,0)--(6.15,0)
+                node[right] {\scriptsize \(k\)};
+            \draw[->,color=Muted] (0,0)--(0,4.15)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,color=ProblemAccent,domain=0:5.85,samples=80]
+                plot (\x,{2.35*sqrt(\x)-0.60*\x});
+            \draw[very thick,color=AnswerAccent,domain=0:5.85,samples=80]
+                plot (\x,{2.02*sqrt(\x)-0.60*\x});
+            \draw[thick,dashed,color=AnswerAccent] (1.35,0)--(1.35,3.80);
+            \draw[thick,dashed,color=ProblemAccent] (2.70,0)--(2.70,3.80);
+            \pgfmathsetmacro{\cbnew}{2.02*sqrt(1.35)-0.60*1.35}
+            \pgfmathsetmacro{\cbold}{2.35*sqrt(2.70)-0.60*2.70}
+            \fill[color=AnswerAccent] (1.35,\cbnew) circle (2.3pt);
+            \fill[color=ProblemAccent] (2.70,\cbold) circle (2.3pt);
+            \draw[thin,color=Rule]
+                (1.40,\cbnew-0.06)--(1.70,\cbnew-0.42);
+            \node[anchor=north west,color=Muted] at (1.78,\cbnew-0.47)
+                {\scriptsize \(E_{\mathrm{new}}\)};
+            \node[anchor=south west,color=Muted] at (2.80,\cbold+0.04)
+                {\scriptsize \(E_{\mathrm{old}}\)};
+            \rckmotion{0.62}{2.35}{-0.27}{0.27}
+            \rckmotion{0.70}{0.34}{0.27}{0.27}
+            \rckmotion{4.72}{3.05}{-0.27}{-0.27}
+            \rckmotion{4.82}{0.52}{0.27}{-0.27}
+            \draw[very thick,color=AnswerAccent] (0.35,-0.47)--(0.95,-0.47);
+            \node[anchor=west,color=Muted] at (1.06,-0.47)
+                {\scriptsize new \(\dot k=0\)};
+            \draw[very thick,color=ProblemAccent] (3.63,-0.47)--(4.23,-0.47);
+            \node[anchor=west,color=Muted] at (4.34,-0.47)
+                {\scriptsize old \(\dot k=0\)};
+            \draw[thick,dashed,color=AnswerAccent] (0.35,-0.82)--(0.95,-0.82);
+            \node[anchor=west,color=Muted] at (1.06,-0.82)
+                {\scriptsize new \(\dot c=0\)};
+            \draw[thick,dashed,color=ProblemAccent] (3.63,-0.82)--(4.23,-0.82);
+            \node[anchor=west,color=Muted] at (4.34,-0.82)
+                {\scriptsize old \(\dot c=0\)};
+        \end{scope}
+
+        % Panel (c), centered below
+        \begin{scope}[shift={(4.00,0)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.55)
+                {(c) Positive depreciation};
+            \draw[->,color=Muted] (0,0)--(6.15,0)
+                node[right] {\scriptsize \(k\)};
+            \draw[->,color=Muted] (0,0)--(0,4.15)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,color=ProblemAccent,domain=0:5.85,samples=80]
+                plot (\x,{2.35*sqrt(\x)-0.60*\x});
+            \draw[very thick,color=AnswerAccent,domain=0:5.85,samples=80]
+                plot (\x,{2.35*sqrt(\x)-0.78*\x});
+            \draw[thick,dashed,color=AnswerAccent] (1.35,0)--(1.35,3.80);
+            \draw[thick,dashed,color=ProblemAccent] (2.70,0)--(2.70,3.80);
+            \pgfmathsetmacro{\ccnew}{2.35*sqrt(1.35)-0.78*1.35}
+            \pgfmathsetmacro{\ccold}{2.35*sqrt(2.70)-0.60*2.70}
+            \fill[color=AnswerAccent] (1.35,\ccnew) circle (2.3pt);
+            \fill[color=ProblemAccent] (2.70,\ccold) circle (2.3pt);
+            \draw[thin,color=Rule]
+                (1.40,\ccnew-0.06)--(1.70,\ccnew-0.42);
+            \node[anchor=north west,color=Muted] at (1.78,\ccnew-0.47)
+                {\scriptsize \(E_{\mathrm{new}}\)};
+            \node[anchor=south west,color=Muted] at (2.80,\ccold+0.04)
+                {\scriptsize \(E_{\mathrm{old}}\)};
+            \rckmotion{0.62}{2.38}{-0.27}{0.27}
+            \rckmotion{0.70}{0.34}{0.27}{0.27}
+            \rckmotion{4.72}{3.05}{-0.27}{-0.27}
+            \rckmotion{4.82}{0.42}{0.27}{-0.27}
+            \draw[very thick,color=AnswerAccent] (0.35,-0.47)--(0.95,-0.47);
+            \node[anchor=west,color=Muted] at (1.06,-0.47)
+                {\scriptsize new \(\dot k=0\)};
+            \draw[very thick,color=ProblemAccent] (3.63,-0.47)--(4.23,-0.47);
+            \node[anchor=west,color=Muted] at (4.34,-0.47)
+                {\scriptsize old \(\dot k=0\)};
+            \draw[thick,dashed,color=AnswerAccent] (0.35,-0.82)--(0.95,-0.82);
+            \node[anchor=west,color=Muted] at (1.06,-0.82)
+                {\scriptsize new \(\dot c=0\)};
+            \draw[thick,dashed,color=ProblemAccent] (3.63,-0.82)--(4.23,-0.82);
+            \node[anchor=west,color=Muted] at (4.34,-0.82)
+                {\scriptsize old \(\dot c=0\)};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{How the three changes in Problem 2.7 shift the zero-motion
+    loci. In every panel, the new balanced-growth point lies below and to
+    the left of the old one. Black point-arrows show motion under the new
+    system in each phase region.}
+\end{figure}
+\end{solution}
+
+\begin{note}[The special case \(g=0\)]
+    A larger \(\theta\) matters for the balanced-growth point through the
+    term \(\theta g\). When technology is not growing, the change in
+    \(\theta\) affects transition dynamics but not the two zero-motion loci.
+\end{note}
+
+\begin{note}[What ``downward shift'' must mean]
+    A lower \(f(k)\) shifts \(\dot k=0\) down, while a lower \(f'(k)\)
+    shifts \(\dot c=0\) left. A statement about output alone does not pin
+    down the marginal-product shift; this exercise uses both changes.
+\end{note}
+
 \begin{problem}{8}
 Derive an expression analogous to (2.40) for the case of a positive depreciation rate.
 \end{problem}
+
+\begin{solution}
+Let \(\delta>0\). Around the balanced-growth point, define
+\(\widetilde c=c-c^*\) and \(\widetilde k=k-k^*\). The equations of
+motion and the steady-state condition are
+\begin{align*}
+    \frac{\dot c}{c}
+    &=\frac{f'(k)-\delta-\rho-\theta g}{\theta},
+    &
+    \dot k
+    &=f(k)-c-(n+g+\delta)k,
+    &
+    f'(k^*)&=\rho+\theta g+\delta.
+    \problemeqtag\label{eq:p28-motion}
+\end{align*}
+Linearizing \eqref{eq:p28-motion} at \((k^*,c^*)\) gives
+\begin{align*}
+    \begin{pmatrix}
+        \dot{\widetilde c}\\[2pt]
+        \dot{\widetilde k}
+    \end{pmatrix}
+    \simeq
+    \begin{pmatrix}
+        0 & f''(k^*)c^*/\theta\\[2pt]
+        -1 & \rho-n-(1-\theta)g
+    \end{pmatrix}
+    \begin{pmatrix}
+        \widetilde c\\[2pt]
+        \widetilde k
+    \end{pmatrix}.
+    \problemeqtag\label{eq:p28-linear-system}
+\end{align*}
+Writing \(\beta\equiv\rho-n-(1-\theta)g\), the characteristic polynomial
+of \eqref{eq:p28-linear-system} has one negative root:
+\begin{align*}
+    \mu_1
+    =\frac{1}{2}
+    \left\{
+        \beta-
+        \left[\beta^2-\frac{4f''(k^*)c^*}{\theta}\right]^{1/2}
+    \right\}<0.
+    \problemeqtag\label{eq:p28-stable-root}
+\end{align*}
+
+For Cobb--Douglas production, \(f(k)=k^\alpha\), use
+\[
+    \alpha(k^*)^{\alpha-1}=\rho+\theta g+\delta,
+    \qquad
+    c^*=(k^*)^\alpha-(n+g+\delta)k^*.
+\]
+Substitution into \eqref{eq:p28-stable-root} gives the expression analogous
+to Romer's equation (2.40):
+\begin{align*}
+    \boxed{
+    \mu_1
+    =\frac{1}{2}\left\{
+        \beta-
+        \left[
+            \beta^2
+            +\frac{4}{\theta}\frac{1-\alpha}{\alpha}
+            (\rho+\theta g+\delta)
+            \bigl[\rho+\theta g+\delta-\alpha(n+g+\delta)\bigr]
+        \right]^{1/2}
+    \right\}.}
+\end{align*}
+Setting \(\delta=0\) returns equation (2.40).
+\end{solution}
 
 \begin{problem}{9}[\textbf{A closed-form solution of the Ramsey model.}]
 \problemsource{\parencite{smith2006closed-form}}
@@ -89,6 +945,159 @@ Consider the Ramsey model with Cobb--Douglas production, \(y\left(t\right)=k\lef
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+Here \(f(k)=k^\alpha\) and \(\theta=\alpha\). There is no depreciation,
+as in the chapter's baseline model.
+
+\begin{enumerate}[label=(\alph*)]
+    \item On the balanced growth path, \(\dot c=0\). Hence
+    \begin{align*}
+        \alpha(k^*)^{\alpha-1}=\rho+\alpha g
+        \quad\Longrightarrow\quad
+        \boxed{
+        k^*=\left(\frac{\alpha}{\rho+\alpha g}\right)^{1/(1-\alpha)}.}
+        \problemeqtag\label{eq:p29-kstar}
+    \end{align*}
+
+    \item The condition \(\dot k=0\) then gives
+    \begin{align*}
+        \boxed{
+        \begin{aligned}
+        c^*
+        &=(k^*)^\alpha-(n+g)k^*\\
+        &=\left(\frac{\alpha}{\rho+\alpha g}\right)^{\alpha/(1-\alpha)}
+        -(n+g)
+        \left(\frac{\alpha}{\rho+\alpha g}\right)^{1/(1-\alpha)}.
+        \end{aligned}}
+        \problemeqtag\label{eq:p29-cstar}
+    \end{align*}
+
+    \item Since \(y=k^\alpha\), the capital-output ratio satisfies
+    \(z=k/y=k^{1-\alpha}\). Therefore
+    \[
+        \dot z=(1-\alpha)k^{-\alpha}\dot k.
+    \]
+    Substituting \(\dot k=k^\alpha-c-(n+g)k\), and using
+    \(c k^{-\alpha}=(c/k)(k/y)=xz\), yields
+    \begin{align*}
+        \boxed{
+        \dot z=(1-\alpha)\bigl[1-(x+n+g)z\bigr].}
+        \problemeqtag\label{eq:p29-z-motion}
+    \end{align*}
+
+    Next, \(x=c/k\), so
+    \[
+        \frac{\dot x}{x}=\frac{\dot c}{c}-\frac{\dot k}{k}.
+    \]
+    Under \(\theta=\alpha\), the Euler equation and capital-accumulation
+    equation imply
+    \[
+        \frac{\dot c}{c}
+        =\frac{\alpha k^{\alpha-1}-\rho-\alpha g}{\alpha}
+        =\frac{1}{z}-\frac{\rho}{\alpha}-g,
+        \qquad
+        \frac{\dot k}{k}=\frac{1}{z}-x-n-g.
+    \]
+    Subtracting cancels the two terms involving \(z\):
+    \begin{align*}
+        \boxed{
+        \frac{\dot x}{x}=x+n-\frac{\rho}{\alpha}.}
+        \problemeqtag\label{eq:p29-x-motion}
+    \end{align*}
+
+    \item If \(x\) is constant on the saddle path, then
+    \eqref{eq:p29-x-motion} requires
+    \begin{align*}
+        x(t)=x^*=\frac{\rho}{\alpha}-n.
+        \problemeqtag\label{eq:p29-xstar}
+    \end{align*}
+    This is positive under the model's parameter restriction.
+
+    \begin{enumerate}[label=(\roman*)]
+        \item Substitute \eqref{eq:p29-xstar} into
+        \eqref{eq:p29-z-motion}. Since
+        \[
+            z^*=(k^*)^{1-\alpha}
+            =\frac{\alpha}{\rho+\alpha g},
+        \]
+        the resulting linear differential equation can be written as
+        \[
+            \dot z
+            =-(1-\alpha)\left(\frac{\rho}{\alpha}+g\right)
+            (z-z^*).
+        \]
+        Its solution for an arbitrary initial value is
+        \begin{align*}
+            \boxed{
+            z(t)=z^*+\left[z(0)-z^*\right]
+            \exp\!\left\{
+                -(1-\alpha)\left(\frac{\rho}{\alpha}+g\right)t
+            \right\}.}
+            \problemeqtag\label{eq:p29-z-path}
+        \end{align*}
+
+        \item Substituting \eqref{eq:p29-z-path}, and using
+        \(z=k^{1-\alpha}\) and
+        \(y=k^\alpha=z^{\alpha/(1-\alpha)}\), the initial condition
+        \(z(0)=k(0)^{1-\alpha}\) gives
+        \begin{align*}
+            \boxed{
+            y(t)=
+            \left\{
+                z^*+\left[k(0)^{1-\alpha}-z^*\right]
+                \exp\!\left[
+                    -(1-\alpha)\left(\frac{\rho}{\alpha}+g\right)t
+                \right]
+            \right\}^{\alpha/(1-\alpha)}.}
+            \problemeqtag\label{eq:p29-y-path}
+        \end{align*}
+
+        To discuss convergence from either side, use the absolute output
+        gap. Differentiating \eqref{eq:p29-y-path}, or equivalently
+        differentiating \(y=z^{\alpha/(1-\alpha)}\), gives
+        \begin{align*}
+            \frac{\d}{\d t}\ln\lvert y(t)-y^*\rvert
+            =-(\rho+\alpha g)
+            \frac{
+                z(t)^{(2\alpha-1)/(1-\alpha)}[z(t)-z^*]
+            }{
+                z(t)^{\alpha/(1-\alpha)}
+                -(z^*)^{\alpha/(1-\alpha)}
+            }.
+            \problemeqtag\label{eq:p29-output-gap-rate}
+        \end{align*}
+        The right-hand side of \eqref{eq:p29-output-gap-rate} depends on
+        \(z(t)\), so the speed is not constant in general. It converges to
+        \(-(1-\alpha)(\rho/\alpha+g)\) as the economy approaches the
+        balanced growth path. The special case \(\alpha=1/2\) makes
+        \(y=z\), and only then is the gap's proportional rate constant along
+        the entire saddle path.
+    \end{enumerate}
+
+    \item It remains to verify the conjecture, not merely use it. With
+    \(x=x^*=\rho/\alpha-n\), the capital-accumulation equation divided by
+    \(k\) gives
+    \begin{align*}
+        \frac{\dot k}{k}
+        =\frac{1}{z}-x^*-n-g
+        =\frac{1}{z}-\frac{\rho}{\alpha}-g.
+        \problemeqtag\label{eq:p29-k-growth-verification}
+    \end{align*}
+    Since \(c=x^*k\) and \(x^*\) is constant,
+    \(\dot c/c=\dot k/k\). The Euler equation with \(\theta=\alpha\)
+    gives exactly the last expression in
+    \eqref{eq:p29-k-growth-verification}. Thus both (2.25) and (2.26) are
+    satisfied, and the conjectured path is the saddle path.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Why the closed form is possible]
+    The restriction \(\theta=\alpha\) makes the two \(1/z\) terms cancel
+    in \eqref{eq:p29-x-motion}. The consumption-capital ratio can therefore
+    remain constant, reducing the two-dimensional system to one linear
+    equation for \(z\).
+\end{note}
+
 \begin{problem}{10}[\textbf{Capital taxation in the Ramsey--Cass--Koopmans model.}]
 Consider a Ramsey--Cass--Koopmans economy that is on its balanced growth path. Suppose that at some time, which we will call time 0, the government switches to a policy of taxing investment income at rate \(\tau\). Thus the real interest rate that households face is now given by \(r\left(t\right)=\left(1-\tau\right)f'\left(k\left(t\right)\right)\). Assume that the government returns the revenue it collects from this tax through lump-sum transfers. Finally, assume that this change in tax policy is unanticipated.
 \begin{enumerate}[label=(\alph*)]
@@ -107,6 +1116,268 @@ Consider a Ramsey--Cass--Koopmans economy that is on its balanced growth path. S
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+Let \(\tau\in(0,1)\). When the revenue is returned through lump-sum
+transfers, the tax changes the return relevant for household saving but does
+not absorb any of the economy's output. The equations of motion are
+\begin{align*}
+    \frac{\dot c}{c}
+    &=\frac{(1-\tau)f'(k)-\rho-\theta g}{\theta},
+    \problemeqtag\label{eq:p210-tax-euler}\\
+    \dot k
+    &=f(k)-c-(n+g)k.
+    \problemeqtag\label{eq:p210-tax-capital}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item The post-tax \(\dot c=0\) condition is
+    \[
+        (1-\tau)f'(k^*_{\tau})=\rho+\theta g.
+    \]
+    Thus the required pre-tax marginal product is
+    \((\rho+\theta g)/(1-\tau)\), which exceeds its no-tax value. Since
+    \(f''(k)<0\), \(k^*_{\tau}<k^*_0\): the \(\dot c=0\) locus shifts
+    left. Equation \eqref{eq:p210-tax-capital} is unchanged, so the
+    \(\dot k=0\) locus remains
+    \(c=f(k)-(n+g)k\).
+
+    \item At time 0, \(k\) cannot jump and remains at \(k^*_0\).
+    Consumption can jump because the policy was unanticipated. At the old
+    point, the new saddle path lies above the unchanged \(\dot k=0\) curve,
+    so \(c\) jumps upward. The lower after-tax return makes households
+    substitute toward current consumption.
+
+    After the jump, the economy is to the right of the new \(\dot c=0\)
+    locus and above the \(\dot k=0\) locus. Hence \(\dot c<0\) and
+    \(\dot k<0\). Consumption and capital then fall together along the new
+    saddle path toward the new balanced-growth point.
+
+    \item We already know \(k^*_{\tau}<k^*_0\). Both points lie on the
+    unchanged \(\dot k=0\) curve. Its slope at the no-tax balanced-growth
+    point is
+    \[
+        f'(k^*_0)-(n+g)=\rho-n-(1-\theta)g>0,
+    \]
+    and its slope is even larger at lower \(k\). Thus the relevant part of
+    the curve is increasing, and \(c^*_{\tau}<c^*_0\) as well.
+
+    \item
+    \begin{enumerate}[label=(\roman*)]
+        \item Differentiate the post-tax balanced-growth condition:
+        \begin{align*}
+            -f'(k^*_{\tau})
+            +(1-\tau)f''(k^*_{\tau})
+            \frac{\partial k^*_{\tau}}{\partial\tau}=0
+            \quad\Longrightarrow\quad
+            \frac{\partial k^*_{\tau}}{\partial\tau}
+            =\frac{f'(k^*_{\tau})}
+            {(1-\tau)f''(k^*_{\tau})}<0.
+            \problemeqtag\label{eq:p210-kstar-tax-derivative}
+        \end{align*}
+        On a balanced growth path, saving equals break-even investment, so
+        \begin{align*}
+            s^*(\tau)
+            \equiv\frac{f(k^*_{\tau})-c^*_{\tau}}
+            {f(k^*_{\tau})}
+            =\frac{(n+g)k^*_{\tau}}{f(k^*_{\tau})}.
+            \problemeqtag\label{eq:p210-saving-rate}
+        \end{align*}
+        Define capital's pre-tax income share by
+        \(\alpha_K(k)\equiv kf'(k)/f(k)\). Differentiating
+        \eqref{eq:p210-saving-rate} and using
+        \eqref{eq:p210-kstar-tax-derivative} gives
+        \begin{align*}
+            \boxed{
+            \frac{\partial s^*}{\partial\tau}
+            =\frac{n+g}{f(k^*_{\tau})}
+            \frac{\partial k^*_{\tau}}{\partial\tau}
+            \bigl[1-\alpha_K(k^*_{\tau})\bigr]<0.}
+            \problemeqtag\label{eq:p210-saving-tax-derivative}
+        \end{align*}
+        The sign follows from
+        \(\partial k^*_{\tau}/\partial\tau<0\) and
+        \(0<\alpha_K<1\).
+
+        \item No. Under the tax system in the problem, an investment in a
+        country with tax rate \(\tau\) earns the host country's after-tax
+        return. Every country on its balanced growth path satisfies
+        \[
+            (1-\tau)f'(k^*_{\tau})=\rho+\theta g.
+        \]
+        Thus low-saving, high-tax countries have a higher pre-tax marginal
+        product, but the tax exactly offsets that advantage. After-tax
+        returns are equal, so residents of low-tax countries have no return
+        incentive to move their saving there.
+    \end{enumerate}
+
+    \item No. With lump-sum taxes available and no externality, the
+    no-tax competitive allocation solves the representative household's
+    social-planner problem. An investment subsidy raises long-run \(k^*\)
+    and \(c^*\), but reaching that point requires a short-run consumption
+    sacrifice. At the optimum, the discounted utility cost of this
+    distortion outweighs the later gain. A higher long-run consumption
+    level by itself is not a welfare comparison.
+
+    \item If the revenue finances government purchases that provide neither
+    private utility nor productive capital, then purchases per unit of
+    effective labor are
+    \(G(t)=\tau f'(k(t))k(t)\). The Euler equation
+    \eqref{eq:p210-tax-euler} is unchanged, but capital accumulation becomes
+    \begin{align*}
+        \dot k
+        =f(k)-c-G-(n+g)k
+        =f(k)-c-\tau f'(k)k-(n+g)k.
+        \problemeqtag\label{eq:p210-government-purchases}
+    \end{align*}
+    Therefore the \(\dot c=0\) locus shifts left exactly as in part (a),
+    while the \(\dot k=0\) locus now shifts downward. The new
+    balanced-growth value of \(k\) is the same as with rebates because it is
+    still pinned down by \eqref{eq:p210-tax-euler}. Private consumption is
+    lower than in the rebate case by
+    \(G^*=\tau f'(k^*_{\tau})k^*_{\tau}\).
+
+    On impact, \(k\) again cannot jump, but the new saddle path may pass
+    either above or below the old balanced-growth point. Thus \(c\) may jump
+    up or down. After the jump, the economy follows that saddle path toward
+    lower \(k\) and lower private \(c\).
+\end{enumerate}
+
+\end{solution}
+
+\begin{note}[A transfer is not a resource cost]
+    Tax revenue returned lump-sum changes household incentives but stays in
+    private budgets. Government purchases absorb output, so only the latter
+    policy shifts the \(\dot k=0\) locus.
+\end{note}
+
+\begin{note}[State and control variables]
+    Capital \(k\) is inherited from the past and cannot jump. Consumption
+    \(c\) is a control variable and can jump at an unanticipated policy
+    change so that the economy lands on the relevant saddle path.
+\end{note}
+
+\begin{note}[More capital is not automatically better]
+    The golden rule maximizes sustainable consumption, not discounted
+    lifetime utility. The no-tax Ramsey allocation already balances current
+    sacrifice against future consumption according to household preferences.
+\end{note}
+
+Figure 2.3 distinguishes the resource-neutral rebate case from the case in
+which tax revenue is absorbed by government purchases.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=0.91cm,y=0.88cm,>=stealth]
+        \path[use as bounding box] (-0.75,-1.05) rectangle (14.85,5.75);
+
+        % Panel (a): rebate
+        \begin{scope}
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,5.05)
+                {(a) Revenue rebated};
+            \draw[->,color=Muted] (0,0)--(6.25,0)
+                node[right] {\scriptsize \(k\)};
+            \draw[->,color=Muted] (0,0)--(0,4.65)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,color=Muted,domain=0:5.90,samples=90]
+                plot (\x,{2.45*sqrt(\x)-0.47*\x});
+            \draw[thick,dashed,color=AnswerAccent] (2.60,0)--(2.60,4.30);
+            \draw[thick,dashed,color=ProblemAccent] (4.50,0)--(4.50,4.30);
+            \pgfmathsetmacro{\crebnew}{2.45*sqrt(2.60)-0.47*2.60}
+            \pgfmathsetmacro{\crebold}{2.45*sqrt(4.50)-0.47*4.50}
+            \rckmotion{0.72}{2.68}{-0.28}{0.28}
+            \rckmotion{0.82}{0.48}{0.28}{0.28}
+            \rckmotion{5.62}{4.08}{-0.28}{-0.28}
+            \rckmotion{5.48}{1.08}{0.28}{-0.28}
+            \draw[thick,color=AnswerAccent]
+                (1.20,1.45) .. controls (1.85,2.03) and (2.30,2.55)
+                .. (2.60,\crebnew) .. controls (3.25,3.05) and (4.15,3.47)
+                .. (4.50,3.62);
+            \draw[very thick,->,color=AnswerAccent]
+                (4.50,3.62) .. controls (3.85,3.37) and (3.20,3.04)
+                .. (2.72,\crebnew+0.06);
+            \draw[very thick,->,color=ProblemAccent]
+                (4.50,\crebold+0.05)--(4.50,3.52);
+            \fill[color=ProblemAccent] (4.50,\crebold) circle (2.4pt);
+            \fill[color=AnswerAccent] (2.60,\crebnew) circle (2.4pt);
+            \fill[color=AnswerAccent] (4.50,3.62) circle (2.1pt);
+            \draw[thin,color=Rule]
+                (4.56,\crebold-0.04)--(4.82,\crebold-0.34);
+            \node[anchor=north west,color=Muted] at (4.87,\crebold-0.38)
+                {\scriptsize \(E_0\)};
+            \draw[thin,color=Rule]
+                (2.55,\crebnew+0.06)--(2.23,\crebnew+0.38);
+            \node[anchor=south east,color=Muted] at (2.17,\crebnew+0.42)
+                {\scriptsize \(E_{\tau}\)};
+            \draw[thin,color=Rule] (4.45,3.68)--(4.17,3.99);
+            \node[anchor=south east,color=Muted] at (4.11,4.03)
+                {\scriptsize \(A\)};
+            \draw[very thick,color=Muted] (0.28,-0.48)--(0.82,-0.48);
+            \node[anchor=west,color=Muted] at (0.92,-0.48)
+                {\scriptsize common \(\dot k=0\)};
+            \draw[thick,dashed,color=ProblemAccent] (3.35,-0.48)--(3.89,-0.48);
+            \node[anchor=west,color=Muted] at (3.99,-0.48)
+                {\scriptsize no-tax \(\dot c=0\)};
+            \draw[thick,dashed,color=AnswerAccent] (0.28,-0.84)--(0.82,-0.84);
+            \node[anchor=west,color=Muted] at (0.92,-0.84)
+                {\scriptsize taxed \(\dot c=0\)};
+            \draw[thick,color=AnswerAccent] (3.35,-0.84)--(3.89,-0.84);
+            \node[anchor=west,color=Muted] at (3.99,-0.84)
+                {\scriptsize new saddle path};
+        \end{scope}
+
+        % Panel (b): government purchases
+        \begin{scope}[shift={(8.00,0)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,5.05)
+                {(b) Revenue spent};
+            \draw[->,color=Muted] (0,0)--(6.25,0)
+                node[right] {\scriptsize \(k\)};
+            \draw[->,color=Muted] (0,0)--(0,4.65)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,color=ProblemAccent,domain=0:5.90,samples=90]
+                plot (\x,{2.45*sqrt(\x)-0.47*\x});
+            \draw[very thick,color=AnswerAccent,domain=0:5.90,samples=90]
+                plot (\x,{2.45*sqrt(\x)-0.55*\x-0.25});
+            \draw[thick,dashed,color=AnswerAccent] (2.60,0)--(2.60,4.30);
+            \draw[thick,dashed,color=ProblemAccent] (4.50,0)--(4.50,4.30);
+            \pgfmathsetmacro{\cspendnew}{2.45*sqrt(2.60)-0.55*2.60-0.25}
+            \pgfmathsetmacro{\cspendold}{2.45*sqrt(4.50)-0.47*4.50}
+            \rckmotion{0.72}{2.48}{-0.28}{0.28}
+            \rckmotion{0.82}{0.38}{0.28}{0.28}
+            \rckmotion{5.42}{3.62}{-0.28}{-0.28}
+            \rckmotion{5.48}{0.92}{0.28}{-0.28}
+            \draw[thick,densely dotted,color=AnswerAccent]
+                (1.20,1.20) .. controls (1.85,1.70) and (2.30,2.02)
+                .. (2.60,\cspendnew) .. controls (3.30,2.65) and (4.05,3.20)
+                .. (4.50,3.48);
+            \draw[thick,densely dotted,color=AnswerAccent]
+                (1.20,1.55) .. controls (1.85,1.86) and (2.30,2.05)
+                .. (2.60,\cspendnew) .. controls (3.20,2.51) and (3.95,2.70)
+                .. (4.50,2.86);
+            \fill[color=ProblemAccent] (4.50,\cspendold) circle (2.4pt);
+            \fill[color=AnswerAccent] (2.60,\cspendnew) circle (2.4pt);
+            \node[anchor=south east,color=Muted] at (4.38,\cspendold+0.04)
+                {\scriptsize \(E_0\)};
+            \node[anchor=north west,color=Muted] at (2.72,\cspendnew-0.04)
+                {\scriptsize \(E_{\tau,G}\)};
+            \draw[very thick,color=ProblemAccent] (0.28,-0.48)--(0.82,-0.48);
+            \node[anchor=west,color=Muted] at (0.92,-0.48)
+                {\scriptsize old \(\dot k=0\)};
+            \draw[very thick,color=AnswerAccent] (3.35,-0.48)--(3.89,-0.48);
+            \node[anchor=west,color=Muted] at (3.99,-0.48)
+                {\scriptsize new \(\dot k=0\)};
+            \draw[thick,densely dotted,color=AnswerAccent]
+                (0.28,-0.84)--(0.82,-0.84);
+            \node[anchor=west,color=Muted] at (0.92,-0.84)
+                {\scriptsize possible new saddle paths};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{A capital-income tax shifts the \(\dot c=0\) locus left.
+    With rebates, the \(\dot k=0\) locus is unchanged and consumption jumps
+    up. With government purchases, the \(\dot k=0\) locus also shifts down,
+    so the direction of the initial consumption jump is ambiguous. Black
+    point-arrows show motion under the post-policy system.}
+\end{figure}
+
 \begin{problem}{11}[\textbf{Using the phase diagram to analyze the impact of an anticipated change.}]
 Consider the policy described in Problem 2.10, but suppose that instead of announcing and implementing the tax at time 0, the government announces at time 0 that at some later time, time \(t_1\), investment income will begin to be taxed at rate \(\tau\).
 \begin{enumerate}[label=(\alph*)]
@@ -118,6 +1389,220 @@ Consider the policy described in Problem 2.10, but suppose that instead of annou
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+Let \(t_0=0\) denote the announcement date. Before \(t_1\), the original
+Euler equation applies; from \(t_1\) onward, the taxed return applies:
+\begin{align*}
+    \frac{\dot c}{c}
+    &={}
+    \begin{cases}
+        \dfrac{f'(k)-\rho-\theta g}{\theta}, & 0\le t<t_1,\\[7pt]
+        \dfrac{(1-\tau)f'(k)-\rho-\theta g}{\theta}, & t\ge t_1.
+    \end{cases}
+    \problemeqtag\label{eq:p211-euler-regimes}
+\end{align*}
+Because the tax revenue is rebated, capital accumulation is governed in
+both regimes by
+\begin{align*}
+    \dot k=f(k)-c-(n+g)k.
+    \problemeqtag\label{eq:p211-capital-law}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item After \(t_1\), the \(\dot c=0\) locus is determined by
+    \((1-\tau)f'(k)=\rho+\theta g\), so it lies to the left of the
+    no-tax locus. The \(\dot k=0\) curve is unchanged. The post-tax saddle
+    path leads to a new balanced-growth point with lower \(k\) and lower
+    \(c\), exactly as in Problem 2.10.
+
+    \item Consumption cannot jump at \(t_1\). The tax change and its date
+    are known in advance, and there is no instantaneous confiscation of
+    wealth at that date. A jump would create a predictable discontinuity in
+    marginal utility that households could profitably smooth. Hence
+    \begin{align*}
+        c(t_1^-)=c(t_1^+).
+        \problemeqtag\label{eq:p211-continuity}
+    \end{align*}
+    The growth rate \(\dot c/c\), however, can change discontinuously because
+    the after-tax return changes at \(t_1\).
+
+    \item During \([0,t_1)\), the no-tax part of
+    \eqref{eq:p211-euler-regimes} and the unchanged capital law
+    \eqref{eq:p211-capital-law} govern motion. Thus the old, right-hand
+    \(\dot c=0\) line is relevant before implementation, even though the tax
+    has already been announced.
+
+    \item At \(t_1\), the economy must be on the post-tax saddle path; by
+    \eqref{eq:p211-continuity}, it must arrive there without a jump in
+    \(c\). This terminal requirement pins down the response at the
+    announcement date. Consumption jumps upward at time 0 to a point such as
+    \(A\) in Figure 2.4. Capital remains at its old value.
+
+    At \(A\), consumption is above the \(\dot k=0\) curve, so \(k\) begins
+    to fall. Once \(k\) moves left of the old \(\dot c=0\) line, consumption
+    rises. The economy therefore moves northwest to \(B\), reaching the
+    post-tax saddle path exactly at \(t_1\). When the tax begins,
+    consumption is continuous but its direction reverses: from \(B\), both
+    \(c\) and \(k\) fall along the new saddle path toward
+    \(E_{\tau}\).
+
+    \item Thus \(c\) jumps up at time 0, rises further until \(t_1\), and
+    then falls toward its lower post-tax balanced-growth value. Capital does
+    not jump; it begins falling after the announcement and continues falling
+    toward its new balanced-growth value. The level path of \(c\) has a kink
+    at \(t_1\), whereas \(k\) and \(\dot k\) are continuous there because
+    the resource equation is unchanged.
+\end{enumerate}
+
+Figure 2.4 combines the pre- and post-implementation phase diagrams. The
+associated time paths are separated out in Figure 2.5.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=1.12cm,y=0.92cm,>=stealth]
+        \path[use as bounding box] (-0.85,-1.02) rectangle (9.55,6.10);
+        \draw[->,color=Muted] (0,0)--(8.65,0)
+            node[right] {\scriptsize \(k\)};
+        \draw[->,color=Muted] (0,0)--(0,5.45)
+            node[above] {\scriptsize \(c\)};
+        \draw[very thick,color=Muted,domain=0:8.20,samples=100]
+            plot (\x,{2.45*sqrt(\x)-0.47*\x});
+        \draw[thick,dashed,color=AnswerAccent] (2.60,0)--(2.60,5.05);
+        \draw[thick,dashed,color=ProblemAccent] (4.50,0)--(4.50,5.05);
+        \pgfmathsetmacro{\cantnew}{2.45*sqrt(2.60)-0.47*2.60}
+        \pgfmathsetmacro{\cantold}{2.45*sqrt(4.50)-0.47*4.50}
+        \rckmotion{0.85}{2.72}{-0.30}{0.30}
+        \rckmotion{0.95}{0.52}{0.30}{0.30}
+        \rckmotion{6.25}{4.12}{-0.30}{-0.30}
+        \rckmotion{6.35}{1.18}{0.30}{-0.30}
+
+        \draw[thick,color=AnswerAccent]
+            (1.15,1.38) .. controls (1.85,2.00) and (2.30,2.53)
+            .. (2.60,\cantnew) .. controls (3.08,3.05) and (3.48,3.42)
+            .. (3.75,3.68) .. controls (4.08,3.96) and (4.45,4.22)
+            .. (4.82,4.42);
+        \draw[very thick,->,color=ProblemAccent]
+            (4.50,3.54) .. controls (4.24,3.53) and (3.96,3.61)
+            .. (3.79,3.66);
+        \draw[very thick,->,color=AnswerAccent]
+            (3.71,3.64) .. controls (3.38,3.33) and (3.02,3.04)
+            .. (2.70,\cantnew+0.06);
+        \draw[very thick,->,color=ProblemAccent]
+            (4.50,\cantold+0.02)--(4.50,3.48);
+
+        \fill[color=ProblemAccent] (4.50,\cantold) circle (2.5pt);
+        \fill[color=ProblemAccent] (4.50,3.54) circle (2.2pt);
+        \fill[color=AnswerAccent] (3.75,3.68) circle (2.2pt);
+        \fill[color=AnswerAccent] (2.60,\cantnew) circle (2.5pt);
+        \node[anchor=north west,color=Muted] at (4.60,\cantold-0.04)
+            {\scriptsize \(E_0\)};
+        \node[anchor=south west,color=Muted] at (4.60,3.57)
+            {\scriptsize \(A\;(t=0)\)};
+        \node[anchor=south east,color=Muted] at (3.58,3.86)
+            {\scriptsize \(B\;(t=t_1)\)};
+        \node[anchor=north west,color=Muted] at (2.70,\cantnew-0.04)
+            {\scriptsize \(E_{\tau}\)};
+        \node[below,color=Muted] at (2.60,0)
+            {\scriptsize \(k^*_{\tau}\)};
+        \node[below,color=Muted] at (4.50,0)
+            {\scriptsize \(k^*_0\)};
+
+        \begin{scope}[shift={(0.55,-0.58)}]
+            \draw[very thick,color=Muted] (0,0)--(0.68,0);
+            \node[anchor=west,color=Muted] at (0.80,0)
+                {\scriptsize common \(\dot k=0\)};
+            \draw[thick,dashed,color=AnswerAccent] (3.33,0)--(4.01,0);
+            \node[anchor=west,color=Muted] at (4.13,0)
+                {\scriptsize taxed \(\dot c=0\)};
+            \draw[thick,dashed,color=ProblemAccent] (6.63,0)--(7.31,0);
+            \node[anchor=west,color=Muted] at (7.43,0)
+                {\scriptsize no-tax \(\dot c=0\)};
+            \draw[thick,color=AnswerAccent] (3.33,-0.37)--(4.01,-0.37);
+            \node[anchor=west,color=Muted] at (4.13,-0.37)
+                {\scriptsize post-tax saddle path};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{An anticipated permanent capital-income tax. Consumption jumps
+    at the announcement date to \(A\), follows the no-tax dynamics to
+    \(B\), and is continuous when the tax begins. Thereafter the economy
+    follows the post-tax saddle path to \(E_{\tau}\). Black point-arrows show
+    post-tax motion in each phase region.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=0.88cm,y=0.82cm,>=stealth]
+        \path[use as bounding box] (-0.75,-0.58) rectangle (14.55,5.50);
+
+        % Consumption path
+        \begin{scope}
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.92)
+                {(a) Consumption};
+            \draw[->,color=Muted] (0,0)--(6.65,0)
+                node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,4.45)
+                node[above] {\scriptsize \(c\)};
+            \draw[dotted,color=Rule] (1.25,0)--(1.25,4.18);
+            \draw[dotted,color=Rule] (2.95,0)--(2.95,4.18);
+            \draw[very thick,color=ProblemAccent] (0,2.62)--(1.25,2.62);
+            \draw[very thick,color=ProblemAccent] (1.25,2.62)--(1.25,3.12);
+            \draw[very thick,color=ProblemAccent]
+                (1.25,3.12) .. controls (1.58,3.12) and (2.30,3.40)
+                .. (2.95,3.58);
+            \draw[very thick,->,color=AnswerAccent]
+                (2.95,3.58) .. controls (3.35,3.30) and (4.20,2.55)
+                .. (5.15,2.08) .. controls (5.55,1.90) and (5.95,1.86)
+                .. (6.22,1.85);
+            \draw[dashed,color=Rule] (0,1.82)--(6.25,1.82);
+            \node[anchor=west,color=Muted] at (6.28,1.82)
+                {\scriptsize \(c^*_{\tau}\)};
+            \node[below,color=Muted] at (1.25,0)
+                {\scriptsize \(0\)};
+            \node[below,color=Muted] at (2.95,0)
+                {\scriptsize \(t_1\)};
+        \end{scope}
+
+        % Capital path
+        \begin{scope}[shift={(7.75,0)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.92)
+                {(b) Capital};
+            \draw[->,color=Muted] (0,0)--(6.65,0)
+                node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,4.45)
+                node[above] {\scriptsize \(k\)};
+            \draw[dotted,color=Rule] (1.25,0)--(1.25,4.18);
+            \draw[dotted,color=Rule] (2.95,0)--(2.95,4.18);
+            \draw[very thick,color=ProblemAccent] (0,3.28)--(1.25,3.28);
+            \draw[very thick,color=ProblemAccent]
+                (1.25,3.28) .. controls (1.60,3.18) and (2.25,3.02)
+                .. (2.95,2.84);
+            \draw[very thick,->,color=AnswerAccent]
+                (2.95,2.84) .. controls (3.65,2.66) and (4.45,2.20)
+                .. (5.15,1.90) .. controls (5.55,1.73) and (5.95,1.67)
+                .. (6.22,1.66);
+            \draw[dashed,color=Rule] (0,1.63)--(6.25,1.63);
+            \node[anchor=west,color=Muted] at (6.28,1.63)
+                {\scriptsize \(k^*_{\tau}\)};
+            \node[below,color=Muted] at (1.25,0)
+                {\scriptsize \(0\)};
+            \node[below,color=Muted] at (2.95,0)
+                {\scriptsize \(t_1\)};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Time paths following announcement of the future permanent tax.
+    Consumption jumps at time 0, leaves the impact point with zero slope,
+    and has a kink at \(t_1\). Capital has a kink at time 0 but is smooth at
+    \(t_1\); both paths flatten as they approach the new balanced-growth
+    values.}
+\end{figure}
+\end{solution}
+
+\begin{note}[Announcement dates versus implementation dates]
+    A forward-looking control variable can jump when genuinely new
+    information arrives at time 0. It cannot jump at the already anticipated
+    implementation date \(t_1\), although its growth rate can change there.
+\end{note}
+
 \begin{problem}{12}[\textbf{Using the phase diagram to analyze the impact of unanticipated and anticipated temporary changes.}]
 Analyze the following two variations on Problem 2.11:
 \begin{enumerate}[label=(\alph*)]
@@ -126,12 +1611,505 @@ Analyze the following two variations on Problem 2.11:
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+In either variation, the Euler equation depends on whether the capital-income
+tax is currently in force:
+\begin{align*}
+    \frac{\dot c}{c}
+    &={}
+    \begin{cases}
+        \dfrac{f'(k)-\rho-\theta g}{\theta},
+            & \text{while income is untaxed},\\[7pt]
+        \dfrac{(1-\tau)f'(k)-\rho-\theta g}{\theta},
+            & \text{while the tax is in force}.
+    \end{cases}
+    \problemeqtag\label{eq:p212-euler-regimes}
+\end{align*}
+Since the revenue is rebated, the resource equation is always
+\begin{align*}
+    \dot k=f(k)-c-(n+g)k.
+    \problemeqtag\label{eq:p212-capital-law}
+\end{align*}
+Thus the \(\dot k=0\) locus never moves. The \(\dot c=0\) locus shifts
+left while the tax is in force and returns to its original position when the
+tax ends.
+
+\begin{enumerate}[label=(\alph*)]
+    \item The adoption of the tax at time 0 is unanticipated, so consumption
+    can jump then. Its removal at \(t_1\) is known from time 0, so
+    \(c(t_1^-)=c(t_1^+)\). Moreover, at \(t_1\) the economy must lie on
+    the original, no-tax saddle path; otherwise the no-tax dynamics after
+    \(t_1\) would not return it to the original balanced-growth point.
+
+    These requirements determine the initial jump. Consumption jumps upward
+    from \(E\) to \(A\). To see why the jump cannot be downward, suppose
+    instead that the economy remained at or below \(E\). Under the taxed
+    branch of \eqref{eq:p212-euler-regimes} it would have \(\dot c<0\),
+    and being below the \(\dot k=0\) curve in
+    \eqref{eq:p212-capital-law} would give \(\dot k>0\); the economy would
+    move southeast, away from the original saddle path.
+
+    From \(A\), both \(c\) and \(k\) initially fall. The economy eventually
+    crosses the \(\dot k=0\) curve at \(Q\); thereafter \(c\) continues to
+    fall but \(k\) begins to rise. The impact point \(A\) is the unique one
+    that makes the economy reach point \(B\) on the original saddle path
+    exactly at \(t_1\). When the tax is removed, consumption remains
+    continuous and both variables rise from \(B\) back to \(E\).
+
+    \item Consumption cannot jump at either \(t_1\) or \(t_2\), because
+    both dates and both policy changes are announced at time 0. It can jump
+    at time 0, when the new information first arrives. The terminal
+    condition is now that the economy be on the original saddle path at
+    \(t_2\).
+
+    Consumption jumps upward from \(E\) to \(A\) at time 0, while capital
+    remains at \(k^*_0\). Until \(t_1\), the no-tax equations apply. At
+    \(A\), \(\dot c=0\) initially and \(\dot k<0\); after \(k\) begins to
+    fall, the economy is left of the no-tax \(\dot c=0\) line, so
+    consumption rises. It moves northwest to \(B\).
+
+    At \(t_1\), the tax begins and the relevant \(\dot c=0\) line shifts
+    left. Consumption is continuous, but \(\dot c\) switches from positive
+    to negative. Capital continues to fall because the economy is still
+    above \(\dot k=0\). After crossing that curve at \(Q\), capital begins
+    to rise while consumption continues to fall. The initial point \(A\) is
+    chosen so that this taxed trajectory reaches \(C\), on the original
+    saddle path, exactly at \(t_2\). The tax then ends without a jump in
+    consumption, and the economy moves northeast from \(C\) back to
+    \(E\).
+\end{enumerate}
+
+Figure 2.6 shows the complete shooting paths for the two temporary-tax
+experiments; the labels \(B\) and \(C\) mark the points that must lie on the
+original saddle path when the tax is removed.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=0.90cm,y=0.86cm,>=stealth]
+        \path[use as bounding box] (-0.75,-1.15) rectangle (15.05,5.80);
+
+        % Panel (a): immediate temporary tax
+        \begin{scope}
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,5.08)
+                {(a) Taxed from \(0\) to \(t_1\)};
+            \draw[->,color=Muted] (0,0)--(6.25,0)
+                node[right] {\scriptsize \(k\)};
+            \draw[->,color=Muted] (0,0)--(0,4.65)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,color=Muted,domain=0:5.90,samples=90]
+                plot (\x,{2.45*sqrt(\x)-0.47*\x});
+            \draw[thick,dashed,color=AnswerAccent] (2.35,0)--(2.35,4.30);
+            \draw[thick,dashed,color=ProblemAccent] (4.50,0)--(4.50,4.30);
+            \rckmotion{0.64}{2.52}{-0.27}{0.27}
+            \rckmotion{0.72}{0.38}{0.27}{0.27}
+            \rckmotion{5.72}{4.14}{-0.27}{-0.27}
+            \rckmotion{5.48}{0.92}{0.27}{-0.27}
+            \draw[thick,color=ProblemAccent]
+                (1.15,1.28) .. controls (2.05,1.88) and (2.85,2.32)
+                .. (3.45,2.62) .. controls (3.88,2.82) and (4.25,3.00)
+                .. (4.50,3.08) .. controls (4.87,3.22) and (5.20,3.37)
+                .. (5.50,3.50);
+
+            \draw[very thick,->,color=AnswerAccent]
+                (4.50,3.66) .. controls (3.82,3.43) and (3.20,3.06)
+                .. (2.83,2.80);
+            \draw[very thick,->,color=AnswerAccent]
+                (2.83,2.80) .. controls (2.92,2.72) and (3.19,2.65)
+                .. (3.40,2.62);
+            \draw[very thick,->,color=ProblemAccent]
+                (3.50,2.64) .. controls (3.85,2.82) and (4.18,2.99)
+                .. (4.44,3.07);
+            \draw[very thick,->,color=ProblemAccent]
+                (4.50,3.13)--(4.50,3.56);
+
+            \fill[color=ProblemAccent] (4.50,3.08) circle (2.4pt);
+            \fill[color=ProblemAccent] (4.50,3.66) circle (2.2pt);
+            \fill[color=Muted] (2.83,2.80) circle (2.0pt);
+            \fill[color=AnswerAccent] (3.45,2.62) circle (2.2pt);
+            \node[anchor=north west,color=Muted] at (4.60,3.03)
+                {\scriptsize \(E\)};
+            \node[anchor=south west,color=Muted] at (4.60,3.69)
+                {\scriptsize \(A\)};
+            \draw[thin,color=Rule] (2.78,2.88)--(2.69,3.08);
+            \node[anchor=south east,color=Muted] at (2.72,3.14)
+                {\scriptsize \(Q\)};
+            \node[anchor=west,color=Muted] at (3.70,2.34)
+                {\scriptsize \(B\;(t=t_1)\)};
+        \end{scope}
+
+        % Panel (b): anticipated temporary tax
+        \begin{scope}[shift={(8.05,0)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,5.08)
+                {(b) Taxed from \(t_1\) to \(t_2\)};
+            \draw[->,color=Muted] (0,0)--(6.25,0)
+                node[right] {\scriptsize \(k\)};
+            \draw[->,color=Muted] (0,0)--(0,4.65)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,color=Muted,domain=0:5.90,samples=90]
+                plot (\x,{2.45*sqrt(\x)-0.47*\x});
+            \draw[thick,dashed,color=AnswerAccent] (2.35,0)--(2.35,4.30);
+            \draw[thick,dashed,color=ProblemAccent] (4.50,0)--(4.50,4.30);
+            \rckmotion{0.64}{2.52}{-0.27}{0.27}
+            \rckmotion{0.72}{0.38}{0.27}{0.27}
+            \rckmotion{5.72}{4.14}{-0.27}{-0.27}
+            \rckmotion{5.48}{0.92}{0.27}{-0.27}
+            \draw[thick,color=ProblemAccent]
+                (1.15,1.28) .. controls (2.00,1.83) and (2.75,2.27)
+                .. (3.30,2.54) .. controls (3.83,2.82) and (4.23,3.00)
+                .. (4.50,3.08) .. controls (4.87,3.22) and (5.20,3.37)
+                .. (5.50,3.50);
+
+            \draw[very thick,->,color=ProblemAccent]
+                (4.50,3.54) .. controls (4.24,3.54) and (3.96,3.62)
+                .. (3.78,3.67);
+            \draw[very thick,->,color=AnswerAccent]
+                (3.72,3.66) .. controls (3.35,3.44) and (3.02,3.05)
+                .. (2.82,2.80);
+            \draw[very thick,->,color=AnswerAccent]
+                (2.82,2.80) .. controls (2.91,2.70) and (3.10,2.59)
+                .. (3.25,2.55);
+            \draw[very thick,->,color=ProblemAccent]
+                (3.34,2.56) .. controls (3.83,2.82) and (4.20,2.99)
+                .. (4.44,3.07);
+            \draw[very thick,->,color=ProblemAccent]
+                (4.50,3.10)--(4.50,3.48);
+
+            \fill[color=ProblemAccent] (4.50,3.08) circle (2.4pt);
+            \fill[color=ProblemAccent] (4.50,3.54) circle (2.2pt);
+            \fill[color=ProblemAccent] (3.75,3.68) circle (2.2pt);
+            \fill[color=Muted] (2.82,2.80) circle (2.0pt);
+            \fill[color=AnswerAccent] (3.30,2.54) circle (2.2pt);
+            \node[anchor=north west,color=Muted] at (4.60,3.03)
+                {\scriptsize \(E\)};
+            \node[anchor=south west,color=Muted] at (4.60,3.57)
+                {\scriptsize \(A\;(t=0)\)};
+            \node[anchor=south east,color=Muted] at (3.64,3.90)
+                {\scriptsize \(B\;(t=t_1)\)};
+            \draw[thin,color=Rule] (2.77,2.88)--(2.68,3.08);
+            \node[anchor=south east,color=Muted] at (2.71,3.14)
+                {\scriptsize \(Q\)};
+            \node[anchor=west,color=Muted] at (3.54,2.34)
+                {\scriptsize \(C\;(t=t_2)\)};
+        \end{scope}
+
+        \begin{scope}[shift={(0.52,-0.56)}]
+            \draw[very thick,color=Muted] (0,0)--(0.60,0);
+            \node[anchor=west,color=Muted] at (0.71,0)
+                {\scriptsize common \(\dot k=0\)};
+            \draw[thick,dashed,color=AnswerAccent] (3.25,0)--(3.85,0);
+            \node[anchor=west,color=Muted] at (3.96,0)
+                {\scriptsize taxed \(\dot c=0\)};
+            \draw[thick,dashed,color=ProblemAccent] (6.26,0)--(6.86,0);
+            \node[anchor=west,color=Muted] at (6.97,0)
+                {\scriptsize no-tax \(\dot c=0\)};
+            \draw[thick,color=ProblemAccent] (9.35,0)--(9.95,0);
+            \node[anchor=west,color=Muted] at (10.06,0)
+                {\scriptsize original saddle path};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Temporary capital-income taxes. In panel (a), implementation
+    at time 0 is unanticipated but removal at \(t_1\) is anticipated. In
+    panel (b), both implementation and removal are anticipated. Consumption
+    jumps only at the announcement date, and the economy must reach the
+    original saddle path when the temporary tax ends. Black point-arrows show
+    motion while the tax is in force.}
+\end{figure}
+\end{solution}
+
+\begin{note}[Where consumption may jump]
+    The determining event is the arrival of new information, not the moment
+    a tax rate mechanically changes. Consumption may jump at time 0 in both
+    cases, but it is continuous at every previously announced policy date.
+\end{note}
+
+\begin{note}[The terminal saddle-path condition]
+    Work backward from the date the temporary tax ends. The economy must be
+    on the original saddle path then; this requirement selects the unique
+    impact value of consumption at the announcement date.
+\end{note}
+
 \begin{problem}{13}[\textbf{An interesting situation in the Ramsey--Cass--Koopmans model.}]
 \begin{enumerate}[label=(\alph*)]
     \item Consider the Ramsey--Cass--Koopmans model where \(k\) at time 0 (which--as always--the model takes as given) is at the golden-rule level: \(k\left(0\right)=k^{GR}\). Sketch the paths of \(c\) and \(k\).
     \item Consider the same initial situation as in part (a), but in the version of the model that includes government purchases. Assume that \(G\) is constant and equal \(\bar{G}\). Crucially, \(\bar{G}\) is strictly less than \(f\left(k^{GR}\right)-\left(n+g\right)k^{GR}\) and strictly greater than \(f\left(k^*\right)-\left(n+g\right)k^*\) (where \(k^*\) is the level of \(k\) on the balanced growth path the economy would have if \(G\) were constant and equal to 0). Sketch the paths of \(c\) and \(k\). \par \remarkaccent{Hint:} This problem is hard but can be answered by thinking things through slowly and carefully.
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+Write net output after break-even investment as
+\(h(k)\equiv f(k)-(n+g)k\). With government purchases per unit of
+effective labor equal to \(G\), the two equations of motion are
+\begin{align*}
+    \frac{\dot c}{c}
+    &=\frac{f'(k)-\rho-\theta g}{\theta},
+    &
+    \dot k&=h(k)-c-G.
+    \problemeqtag\label{eq:p213-dynamics}
+\end{align*}
+The Ramsey balanced-growth value and the golden-rule value satisfy
+\begin{align*}
+    f'(k^*)&=\rho+\theta g,
+    &
+    f'(k^{GR})&=n+g.
+    \problemeqtag\label{eq:p213-two-capital-levels}
+\end{align*}
+The chapter assumes
+\(\rho-n-(1-\theta)g>0\), or
+\(\rho+\theta g>n+g\). Since \(f'\) is decreasing,
+\begin{align*}
+    k^*<k^{GR}.
+    \problemeqtag\label{eq:p213-ordering}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Here \(G=0\). Capital is predetermined, so the economy begins at
+    \(k(0)=k^{GR}\); consumption jumps to the unique value \(c(0)\) that
+    places the economy on the stable saddle path.
+
+    By \eqref{eq:p213-ordering}, the initial capital stock lies to the
+    right of the \(\dot c=0\) locus. Hence \(\dot c<0\). On the stable arm
+    to the right of \(k^*\), consumption is above the \(\dot k=0\) curve
+    \(c=h(k)\), so \(\dot k<0\). Thus both variables fall monotonically:
+    \[
+        k(t)\downarrow k^*,
+        \qquad
+        c(t)\downarrow c^*=h(k^*).
+    \]
+    The convergence is asymptotic; neither variable jumps after time 0.
+
+    \item Now set \(G=\bar G\). The \(\dot c=0\) locus is unchanged, while
+    the \(\dot k=0\) curve becomes
+    \begin{align*}
+        c=h(k)-\bar G.
+        \problemeqtag\label{eq:p213-government-kdot}
+    \end{align*}
+    The assumptions in the question say
+    \begin{align*}
+        h(k^*)-\bar G<0
+        \quad\text{and}\quad
+        h(k^{GR})-\bar G>0.
+        \problemeqtag\label{eq:p213-government-inequalities}
+    \end{align*}
+    Moreover, \(h'(k)=f'(k)-(n+g)>0\) between \(k^*\) and
+    \(k^{GR}\). Therefore there is a unique value
+    \(\widehat{k}\in(k^*,k^{GR})\) such that
+    \begin{align*}
+        h(\widehat{k})=\bar G.
+        \problemeqtag\label{eq:p213-boundary-capital}
+    \end{align*}
+
+    No balanced-growth point with positive consumption exists: the
+    unchanged \(\dot c=0\) line is at \(k^*\), but
+    \eqref{eq:p213-government-inequalities} would require negative
+    consumption there. The feasible limiting point is instead the boundary
+    \((\widehat{k},0)\).
+
+    Starting from \(k^{GR}\), consumption again jumps to the unique path
+    leading to that boundary point. Along this path
+    \(k>\widehat{k}>k^*\),
+    so \(\dot c<0\); the path lies above
+    \eqref{eq:p213-government-kdot}, so \(\dot k<0\). Consequently,
+    \[
+        k(t)\downarrow\widehat{k},
+        \qquad
+        c(t)\downarrow0.
+    \]
+    Holding \(k\) fixed at \(k^{GR}\) is not an optimum: at any point on
+    the \(\dot k=0\) curve to the right of \(k^*\),
+    \(\dot c<0\), so households wish to tilt consumption toward the
+    present rather than keep it constant.
+\end{enumerate}
+
+Figure 2.7 locates the initial capital stock and the two limiting points in
+the phase diagram. Figure 2.8 then displays the corresponding time paths,
+so its panels should be read as paths over time rather than as additional
+phase regions.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=1.02cm,y=0.63cm,>=stealth]
+        \path[use as bounding box] (-0.80,-1.48) rectangle (9.20,5.88);
+        \draw[->,color=Muted] (0,0)--(8.55,0)
+            node[right] {\scriptsize \(k\)};
+        \draw[->,color=Muted] (0,0)--(0,5.20)
+            node[above] {\scriptsize \(c\)};
+
+        % Baseline and government-purchases resource loci.
+        \draw[very thick,color=ProblemAccent,domain=0:8.08,samples=120]
+            plot (\x,{2.60*sqrt(\x)-0.55*\x});
+        \draw[very thick,color=AnswerAccent,domain=2.71:8.08,samples=100]
+            plot (\x,{2.60*sqrt(\x)-0.55*\x-2.79});
+        \draw[thick,dashed,color=Ink] (1.35,0)--(1.35,4.88);
+        \node[anchor=north west,color=Muted] at (1.48,4.74)
+            {\scriptsize common \(\dot c=0\)};
+
+        \pgfmathsetmacro{\cbase}{2.60*sqrt(1.35)-0.55*1.35}
+        \pgfmathsetmacro{\cgr}{2.60*sqrt(5.59)-0.55*5.59}
+
+        % Baseline saddle path and the path with government purchases.
+        \draw[thick,color=ProblemAccent]
+            (0.75,1.43) .. controls (1.02,1.82) and (1.20,2.08)
+            .. (1.35,\cbase) .. controls (2.35,2.82) and (4.35,3.36)
+            .. (5.59,3.66) .. controls (6.35,3.82) and (7.10,3.94)
+            .. (7.60,4.02);
+        \draw[very thick,->,color=ProblemAccent]
+            (5.59,3.66) .. controls (4.45,3.40) and (2.55,2.95)
+            .. (1.48,\cbase+0.04);
+
+        \draw[thick,color=AnswerAccent]
+            (2.71,0.02) .. controls (3.32,0.36) and (4.30,0.93)
+            .. (5.59,1.42) .. controls (6.22,1.70) and (6.88,1.92)
+            .. (7.48,2.08);
+        \draw[very thick,->,color=AnswerAccent]
+            (5.59,1.42) .. controls (4.48,0.99) and (3.22,0.38)
+            .. (2.80,0.08);
+
+        % One representative point-arrow in each baseline phase region.
+        \rckmotion{0.68}{3.72}{-0.30}{0.30}
+        \rckmotion{0.78}{0.42}{0.30}{0.30}
+        \rckmotion{7.05}{4.47}{-0.30}{-0.30}
+        \rckmotion{7.25}{1.04}{0.30}{-0.30}
+
+        \fill[color=Ink] (1.35,\cbase) circle (2.5pt);
+        \fill[color=ProblemAccent] (5.59,3.66) circle (2.3pt);
+        \fill[color=AnswerAccent] (5.59,1.42) circle (2.3pt);
+        \fill[color=AnswerAccent] (2.71,0) circle (2.5pt);
+        \draw[densely dotted,color=Rule] (5.59,0)--(5.59,3.58);
+
+        \draw[thin,color=Rule]
+            (1.40,\cbase-0.05)--(1.62,\cbase-0.32);
+        \node[anchor=north west,color=Muted] at (1.68,\cbase-0.36)
+            {\scriptsize \(E=(k^*,c^*)\)};
+        \draw[thin,color=Rule] (5.65,3.71)--(5.92,4.02);
+        \node[anchor=south west,color=Muted] at (5.97,4.06)
+            {\scriptsize \(A_0\)};
+        \draw[thin,color=Rule] (5.53,1.47)--(5.12,1.80);
+        \node[anchor=south east,color=Muted] at (5.06,1.84)
+            {\scriptsize \(A_{\bar G}\)};
+        \node[below,color=Muted] at (1.35,0)
+            {\scriptsize \(k^*\)};
+        \node[below,color=Muted] at (2.71,0)
+            {\scriptsize \(\widehat{k}\)};
+        \node[below,color=Muted] at (5.59,0)
+            {\scriptsize \(k^{GR}\)};
+
+        \begin{scope}[shift={(1.00,-0.90)}]
+            \draw[very thick,color=ProblemAccent] (0,0)--(0.68,0);
+            \node[anchor=west,color=Muted] at (0.80,0)
+                {\scriptsize baseline: \(\dot k=0\) and saddle path};
+            \draw[very thick,color=AnswerAccent] (0,-0.38)--(0.68,-0.38);
+            \node[anchor=west,color=Muted] at (0.80,-0.38)
+                {\scriptsize with \(G=\bar G\): \(\dot k=0\) and limiting path};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Problem 2.13 in the phase diagram. The golden-rule stock is to
+    the right of the Ramsey balanced-growth stock. Constant government
+    purchases shift the \(\dot k=0\) curve down so far that it lies below
+    the horizontal axis at \(k^*\); the feasible limiting point is therefore
+    \(E_{\bar G}=(\widehat{k},0)\). Black point-arrows mark the direction of
+    motion in each of the four baseline phase regions.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=0.87cm,y=0.62cm,>=stealth]
+        \path[use as bounding box] (-0.72,-0.60) rectangle (14.70,9.85);
+
+        % Part (a): capital.
+        \begin{scope}[shift={(0,5.12)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.18)
+                {(a) Capital};
+            \draw[->,color=Muted] (0,0)--(6.45,0)
+                node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,3.72)
+                node[above] {\scriptsize \(k\)};
+            \draw[dashed,color=Rule] (0,1.18)--(6.05,1.18);
+            \node[anchor=west,color=Muted] at (6.10,1.18)
+                {\scriptsize \(k^*\)};
+            \draw[very thick,->,color=ProblemAccent]
+                (0,3.22) .. controls (1.50,2.94) and (2.38,2.18)
+                .. (3.55,1.55) .. controls (4.48,1.20) and (5.35,1.19)
+                .. (5.88,1.19);
+            \node[anchor=west,color=Muted] at (0.13,3.42)
+                {\scriptsize \(k^{GR}=k(0)\)};
+        \end{scope}
+
+        % Part (a): consumption.
+        \begin{scope}[shift={(7.65,5.12)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.18)
+                {(a) Consumption};
+            \draw[->,color=Muted] (0,0)--(6.45,0)
+                node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,3.72)
+                node[above] {\scriptsize \(c\)};
+            \draw[dashed,color=Rule] (0,1.18)--(6.05,1.18);
+            \node[anchor=west,color=Muted] at (6.10,1.18)
+                {\scriptsize \(c^*\)};
+            \draw[very thick,->,color=ProblemAccent]
+                (0,3.22) .. controls (1.38,2.94) and (2.30,2.22)
+                .. (3.50,1.57) .. controls (4.42,1.22) and (5.32,1.19)
+                .. (5.88,1.19);
+            \node[anchor=west,color=Muted] at (0.13,3.42)
+                {\scriptsize \(c(0)\)};
+        \end{scope}
+
+        % Part (b): capital.
+        \begin{scope}
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.18)
+                {(b) Capital with \(G=\bar G\)};
+            \draw[->,color=Muted] (0,0)--(6.45,0)
+                node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,3.72)
+                node[above] {\scriptsize \(k\)};
+            \draw[dashed,color=Rule] (0,0.78)--(6.05,0.78);
+            \node[anchor=west,color=Muted] at (6.10,0.78)
+                {\scriptsize \(\widehat{k}\)};
+            \draw[very thick,->,color=AnswerAccent]
+                (0,3.22) .. controls (1.28,2.92) and (2.25,1.82)
+                .. (3.47,1.10) .. controls (4.34,0.80) and (5.28,0.79)
+                .. (5.88,0.79);
+            \node[anchor=west,color=Muted] at (0.13,3.42)
+                {\scriptsize \(k^{GR}=k(0)\)};
+        \end{scope}
+
+        % Part (b): consumption.
+        \begin{scope}[shift={(7.65,0)}]
+            \node[anchor=west,font=\small\bfseries,color=Ink] at (0,4.18)
+                {(b) Consumption with \(G=\bar G\)};
+            \draw[->,color=Muted] (0,0)--(6.45,0)
+                node[right] {\scriptsize time};
+            \draw[->,color=Muted] (0,0)--(0,3.72)
+                node[above] {\scriptsize \(c\)};
+            \draw[very thick,->,color=AnswerAccent]
+                (0,3.22) .. controls (1.26,2.84) and (2.20,1.78)
+                .. (3.38,0.86) .. controls (4.25,0.29) and (5.20,0.08)
+                .. (5.88,0.03);
+            \node[anchor=west,color=Muted] at (0.13,3.42)
+                {\scriptsize \(c(0)\)};
+            \node[anchor=south,color=Muted] at (5.65,0.12)
+                {\scriptsize \(c\to0\)};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Time paths in Problem 2.13. Without government purchases,
+    capital and consumption converge to positive balanced-growth values.
+    Under the purchases specified in part (b), both decline, but consumption
+    approaches zero while capital approaches \(\widehat{k}>k^*\).}
+\end{figure}
+\end{solution}
+
+\begin{note}[Why the golden rule is not the Ramsey steady state]
+    The golden rule maximizes sustainable consumption and uses
+    \(f'(k^{GR})=n+g\). The Ramsey household discounts the future, so its
+    balanced-growth condition is \(f'(k^*)=\rho+\theta g\), which places
+    \(k^*\) below \(k^{GR}\) under the chapter's parameter restriction.
+\end{note}
+
+\begin{note}[A boundary limit, not a positive-consumption steady state]
+    In part (b), the two zero-motion loci do not meet at positive
+    consumption. The economy approaches \((\widehat{k},0)\) only
+    asymptotically; calling \(k^*\) the new steady state would incorrectly
+    require negative consumption.
+\end{note}
 
 \begin{problem}{14}
 Consider the Diamond model with logarithmic utility and Cobb--Douglas production. Describe how each of the following affects \(k_{t+1}\) as a function of \(k_t\):
@@ -141,6 +2119,54 @@ Consider the Diamond model with logarithmic utility and Cobb--Douglas production
     \item A rise in \(\alpha\).
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+For logarithmic utility, the young save the fraction \(1/(2+\rho)\) of
+their labor income. If \(f(k)=Bk^\alpha\), the real wage per unit of
+effective labor is
+\[
+    w_t=f(k_t)-k_t f'(k_t)=(1-\alpha)B k_t^\alpha.
+\]
+Since the saving of the \(L_t\) young finances \(K_{t+1}\), the transition
+equation is
+\begin{align*}
+    k_{t+1}
+    =\frac{(1-\alpha)B}
+    {(1+n)(1+g)(2+\rho)}\,k_t^\alpha.
+    \problemeqtag\label{eq:p214-transition}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item A rise in \(n\) increases the denominator of
+    \eqref{eq:p214-transition}. Thus \(k_{t+1}\) is lower at every positive
+    \(k_t\): the entire transition curve shifts down. The same saving is
+    spread over a larger next generation of workers.
+
+    \item A fall in \(B\) also shifts the transition curve down
+    proportionally. At a given \(k_t\), productivity, the wage, and
+    therefore the saving of the young are all lower.
+
+    \item A rise in \(\alpha\) changes both labor's share \(1-\alpha\) and
+    the term \(k_t^\alpha\), so the sign need not be the same at all values
+    of \(k_t\). Differentiating \eqref{eq:p214-transition} gives
+    \begin{align*}
+        \frac{\partial k_{t+1}}{\partial\alpha}
+        =\frac{B k_t^\alpha}
+        {(1+n)(1+g)(2+\rho)}
+        \bigl[(1-\alpha)\ln k_t-1\bigr].
+        \problemeqtag\label{eq:p214-alpha-effect}
+    \end{align*}
+    Hence the transition curve moves down where
+    \(\ln k_t<1/(1-\alpha)\), moves up where
+    \(\ln k_t>1/(1-\alpha)\), and is unchanged at
+    \[
+        k_t=\exp\!\left(\frac{1}{1-\alpha}\right).
+    \]
+    Economically, a larger \(\alpha\) raises the output elasticity of
+    capital but lowers labor's income share. Which force dominates depends
+    on the level and units of \(k_t\).
+\end{enumerate}
+\end{solution}
 
 \begin{problem}{15}[\textbf{A discrete-time version of the Solow model.}]
 Suppose \(Y_t=F\left(K_t,A_t\,L_t\right)\), with \(F\left(\,\cdot\,\right)\) having constant returns to scale and the intensive form of the production function satisfying the Inada conditions. Suppose also that \(A_{t+1}=\left(1+g\right)A_t\), \(L_{t+1}=\left(1+n\right)L_t\), and \(K_{t+1}=K_t+s\,Y_t-\delta K_t\).
@@ -157,6 +2183,178 @@ Suppose \(Y_t=F\left(K_t,A_t\,L_t\right)\), with \(F\left(\,\cdot\,\right)\) hav
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Next period's effective labor is
+    \(A_{t+1}L_{t+1}=(1+g)(1+n)A_tL_t\). Dividing the
+    capital-accumulation equation by this quantity gives
+    \begin{align*}
+        k_{t+1}
+        =\frac{(1-\delta)k_t+s f(k_t)}
+        {(1+n)(1+g)}.
+        \problemeqtag\label{eq:p215-transition}
+    \end{align*}
+    This is the discrete-time counterpart of the Solow equation of motion.
+    Notice that exact discrete-time break-even investment contains the
+    product \(ng\), which disappears only under a continuous-time
+    approximation.
+
+    \item Let the right-hand side of \eqref{eq:p215-transition} be
+    \(T(k_t)\). Diminishing returns and the Inada conditions imply
+    \[
+        T'(k)>0,\qquad T''(k)<0,\qquad
+        \lim_{k\to0}T'(k)=\infty,\qquad
+        \lim_{k\to\infty}T'(k)
+        =\frac{1-\delta}{(1+n)(1+g)}<1.
+    \]
+    Thus \(T(k)\) crosses the \(45^\circ\) line once at a strictly positive
+    value \(k^*\). The fixed-point condition is
+    \begin{align*}
+        s f(k^*)=(n+g+ng+\delta)k^*.
+        \problemeqtag\label{eq:p215-fixed-point}
+    \end{align*}
+    If \(0<k_t<k^*\), then \(k_t<T(k_t)<k^*\); if \(k_t>k^*\), then
+    \(k^*<T(k_t)<k_t\). Capital therefore converges monotonically to
+    \(k^*\) from either side. Once \(k\) is constant, all variables per
+    unit of effective labor are constant and the economy is on a balanced
+    growth path.
+
+    \item On a balanced growth path, consumption per unit of effective
+    labor is \(c^*=(1-s)f(k^*)\). Solving
+    \eqref{eq:p215-fixed-point} for \(s\) and substituting gives
+    \begin{align*}
+        c^*
+        =f(k^*)-(n+g+ng+\delta)k^*.
+        \problemeqtag\label{eq:p215-bgp-consumption}
+    \end{align*}
+    Maximizing the right-hand side of
+    \eqref{eq:p215-bgp-consumption} with respect to the balanced-growth
+    value of capital yields
+    \begin{align*}
+        f'(k^{GR})=n+g+ng+\delta.
+        \problemeqtag\label{eq:p215-golden-rule}
+    \end{align*}
+
+    \item Let \(f(k)=k^\alpha\), with \(0<\alpha<1\).
+    \begin{enumerate}[label=(\roman*)]
+        \item Equation \eqref{eq:p215-transition} becomes
+        \begin{align*}
+            k_{t+1}
+            =\frac{(1-\delta)k_t+s k_t^\alpha}
+            {(1+n)(1+g)}.
+            \problemeqtag\label{eq:p215-cd-transition}
+        \end{align*}
+
+        \item Applying the fixed-point condition
+        \eqref{eq:p215-fixed-point} to Cobb--Douglas production gives
+        \[
+            (k^*)^{1-\alpha}
+            =\frac{s}{n+g+ng+\delta}.
+        \]
+        Therefore
+        \begin{align*}
+            \boxed{
+            k^*
+            =\left(\frac{s}{n+g+ng+\delta}\right)^{1/(1-\alpha)}.}
+            \problemeqtag\label{eq:p215-cd-kstar}
+        \end{align*}
+
+        \item A first-order Taylor expansion of
+        \eqref{eq:p215-cd-transition} around \(k_t=k^*\) is
+        \begin{align*}
+            k_{t+1}-k^*
+            \simeq\lambda\,(k_t-k^*),
+            \qquad
+            \lambda
+            \equiv
+            \left.\frac{\partial k_{t+1}}{\partial k_t}\right|_{k_t=k^*}.
+            \problemeqtag\label{eq:p215-linearization}
+        \end{align*}
+        Differentiating \eqref{eq:p215-cd-transition} and using
+        \(s(k^*)^{\alpha-1}=n+g+ng+\delta\) yields
+        \begin{align*}
+            \lambda
+            =\alpha+
+            \frac{(1-\alpha)(1-\delta)}
+            {(1+n)(1+g)},
+            \qquad 0<\lambda<1.
+            \problemeqtag\label{eq:p215-lambda}
+        \end{align*}
+        Iterating \eqref{eq:p215-linearization} gives
+        \[
+            k_t-k^*\simeq\lambda^t(k_0-k^*).
+        \]
+        Hence the fraction of the remaining gap closed each period is
+        \begin{align*}
+            1-\lambda
+            =\frac{(1-\alpha)(n+g+ng+\delta)}
+            {(1+n)(1+g)}.
+            \problemeqtag\label{eq:p215-convergence-rate}
+        \end{align*}
+        Equivalently, the exact log rate associated with the linearized
+        path is \(-\ln\lambda\) per period.
+    \end{enumerate}
+\end{enumerate}
+
+Figure 2.9 illustrates the fixed point and the monotone convergence result
+in part (b); the cobweb arrows convert a value on the vertical axis into the
+next period's value on the horizontal axis.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=1.17cm,y=1.00cm,>=stealth]
+        \path[use as bounding box] (-0.75,-0.72) rectangle (7.50,6.65);
+        \draw[->,color=Muted] (0,0)--(6.72,0)
+            node[right] {\scriptsize \(k_t\)};
+        \draw[->,color=Muted] (0,0)--(0,6.00)
+            node[above] {\scriptsize \(k_{t+1}\)};
+        \draw[thick,dashed,color=Muted] (0,0)--(5.90,5.90);
+        \draw[very thick,color=ProblemAccent,domain=0:6.25,samples=120]
+            plot (\x,{0.25*\x+1.25*sqrt(\x)});
+
+        \pgfmathsetmacro{\kstarfig}{2.7778}
+        \fill[color=ProblemAccent] (\kstarfig,\kstarfig) circle (2.6pt);
+        \draw[densely dotted,color=Rule]
+            (\kstarfig,0)--(\kstarfig,\kstarfig);
+        \node[below,color=Muted] at (\kstarfig,0)
+            {\scriptsize \(k^*\)};
+        \node[anchor=south west,color=Muted] at (5.15,5.43)
+            {\scriptsize \(45^\circ\)};
+        \draw[thin,color=ProblemAccent] (1.20,2.26)--(1.45,1.88);
+        \node[anchor=south east,color=ProblemAccent] at (1.13,2.30)
+            {\scriptsize \(T(k_t)\)};
+
+        % Cobweb from above the steady state.
+        \draw[very thick,->,color=AnswerAccent] (6.00,0)--(6.00,4.56);
+        \draw[very thick,->,color=AnswerAccent] (6.00,4.56)--(4.56,4.56);
+        \draw[very thick,->,color=AnswerAccent] (4.56,4.56)--(4.56,3.81);
+        \draw[very thick,->,color=AnswerAccent] (4.56,3.81)--(3.81,3.81);
+        \draw[very thick,->,color=AnswerAccent] (3.81,3.81)--(3.81,3.39);
+        \draw[very thick,->,color=AnswerAccent] (3.81,3.39)--(3.39,3.39);
+        \draw[very thick,->,color=AnswerAccent] (3.39,3.39)--(3.39,3.15);
+        \node[below,color=Muted] at (6.00,0)
+            {\scriptsize \(k_0\)};
+    \end{tikzpicture}
+    \caption{The discrete-time Solow transition map. It is increasing and
+    strictly concave, crosses the \(45^\circ\) line once at \(k^*\), and
+    maps any positive initial capital stock monotonically toward that fixed
+    point.}
+\end{figure}
+\end{solution}
+
+\begin{note}[Discrete time has an \(ng\) term]
+    Since effective labor grows by the exact factor
+    \((1+n)(1+g)=1+n+g+ng\), break-even investment is
+    \(n+g+ng+\delta\), not \(n+g+\delta\).
+\end{note}
+
+\begin{note}[Two ways to report convergence]
+    \(1-\lambda\) is the fraction of the remaining gap closed in one
+    period. The corresponding continuously compounded rate is
+    \(-\ln\lambda\); these are close only when convergence per period is
+    slow.
+\end{note}
+
 \begin{problem}{16}[\textbf{Depreciation in the Diamond model and microeconomic foundations for the Solow model.}]
 Suppose that in the Diamond model capital depreciates at rate \(\delta\), so that \(r_t=f'\left(k_t\right)-\delta\).
 \begin{enumerate}[label=(\alph*)]
@@ -164,6 +2362,67 @@ Suppose that in the Diamond model capital depreciates at rate \(\delta\), so tha
     \item In the special case of logarithmic utility, Cobb--Douglas production, and \(\delta=1\), what is the equation for \(k_{t+1}\) as a function of \(k_t\)? Compare this with the analogous expression for the discrete-time version of the Solow model with \(\delta=1\) from part (a) of Problem 2.15.
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+Let \(s(r)\) denote the fraction of labor income that a young household
+saves when the net real interest rate is \(r\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item The household's intertemporal problem and therefore the function
+    \(s(r)\) are unchanged. Depreciation changes the return that must be
+    inserted into that function. Since the young at \(t\) earn
+    \(A_t[f(k_t)-k_t f'(k_t)]\), equation (2.60) becomes
+    \begin{align*}
+        k_{t+1}
+        =\frac{1}{(1+n)(1+g)}
+        s\!\left(f'(k_{t+1})-\delta\right)
+        \left[f(k_t)-k_t f'(k_t)\right].
+        \problemeqtag\label{eq:p216-depreciation-transition}
+    \end{align*}
+    Compared with (2.60), \(s(f'(k_{t+1}))\) is replaced by
+    \(s(f'(k_{t+1})-\delta)\). Thus the mapping generally changes, and
+    whether it moves up or down depends on how saving responds to the
+    interest rate. For CRRA utility, saving rises with the interest rate
+    when \(\theta<1\), falls when \(\theta>1\), and is independent of it
+    when \(\theta=1\).
+
+    \item With logarithmic utility,
+    \(s(r)=1/(2+\rho)\), so depreciation no longer affects the fraction of
+    wage income saved. Cobb--Douglas production gives
+    \(f(k)-kf'(k)=(1-\alpha)k^\alpha\). Hence, when
+    \(\delta=1\),
+    \begin{align*}
+        k_{t+1}
+        =\frac{1-\alpha}
+        {(1+n)(1+g)(2+\rho)}\,k_t^\alpha.
+        \problemeqtag\label{eq:p216-log-cd-transition}
+    \end{align*}
+
+    In the discrete-time Solow model with full depreciation, Problem 2.15
+    gives
+    \[
+        k_{t+1}
+        =\frac{\widetilde{s}}{(1+n)(1+g)}\,k_t^\alpha,
+    \]
+    where \(\widetilde{s}\) is saving as a fraction of total output. The two
+    transition equations coincide when
+    \begin{align*}
+        \widetilde{s}=\frac{1-\alpha}{2+\rho}.
+        \problemeqtag\label{eq:p216-aggregate-saving-rate}
+    \end{align*}
+    The factor \(1-\alpha\) appears because Diamond households save a
+    fraction \(1/(2+\rho)\) of labor income, and labor income is the share
+    \(1-\alpha\) of Cobb--Douglas output. With \(\delta=1\), no
+    undepreciated capital remains for the old to sell, so this is also the
+    economy's aggregate saving rate.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Two different saving rates]
+    \(s(r)\) is the young household's saving as a share of its wage income;
+    \(\widetilde{s}\) is aggregate saving as a share of total output. They
+    coincide only after accounting for labor's income share.
+\end{note}
 
 \begin{problem}{17}[\textbf{Social security in the Diamond model.}]
 Consider a Diamond economy where \(g\) is zero, production is Cobb--Douglas, and utility is logarithmic.
@@ -182,6 +2441,156 @@ Consider a Diamond economy where \(g\) is zero, production is Cobb--Douglas, and
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+Because \(g=0\), \(A\) is constant. With Cobb--Douglas production,
+\[
+    w_t=(1-\alpha)k_t^\alpha,
+    \qquad
+    r_{t+1}=\alpha k_{t+1}^{\alpha-1}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \begin{enumerate}[label=(\roman*)]
+        \item Let \(S_t\) be the young person's private saving. Under
+        pay-as-you-go social security,
+        \begin{align*}
+            C_{1t}+S_t&=Aw_t-T,
+            &
+            C_{2,t+1}
+            &=(1+r_{t+1})S_t+(1+n)T.
+            \problemeqtag\label{eq:p217-paygo-budgets}
+        \end{align*}
+        Eliminating \(S_t\) from
+        \eqref{eq:p217-paygo-budgets} gives the present-value budget
+        constraint
+        \begin{align*}
+            C_{1t}+\frac{C_{2,t+1}}{1+r_{t+1}}
+            =Aw_t-\frac{r_{t+1}-n}{1+r_{t+1}}\,T.
+            \problemeqtag\label{eq:p217-paygo-pv}
+        \end{align*}
+        The last term compares the market return \(1+r_{t+1}\) with the
+        implicit pay-as-you-go return \(1+n\).
+
+        With logarithmic utility, first-period consumption is the fraction
+        \((1+\rho)/(2+\rho)\) of the lifetime wealth on the right of
+        \eqref{eq:p217-paygo-pv}. Substituting that choice back into the
+        first constraint in \eqref{eq:p217-paygo-budgets} yields
+        \begin{align*}
+            S_t
+            &=\frac{Aw_t}{2+\rho}-Z(r_{t+1})T,\\[-2pt]
+            Z(r)
+            &\equiv
+            1-\frac{1+\rho}{2+\rho}\frac{r-n}{1+r}
+            =\frac{1+r+(1+\rho)(1+n)}
+            {(2+\rho)(1+r)}>0.
+            \problemeqtag\label{eq:p217-paygo-saving}
+        \end{align*}
+        Since \(K_{t+1}=L_tS_t\), division by
+        \(AL_{t+1}=A(1+n)L_t\) gives the new transition equation:
+        \begin{align*}
+            k_{t+1}
+            =\frac{1}{1+n}
+            \left[
+                \frac{1-\alpha}{2+\rho}k_t^\alpha
+                -Z(r_{t+1})\frac{T}{A}
+            \right],
+            \qquad
+            r_{t+1}=\alpha k_{t+1}^{\alpha-1}.
+            \problemeqtag\label{eq:p217-paygo-transition}
+        \end{align*}
+        Relative to equation (2.61), pay-as-you-go benefits crowd out
+        private saving. The equation is now implicit because
+        \(Z(r_{t+1})\) depends on \(k_{t+1}\).
+
+        \item Since \(Z(r)>0\), the social-security term in
+        \eqref{eq:p217-paygo-transition} lowers \(k_{t+1}\) at a given
+        \(k_t\). On the standard unique-equilibrium branch, the transition
+        curve shifts down and its positive fixed point falls. Thus the
+        balanced-growth value of \(k\) is lower.
+
+        \item Consider a small permanent increase \(\mathrm dT>0\).
+        The old alive when the policy changes pay no new tax and receive
+        \((1+n)\mathrm dT\), so they gain.
+
+        If the initial balanced growth path is dynamically efficient,
+        \(r^*>n\). The pay-as-you-go component offers the currently young a
+        lower return than private saving, as
+        \eqref{eq:p217-paygo-pv} shows. Their full transitional welfare
+        change also includes the rise in \(r_{t+1}\) caused by lower saving,
+        so its exact size is not pinned down by the return comparison alone.
+        The reduction in the eventual \(k^*\), however, moves the economy
+        farther below the golden-rule stock, so future generations on the
+        new balanced growth path are worse off.
+
+        If the initial path is dynamically inefficient, \(r^*<n\).
+        The implicit pay-as-you-go return then exceeds the market return,
+        and the fall in \(k^*\) reduces overaccumulation. A sufficiently
+        small increase in \(T\), one that does not push capital past the
+        golden-rule level, can therefore implement a Pareto improvement:
+        the initial old gain immediately, and the economy's future
+        consumption possibilities rise.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}[label=(\roman*)]
+        \item Under a fully funded system, the two within-generation
+        constraints are
+        \[
+            C_{1t}+S_t=Aw_t-T,
+            \qquad
+            C_{2,t+1}=(1+r_{t+1})(S_t+T).
+        \]
+        Eliminating private saving gives
+        \begin{align*}
+            C_{1t}+\frac{C_{2,t+1}}{1+r_{t+1}}=Aw_t.
+            \problemeqtag\label{eq:p217-funded-pv}
+        \end{align*}
+        This is exactly the budget constraint without social security.
+        Therefore desired total saving remains
+        \(Aw_t/(2+\rho)\), and private saving is
+        \begin{align*}
+            S_t=\frac{Aw_t}{2+\rho}-T.
+            \problemeqtag\label{eq:p217-funded-private-saving}
+        \end{align*}
+        The government invests \(T\) for each young person, so total
+        investment is \(L_t(S_t+T)\). Using
+        \eqref{eq:p217-funded-private-saving},
+        \begin{align*}
+            k_{t+1}
+            =\frac{1-\alpha}{(1+n)(2+\rho)}k_t^\alpha,
+            \problemeqtag\label{eq:p217-funded-transition}
+        \end{align*}
+        exactly equation (2.61) with \(g=0\). Private saving falls
+        one-for-one with government saving.
+
+        \item Since the transition equation is unchanged, the
+        balanced-growth value of \(k\) is unchanged. This conclusion
+        assumes \(T\le Aw_t/(2+\rho)\), or that households can borrow, so
+        that the one-for-one private offset in
+        \eqref{eq:p217-funded-private-saving} is feasible.
+    \end{enumerate}
+\end{enumerate}
+\end{solution}
+
+\begin{note}[The key return comparison]
+    Pay-as-you-go social security earns the population-growth return
+    \(1+n\); private capital earns \(1+r\). The sign of \(r-n\) is therefore
+    both the dynamic-efficiency test and the long-run marginal welfare test.
+\end{note}
+
+\begin{note}[Why fully funded is neutral here]
+    The government buys the same asset households would buy and pays the
+    same return. With no binding borrowing constraint, households simply
+    reduce private saving by the amount saved for them.
+\end{note}
+
+\begin{note}[A small-policy qualification]
+    When the economy is dynamically inefficient, lowering capital is
+    beneficial only until the golden-rule stock is reached. A large tax can
+    overshoot that point even though a marginal increase is welfare-improving.
+\end{note}
+
 \begin{problem}{18}[\textbf{The basic overlapping-generations model.}]
 \problemsource{\parencite{samuelson1958consumption-loan,allais1947economie}}
 Suppose, as in the Diamond model, that \(L_t\) two-period-lived individuals are born in period \(t\) and that \(L_t=\left(1+n\right)L_{t-1}\). For simplicity, let utility be logarithmic with no discounting: \(U_t=\ln\left(C_{1t}\right)+\ln\left(C_{2t+1}\right)\).
@@ -195,6 +2604,94 @@ Finally, assume that in the initial period, period 0, in addition to the \(L_0\)
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item A young person cannot make an enforceable trade with the next
+    generation, because that generation has not yet been born. The old
+    alive today cannot provide a useful counterparty either: they will not
+    be alive next period to repay the young. Thus there is no
+    intergenerational trade in the decentralized equilibrium.
+
+    Let \(F_t\) be the amount a member of generation \(t\) stores. The two
+    consumption levels are
+    \begin{align*}
+        C_{1t}=A-F_t,
+        \qquad
+        C_{2,t+1}=xF_t.
+        \problemeqtag\label{eq:p218-consumption-storage}
+    \end{align*}
+    Substitution into utility gives
+    \[
+        U_t=\ln(A-F_t)+\ln(xF_t).
+    \]
+    The first-order condition is
+    \[
+        -\frac{1}{A-F_t}+\frac{1}{F_t}=0,
+    \]
+    so the unique optimum is
+    \begin{align*}
+        F_t=\frac{A}{2},
+        \qquad
+        C_{1t}=\frac{A}{2},
+        \qquad
+        C_{2,t+1}=\frac{xA}{2}.
+        \problemeqtag\label{eq:p218-decentralized-allocation}
+    \end{align*}
+    The initial old simply consume their endowment \(Z\). Every later
+    generation stores half of its endowment when young.
+
+    \item Suppose the constant storage fraction is \(f\), so each young
+    person consumes \((1-f)A\) and each old person consumes \(xfA\). Total
+    consumption in period \(t\) is
+    \begin{align*}
+        C_t=L_t(1-f)A+L_{t-1}xfA.
+        \problemeqtag\label{eq:p218-total-consumption}
+    \end{align*}
+    Since \(L_t=(1+n)L_{t-1}\), consumption per person alive is
+    \begin{align*}
+        \frac{C_t}{L_t+L_{t-1}}
+        =\frac{A\bigl[(1+n)(1-f)+xf\bigr]}{2+n}.
+        \problemeqtag\label{eq:p218-consumption-per-person}
+    \end{align*}
+    Its derivative with respect to \(f\) has the sign of
+    \(x-(1+n)\). Therefore, when \(x<1+n\), aggregate consumption per
+    person is maximized at
+    \[
+        \boxed{f=0.}
+    \]
+
+    The decentralized allocation nevertheless has \(f=1/2\), so it is not
+    Pareto efficient. A planner can leave each young person's consumption
+    at \(A/2\), but transfer the other \(A/2\) directly to the current old
+    rather than store it. Because there are \(1+n\) young people for every
+    old person, the resulting allocation is
+    \begin{align*}
+        C_{1t}^{\,P}=\frac{A}{2},
+        \qquad
+        C_{2,t+1}^{\,P}=\frac{(1+n)A}{2}
+        >\frac{xA}{2}.
+        \problemeqtag\label{eq:p218-planner-allocation}
+    \end{align*}
+    Repeating the transfer every period leaves consumption when young
+    unchanged and raises consumption when old for every generation. The
+    initial old also receive the first transfer, in addition to their
+    endowment \(Z\).
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Aggregate efficiency is not enough by itself]
+    The fact that \(f=0\) maximizes total consumption does not alone prove a
+    Pareto improvement, because the old would consume nothing without a
+    transfer. The planner's intergenerational transfer is what makes every
+    generation weakly better off.
+\end{note}
+
+\begin{note}[Where the return \(1+n\) comes from]
+    One unit collected from every young person finances \(1+n\) units for
+    each old person because the young generation is \(1+n\) times as
+    large. This transfer technology dominates storage when \(1+n>x\).
+\end{note}
+
 \begin{problem}{19}[\textbf{Stationary monetary equilibria in the Samuelson OLG model.}]
 \problemsource{\parencite{samuelson1958consumption-loan}}
 Consider the setup described in Problem 2.18. Assume that \(x<1+n\). Suppose that the old individuals in period 0, in addition to being endowed with \(Z\) units of the good, are each endowed with \(M\) units of a storable, divisible commodity, which we will call money. Money is not a source of utility.
@@ -205,6 +2702,111 @@ Consider the setup described in Problem 2.18. Assume that \(x<1+n\). Suppose tha
     \item Finally, explain why \(P_t=\infty\) for all \(t\) (that is, money is worthless) is also an equilibrium. Explain why this is the only equilibrium if the economy ends at some date, as in Problem 2.20(b) below. \par \remarkaccent{Hint:} Reason backward from the last period.
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+Define the gross real return on money by
+\begin{align*}
+    R_t\equiv\frac{P_t}{P_{t+1}}.
+    \problemeqtag\label{eq:p219-money-return}
+\end{align*}
+With logarithmic utility, a young person consumes \(A/2\) and saves
+\(A/2\), regardless of the return. The only remaining decision is whether
+to save through storage or money.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Let \(F_t\) denote storage and \(M_t^d\) nominal money holdings.
+    The optimal portfolio is
+    \begin{align*}
+        \begin{array}{c|c|c|c}
+        \text{return comparison}
+            &F_t&M_t^d/P_t&C_{2,t+1}\\ \hline
+        R_t<x&A/2&0&xA/2\\[2pt]
+        R_t>x&0&A/2&R_tA/2\\[2pt]
+        R_t=x&(1-\mu_t)A/2&\mu_t A/2&xA/2,
+        \quad \mu_t\in[0,1].
+        \end{array}
+        \problemeqtag\label{eq:p219-portfolio-cases}
+    \end{align*}
+    Thus all saving goes to the asset with the higher gross return; when
+    the returns are equal, any mixture is optimal.
+
+    \item The initial old population is \(L_0/(1+n)\), so the fixed nominal
+    stock of money is
+    \[
+        \mathcal M=\frac{L_0}{1+n}M.
+    \]
+    Consider a path with \(R_t=1+n>x\). By
+    \eqref{eq:p219-portfolio-cases}, every young person sells \(A/2\) units
+    of the good for money and stores nothing. Money-market clearing requires
+    \begin{align*}
+        L_tP_t\frac{A}{2}
+        =\mathcal M,
+        \qquad
+        P_t=\frac{2M}{A(1+n)^{t+1}}.
+        \problemeqtag\label{eq:p219-golden-money-market}
+    \end{align*}
+    The second equality uses \(L_t=L_0(1+n)^t\). It immediately implies
+    \[
+        P_{t+1}=\frac{P_t}{1+n}.
+    \]
+    Hence the proposed price path clears the money market in every period
+    and is an equilibrium. Storage is zero, which is the golden-rule value
+    from Problem 2.18 when \(x<1+n\). Money implements the superior
+    intergenerational return \(1+n\).
+
+    \item Now impose \(R_t=x\), or
+    \(P_{t+1}=P_t/x\). Households are indifferent between money and storage.
+    If \(\mu_t\) is the fraction of their saving held as money, market
+    clearing requires
+    \begin{align*}
+        L_tP_t\mu_t\frac{A}{2}
+        =\mathcal M,
+        \qquad
+        P_t=\frac{2M}
+        {A\mu_t(1+n)^{t+1}}.
+        \problemeqtag\label{eq:p219-mixed-money-market}
+    \end{align*}
+    Taking the ratio of adjacent prices in
+    \eqref{eq:p219-mixed-money-market}, the proposed return is obtained
+    exactly when
+    \begin{align*}
+        \frac{\mu_{t+1}}{\mu_t}
+        =\frac{x}{1+n}<1.
+        \problemeqtag\label{eq:p219-money-share-path}
+    \end{align*}
+    Choose any feasible \(\mu_0\in(0,1]\) and then use
+    \eqref{eq:p219-money-share-path}. This constructs a continuum of
+    equilibria in which money and storage both earn \(x\), and the fraction
+    of saving held as money declines over time.
+
+    \item If \(P_t=\infty\), one unit of money buys \(1/P_t=0\) goods.
+    Money is therefore worthless. If every young generation expects the
+    next generation to reject money, no one offers goods for it; each
+    person instead stores \(A/2\), exactly as in Problem 2.18. Zero real
+    money demand equals the zero real value of the outstanding nominal
+    stock, so this is also an equilibrium.
+
+    If the economy ends at \(T\), the last young generation lives for only
+    one period and will not exchange goods for money that can never be
+    spent. Knowing this, generation \(T-1\) will not acquire money when
+    young. Repeating the same reasoning backward shows that no generation
+    accepts money. Thus the worthless-money equilibrium is the only one in
+    a finite-horizon economy.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Keep the price convention straight]
+    \(P_t\) is units of money per unit of the good. Thus the real value of
+    money is \(1/P_t\), and its gross return is \(P_t/P_{t+1}\), not the
+    inverse.
+\end{note}
+
+\begin{note}[Stationary refers to the allocation]
+    In the no-storage monetary equilibrium, the real allocation is
+    stationary even though the nominal goods price \(P_t\) falls with
+    population growth. More young agents must share the fixed nominal
+    money stock.
+\end{note}
 
 \begin{problem}{20}[\textbf{The source of dynamic inefficiency.}]
 \problemsource{\parencite{shell1971infinity}}
@@ -220,6 +2822,98 @@ There are two ways in which the Diamond and Samuelson models differ from textboo
 \end{enumerate}
 \end{problem}
 
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item For a person born at \(t\), rewrite the budget constraint as
+    \begin{align*}
+        Q_tC_{1t}+Q_{t+1}C_{2,t+1}
+        =Q_tA+\bigl(xQ_{t+1}-Q_t\bigr)S_t.
+        \problemeqtag\label{eq:p220-lifetime-budget}
+    \end{align*}
+    One unit sold at \(t\) and repurchased at \(t+1\) earns the gross return
+    \(Q_t/Q_{t+1}\); one unit stored earns \(x\).
+
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(Q_{t+1}=Q_t/x\), then
+        \(Q_t/Q_{t+1}=x\), and the coefficient on \(S_t\) in
+        \eqref{eq:p220-lifetime-budget} is zero. Storage does not change
+        lifetime wealth, so the individual is indifferent about \(S_t\).
+        Log utility implies
+        \[
+            C_{1t}=\frac{A}{2},
+            \qquad
+            C_{2,t+1}=\frac{xA}{2}.
+        \]
+
+        To exhibit market clearing, let \(\alpha_t\in[0,1]\) be the
+        fraction of the young person's saving \(A/2\) transferred through
+        market trade rather than storage. Then
+        \[
+            S_t=(1-\alpha_t)\frac{A}{2}.
+        \]
+        Generation \(t\) supplies \(\alpha_t A/2\) goods when young and,
+        because \(Q_t/Q_{t+1}=x\), demands
+        \(x\alpha_t A/2\) goods when old. With \(n=0\), goods-market
+        clearing in period \(t+1\) therefore requires
+        \begin{align*}
+            \alpha_{t+1}=x\alpha_t.
+            \problemeqtag\label{eq:p220-trade-clearing}
+        \end{align*}
+        The initial old simply consume their endowment \(Z\), so they
+        neither demand nor supply goods in the complete market and
+        \(\alpha_0=0\). Equation \eqref{eq:p220-trade-clearing} then gives
+        \(\alpha_t=0\) for every \(t\). Everyone stores \(A/2\), and the
+        allocation is exactly the decentralized equilibrium in
+        Problem 2.18.
+
+        \item Let \(t\) be the first date at which the price condition
+        fails. All earlier market trades are zero by the argument above, so
+        the old at date \(t\) plan no net trade.
+
+        If \(Q_{t+1}<Q_t/x\), then
+        \(Q_t/Q_{t+1}>x\): market trade dominates storage. The young at
+        \(t\) choose \(S_t=0\) and are net suppliers of the date-\(t\)
+        good, but the old have no matching demand.
+
+        If \(Q_{t+1}>Q_t/x\), then storage dominates market trade. The
+        coefficient on \(S_t\) in \eqref{eq:p220-lifetime-budget} is
+        positive, so the young choose the upper bound \(S_t=A\). To consume
+        while young they must be net demanders of the date-\(t\) good, but
+        the old have no matching supply. In either case the date-\(t\)
+        goods market cannot clear. Thus the only equilibrium price sequence
+        satisfies \(Q_{t+1}=Q_t/x\) at every date.
+    \end{enumerate}
+
+    \item If the economy ends at \(T\), the generation born at \(T\) lives
+    for one period and consumes its entire endowment. A planner cannot take
+    goods from this last generation without making it worse off, because
+    there is no generation at \(T+1\) that can compensate it.
+
+    Now reason backward. Without a transfer from the young at \(T\), the
+    old at \(T\) can consume only the proceeds of the saving they chose at
+    \(T-1\). Any attempt to make an earlier old generation better off by
+    replacing storage with transfers must eventually place an uncompensated
+    burden on the last generation. Therefore the infinite chain of
+    Pareto-improving transfers used in Problem 2.18 cannot be started.
+    Given this terminal condition, each generation's private storage choice
+    is optimal, and the finite-horizon decentralized equilibrium is Pareto
+    efficient.
+
+    \item Eliminating incomplete markets in part (a) reproduces the same
+    dynamically inefficient allocation. Eliminating infinite duration in
+    part (b) eliminates the possible Pareto improvement. Therefore the
+    source of dynamic inefficiency is the economy's \emph{infinite
+    duration}, not incomplete markets.
+\end{enumerate}
+\end{solution}
+
+\begin{note}[Why the last generation matters]
+    The planner's improvement is a chain: each young generation supports
+    the current old and is repaid by the next young generation. A finite
+    terminal date breaks the chain because the last young generation has no
+    successor.
+\end{note}
+
 \begin{problem}{21}[\textbf{Explosive paths in the Samuelson overlapping-generations model.}]
 \problemsource{\parencite{black1974uniqueness,brock1975perfect-foresight,calvo1978indeterminacy}}
 Consider the setup described in Problem 2.19. Assume that \(x\) is zero, and assume that utility is constant-relative-risk-aversion with \(\theta<1\) rather than logarithmic. Finally, assume for simplicity that \(n=0\).
@@ -230,3 +2924,97 @@ Consider the setup described in Problem 2.19. Assume that \(x\) is zero, and ass
     \item Can there be an equilibrium path with \(P_0/P_1>1\)?
 \end{enumerate}
 \end{problem}
+
+\begin{solution}
+Let \(R_t\equiv P_t/P_{t+1}>0\) be the gross real return on money.
+Because \(x=0\), money is the only way to transfer consumption to old age.
+
+\begin{enumerate}[label=(\alph*)]
+    \item The lifetime budget constraint, in units of the date-\(t\) good,
+    is
+    \begin{align*}
+        C_{1t}+\frac{C_{2,t+1}}{R_t}=A.
+        \problemeqtag\label{eq:p221-real-budget}
+    \end{align*}
+    With no discounting, the first-order conditions for CRRA utility imply
+    \begin{align*}
+        C_{2,t+1}=R_t^{1/\theta}C_{1t}.
+        \problemeqtag\label{eq:p221-euler}
+    \end{align*}
+    Let \(h(R_t)\) be the fraction of the endowment sold for money.
+    Substituting \eqref{eq:p221-euler} into
+    \eqref{eq:p221-real-budget}, and using
+    \(Ah(R_t)=A-C_{1t}\), gives
+    \begin{align*}
+        C_{1t}
+        &=\frac{A}{1+R_t^{(1-\theta)/\theta}},
+        &
+        h(R)
+        &=\frac{R^{(1-\theta)/\theta}}
+        {1+R^{(1-\theta)/\theta}}.
+        \problemeqtag\label{eq:p221-money-share}
+    \end{align*}
+    Write \(a\equiv(1-\theta)/\theta>0\). Then
+    \(h'(R)=aR^{a-1}/(1+R^a)^2>0\) and
+    \(\lim_{R\to0}h(R)=0\). Thus a higher return on money raises the amount
+    sold for money, and that amount approaches zero with the return.
+
+    \item Generation 0 sells \(Ah(R_0)\) goods for money at date 0. Its
+    nominal balances are therefore \(P_0Ah(R_0)\), which buy
+    \begin{align*}
+        \frac{P_0Ah(R_0)}{P_1}
+        =R_0Ah(R_0)
+        \problemeqtag\label{eq:p221-old-demand}
+    \end{align*}
+    units of the good at date 1. Generation 1 supplies \(Ah(R_1)\) units.
+    Since \(n=0\), the two generations have the same size, so date-1 market
+    clearing requires
+    \begin{align*}
+        h(R_1)=R_0h(R_0).
+        \problemeqtag\label{eq:p221-return-recursion}
+    \end{align*}
+    When \(R_0<1\), the right-hand side is strictly between zero and
+    \(h(R_0)\). Since \(h\) is strictly increasing, there is a unique
+    solution and it satisfies \(0<R_1<R_0\). Explicitly,
+    \[
+        R_1
+        =\left[
+            \frac{R_0h(R_0)}{1-R_0h(R_0)}
+        \right]^{\theta/(1-\theta)}.
+    \]
+
+    \item Applying \eqref{eq:p221-return-recursion} in every period gives
+    \[
+        1>R_0>R_1>R_2>\cdots.
+    \]
+    The sequence has a limit \(\overline R\ge0\). Taking limits in
+    \eqref{eq:p221-return-recursion} gives
+    \(h(\overline R)=\overline R\,h(\overline R)\). A positive limit would
+    require \(\overline R=1\), which is impossible because every
+    \(R_t<R_0<1\). Hence
+    \[
+        \boxed{R_t=\frac{P_t}{P_{t+1}}\longrightarrow0,
+        \qquad h(R_t)\longrightarrow0.}
+    \]
+
+    This is an equilibrium path: choose \(P_0\) to clear the initial money
+    market and set \(P_{t+1}=P_t/R_t\). Equation
+    \eqref{eq:p221-return-recursion} then clears both markets every period.
+    Thus \(P_{t+1}/P_t\) explodes, while the real value of money and the
+    quantity of goods traded for it vanish.
+
+    \item Suppose instead that \(R_0>1\). As long as a next-period return
+    can be found, \eqref{eq:p221-return-recursion} implies
+    \[
+        h(R_{t+1})=R_t h(R_t)>h(R_t),
+    \]
+    so \(R_{t+1}>R_t>1\). Such a sequence cannot converge to a finite
+    limit: the limiting recursion would require \(R=1\) or \(h(R)=0\).
+    Hence it becomes unbounded. But eventually \(R_t h(R_t)>1\), whereas
+    \(h(R_{t+1})\le1\); market clearing would require the next young
+    generation to sell more than its endowment. Thus
+    \[
+        \boxed{\text{there is no equilibrium path with }P_0/P_1>1.}
+    \]
+\end{enumerate}
+\end{solution}
