@@ -21,68 +21,68 @@ Use the fact that the growth rate of a variable equals the time derivative of it
         \dfrac{\dot Y\left(t\right)}{Y\left(t\right)}
         \problemeqtag
     \end{align*}
-    \item If \(Z\left(t\right)=a\,X\left(t\right)^{\alpha}\), then
+    \item If \(Z\left(t\right)=a\,X\left(t\right)^{b}\), then
     \begin{align*}
         \dfrac{\dot Z\left(t\right)}{Z\left(t\right)} =
-        \alpha\,\dfrac{\dot X\left(t\right)}{X\left(t\right)}
+        b\cdot\dfrac{\dot X\left(t\right)}{X\left(t\right)}
         \problemeqtag
     \end{align*}
 \end{enumerate}
 \end{problem}
 
-\begin{solution}
-For any positive differentiable variable \(X(t)\), define its instantaneous growth rate by
+\begin{solution}{1.1.a}
+For any positive differentiable variable \(X\left(t\right)\), define its instantaneous growth rate by
 \begin{align*}
-    g_X(t)\equiv \frac{\dot X(t)}{X(t)}
-    =\frac{\d \ln X(t)}{\d t}.
+    g_X\left(t\right)\equiv \frac{\dot X\left(t\right)}{X\left(t\right)}
+    =\frac{\mathrm d \ln X\left(t\right)}{\d t}.
     \problemeqtag\label{eq:p11-growth-definition}
 \end{align*}
 
 \begin{enumerate}[label=(\alph*)]
-    \item If \(Z(t)=X(t)Y(t)\), then
+    \item If \(Z\left(t\right)=X\left(t\right)Y\left(t\right)\), then
     \begin{align*}
-        \ln Z(t)&=\ln X(t)+\ln Y(t),\\
-        \frac{\d\ln Z(t)}{\d t}
-        &=\frac{\d\ln X(t)}{\d t}
-        +\frac{\d\ln Y(t)}{\d t}.
+        \ln Z\left(t\right)&=\ln X\left(t\right)+\ln Y\left(t\right),\\
+        \frac{\d\ln Z\left(t\right)}{\d t}
+        &=\frac{\d\ln X\left(t\right)}{\d t}
+        +\frac{\d\ln Y\left(t\right)}{\d t}
     \end{align*}
     Therefore,
     \begin{align*}
         \boxed{
-        \frac{\dot Z(t)}{Z(t)}
-        =\frac{\dot X(t)}{X(t)}
-        +\frac{\dot Y(t)}{Y(t)}}.
+        \frac{\dot Z\left(t\right)}{Z\left(t\right)}
+        =\frac{\dot X\left(t\right)}{X\left(t\right)}
+        +\frac{\dot Y\left(t\right)}{Y\left(t\right)}}
     \end{align*}
 
-    \item If \(Z(t)=X(t)/Y(t)\), then
+    \item If \(Z\left(t\right)=X\left(t\right)/Y\left(t\right)\), then
     \begin{align*}
-        \ln Z(t)&=\ln X(t)-\ln Y(t),\\
-        \frac{\d\ln Z(t)}{\d t}
-        &=\frac{\d\ln X(t)}{\d t}
-        -\frac{\d\ln Y(t)}{\d t}.
+        \ln Z\left(t\right)&=\ln X\left(t\right)-\ln Y\left(t\right),\\
+        \frac{\d\ln Z\left(t\right)}{\d t}
+        &=\frac{\d\ln X\left(t\right)}{\d t}
+        -\frac{\d\ln Y\left(t\right)}{\d t}
     \end{align*}
     Hence,
     \begin{align*}
         \boxed{
-        \frac{\dot Z(t)}{Z(t)}
-        =\frac{\dot X(t)}{X(t)}
-        -\frac{\dot Y(t)}{Y(t)}}.
+        \frac{\dot Z\left(t\right)}{Z\left(t\right)}
+        =\frac{\dot X\left(t\right)}{X\left(t\right)}
+        -\frac{\dot Y\left(t\right)}{Y\left(t\right)}}
     \end{align*}
 
-    \item Assume \(a>0\) and let \(Z(t)=aX(t)^\alpha\), where \(a\) and
+    \item Assume \(a>0\) and let \(Z\left(t\right)=aX\left(t\right)^\alpha\), where \(a\) and
     \(\alpha\) are constants. Taking logs and then differentiating gives
     \begin{align*}
-        \ln Z(t)&=\ln a+\alpha\ln X(t),\\
-        \frac{\d\ln Z(t)}{\d t}
-        &=\frac{\d}{\d t}\bigl[\ln a+\alpha\ln X(t)\bigr]\\
-        &=0+\alpha\frac{\d\ln X(t)}{\d t}.
+        \ln Z\left(t\right)&=\ln a+\alpha\ln X\left(t\right),\\
+        \frac{\d\ln Z\left(t\right)}{\d t}
+        &=\frac{\d}{\d t}\bigl[\ln a+\alpha\ln X\left(t\right)\bigr]\\
+        &=0+\alpha\frac{\d\ln X\left(t\right)}{\d t}
     \end{align*}
     Using the growth-rate identity in \eqref{eq:p11-growth-definition} for
-    both \(Z(t)\) and \(X(t)\), we obtain
+    both \(Z\left(t\right)\) and \(X\left(t\right)\), we obtain
     \begin{align*}
         \boxed{
-        \frac{\dot Z(t)}{Z(t)}
-        =\alpha\frac{\dot X(t)}{X(t)}}.
+        \frac{\dot Z\left(t\right)}{Z\left(t\right)}
+        =\alpha\frac{\dot X\left(t\right)}{X\left(t\right)}}
     \end{align*}
     Thus a time-invariant multiplicative constant changes the level of a variable,
     but not its growth rate.
@@ -124,8 +124,8 @@ to time \(t_2\); and is constant and equal to \(a\) after time \(t_2\).
 \setlength{\belowdisplayshortskip}{4pt}
 Let
 \begin{align*}
-    \gamma_X(t)\equiv\frac{\dot X(t)}{X(t)}
-    =\frac{\d\ln X(t)}{\d t}.
+    \gamma_X\left(t\right)\equiv\frac{\dot X\left(t\right)}{X\left(t\right)}
+    =\frac{\d\ln X\left(t\right)}{\d t}.
     \problemeqtag\label{eq:p12-growth-definition}
 \end{align*}
 
@@ -133,7 +133,7 @@ Let
     \item The question does not specify the exact shape of the gradual increase between
     \(t_1\) and \(t_2\). For a concrete sketch, suppose it is linear. Then
     \begin{align*}
-        \gamma_X(t)=
+        \gamma_X\left(t\right)=
         \begin{cases}
             a, & 0\leq t<t_1,\\[3pt]
             \dfrac{a(t-t_1)}{t_2-t_1}, & t_1\leq t\leq t_2,\\[7pt]
@@ -144,15 +144,15 @@ Let
     Thus the growth rate is initially horizontal at \(a\), jumps down to zero at
     \(t_1\), rises to \(a\), and is horizontal again after \(t_2\).
 
-    \item Since the slope of \(\ln X(t)\) equals \(\gamma_X(t)\),
+    \item Since the slope of \(\ln X\left(t\right)\) equals \(\gamma_X\left(t\right)\),
     \begin{align*}
-        \ln X(t)-\ln X(0)=\int_0^t\gamma_X(\tau)\,\d\tau.
+        \ln X\left(t\right)-\ln X(0)=\int_0^t\gamma_X(\tau)\,\d\tau.
         \problemeqtag\label{eq:p12-log-integral}
     \end{align*}
     Substituting the linear path in \eqref{eq:p12-growth-path} into
     \eqref{eq:p12-log-integral} gives
     \begin{align*}
-        \ln X(t)=
+        \ln X\left(t\right)=
         \begin{cases}
             \ln X(0)+at,
                 &0\leq t\leq t_1,\\[3pt]
@@ -164,14 +164,14 @@ Let
         \end{cases}
         \problemeqtag
     \end{align*}
-    Hence \(\ln X(t)\) is linear with slope \(a\) before \(t_1\). It remains
+    Hence \(\ln X\left(t\right)\) is linear with slope \(a\) before \(t_1\). It remains
     continuous at \(t_1\), but its slope drops to zero. Between \(t_1\) and \(t_2\)
     it is increasing and convex, and after \(t_2\) it is again linear with slope \(a\).
 \end{enumerate}
 
 The two paths derived above are collected in the figure below. The left panel
 shows the assumed growth-rate path, and the right panel shows its implication
-for the level of \(\ln X(t)\).
+for the level of \(\ln X\left(t\right)\).
 
 \begin{figure}[H]
     \centering
@@ -216,7 +216,7 @@ for the level of \(\ln X(t)\).
 
 \begin{note}[Reading a log-level graph]
     A jump in a growth rate changes the slope of the log-level path, not its level.
-    Thus \(\ln X(t)\) has a kink at \(t_1\), not a jump or an inflection point.
+    Thus \(\ln X\left(t\right)\) has a kink at \(t_1\), not a jump or an inflection point.
 \end{note}
 
 \begin{problem}{3}
@@ -254,14 +254,14 @@ The balanced-growth-path value \(k^*\) is determined by
     line becomes flatter. The actual investment curve \(sf(k)\) is unchanged. At the old
     \(k^*\), actual investment now exceeds break-even investment, and therefore
     \begin{align*}
-        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}.
+        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}
     \end{align*}
 
     \item A rise in \(g\) increases \(n+g+\delta\), so the break-even investment line
     becomes steeper. The actual investment curve is unchanged. At the old \(k^*\), break-even
     investment now exceeds actual investment, and therefore
     \begin{align*}
-        \boxed{k^*_{\mathrm{new}}<k^*_{\mathrm{old}}}.
+        \boxed{k^*_{\mathrm{new}}<k^*_{\mathrm{old}}}
     \end{align*}
 
     \item With \(f(k)=k^\alpha\), actual investment is \(sk^\alpha\), while the
@@ -302,7 +302,7 @@ The balanced-growth-path value \(k^*\) is determined by
     upward from \(sf(k)\) to \(s\widetilde f(k)\), while the break-even line is unchanged.
     Hence
     \begin{align*}
-        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}.
+        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}
     \end{align*}
 \end{enumerate}
 
@@ -492,7 +492,7 @@ Suppose \(L(t_0^+)=mL(t_0^-)\), where \(m>1\). Capital \(K\) and technology
     Since none of the parameters in this equation has changed, the long-run values of
     \(k^*\) and \(y^*=f(k^*)\) are unchanged. Therefore,
     \begin{align*}
-        \boxed{y^*_{\mathrm{new}}=y^*_{\mathrm{old}}}.
+        \boxed{y^*_{\mathrm{new}}=y^*_{\mathrm{old}}}
     \end{align*}
 \end{enumerate}
 
@@ -600,7 +600,7 @@ The law of motion for capital per unit of effective labor is
     \end{align*}
     For the positive steady state, divide by \(k^*\) and rearrange:
     \begin{align*}
-        (k^*)^{1-\alpha}=\frac{s}{n+g+\delta}.
+        (k^*)^{1-\alpha}=\frac{s}{n+g+\delta}
     \end{align*}
     Therefore,
     \begin{align*}
@@ -663,7 +663,7 @@ The law of motion for capital per unit of effective labor is
     Since \(f(k)=k^\alpha\),
     \begin{align*}
         s_{\mathrm{GR}}
-        =(n+g+\delta)k_{\mathrm{GR}}^{1-\alpha}.
+        =(n+g+\delta)k_{\mathrm{GR}}^{1-\alpha}
     \end{align*}
     For Cobb--Douglas production, \eqref{eq:p15-golden-rule-condition} implies
     \(k_{\mathrm{GR}}^{1-\alpha}=\alpha/(n+g+\delta)\). Hence
@@ -741,7 +741,7 @@ Suppose the population growth rate falls permanently at \(t_0\) from
     Thus capital per worker rises monotonically until it reaches the new
     balanced-growth-path value:
     \begin{align*}
-        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}.
+        \boxed{k^*_{\mathrm{new}}>k^*_{\mathrm{old}}}
     \end{align*}
 
     A change in a growth rate does not create an instantaneous level jump in
@@ -756,7 +756,7 @@ Suppose the population growth rate falls permanently at \(t_0\) from
         \boxed{
         y^*_{\mathrm{new}}>y^*_{\mathrm{old}},
         \qquad
-        c^*_{\mathrm{new}}>c^*_{\mathrm{old}}}.
+        c^*_{\mathrm{new}}>c^*_{\mathrm{old}}}
     \end{align*}
 
     \item Total output satisfies \(Y=Ly\), so
@@ -1071,12 +1071,12 @@ the change in percentage points.
     With \(\alpha_K=1/3\), \eqref{eq:p18-output-elasticity} becomes
     \begin{align*}
         \varepsilon_{y^*,s}
-        =\frac{1/3}{1-1/3}=\frac{1}{2}.
+        =\frac{1/3}{1-1/3}=\frac{1}{2}
     \end{align*}
     Hence the elasticity approximation gives
     \begin{align*}
         \frac{\Delta y^*}{y^*}
-        \approx\frac{1}{2}(0.20)=0.10.
+        \approx\frac{1}{2}(0.20)=0.10
     \end{align*}
     Therefore,
     \begin{align*}
@@ -1103,7 +1103,7 @@ the change in percentage points.
         &=\frac{1-s_{\mathrm{new}}}{1-s_{\mathrm{old}}}
           \frac{y^*_{\mathrm{new}}}{y^*_{\mathrm{old}}}\\
         &=\frac{0.82}{0.85}\sqrt{1.2}\\
-        &\approx1.057.
+        &\approx1.057
     \end{align*}
     Thus
     \begin{align*}
@@ -1120,7 +1120,7 @@ the change in percentage points.
         &=\frac{(1-s_{\mathrm{new}})y(t_0)}
                 {(1-s_{\mathrm{old}})y(t_0)}\\
         &=\frac{0.82}{0.85}
-        \approx0.965.
+        \approx0.965
     \end{align*}
     Hence
     \begin{align*}
@@ -1141,29 +1141,29 @@ the change in percentage points.
         =\frac{0.82}{0.85}\approx0.965,\\
         x^*_{\mathrm{new}}
         &\equiv\frac{c^*_{\mathrm{new}}}{c^*_{\mathrm{old}}}
-        \approx1.057.
+        \approx1.057
     \end{align*}
     The linearized transition is
     \begin{align*}
-        x(t)-x^*_{\mathrm{new}}
+        x\left(t\right)-x^*_{\mathrm{new}}
         \approx e^{-\lambda(t-t_0)}
         \left(x_0-x^*_{\mathrm{new}}\right).
         \problemeqtag\label{eq:p18-consumption-transition}
 \end{align*}
-    Consumption has returned to its old path when \(x(t)=1\). Substituting
+    Consumption has returned to its old path when \(x\left(t\right)=1\). Substituting
     this condition into \eqref{eq:p18-consumption-transition} gives
     \begin{align*}
         e^{-\lambda(t-t_0)}
         &=\frac{x^*_{\mathrm{new}}-1}
         {x^*_{\mathrm{new}}-x_0}\\
         &\approx\frac{1.057-1}{1.057-0.965}
-        \approx0.62.
+        \approx0.62
     \end{align*}
     Taking logs gives
     \begin{align*}
         t-t_0
         &\approx-\frac{\ln(0.62)}{0.04}\\
-        &\approx12\text{ years}.
+        &\approx12\text{ years}
     \end{align*}
     Therefore,
     \begin{align*}
@@ -1180,7 +1180,7 @@ path that would have prevailed without the increase in investment.
     \begin{tikzpicture}[x=1.0cm,y=0.85cm,>=stealth]
         \draw[->,color=Muted] (0,0)--(7.4,0) node[right] {\scriptsize time};
         \draw[->,color=Muted] (0,0)--(0,4.25)
-            node[above] {\scriptsize $c(t)/c^*_{\mathrm{old}}$};
+            node[above] {\scriptsize $c\left(t\right)/c^*_{\mathrm{old}}$};
         \draw[dashed,color=Rule] (1,0)--(1,3.85);
         \node[below] at (1,0) {\scriptsize $t_0$};
         \draw[dashed,color=ProblemAccent] (0,2.20)--(7.0,2.20);
@@ -1251,7 +1251,7 @@ Write the constant-returns production function in intensive form:
         \frac{\partial k}{\partial L}
         =\frac{\partial}{\partial L}\left(\frac{K}{AL}\right)
         =-\frac{K}{AL^2}
-        =-\frac{k}{L}.
+        =-\frac{k}{L}
     \end{align*}
     Apply the product and chain rules to \(Y=ALf(k)\):
     \begin{align*}
@@ -1287,7 +1287,7 @@ Write the constant-returns production function in intensive form:
     \end{align*}
     where \(ALk=K\). Total net capital income is
     \begin{align*}
-        rK=Kf'(k)-\delta K.
+        rK=Kf'(k)-\delta K
     \end{align*}
     Adding the two payments gives
     \begin{align*}
@@ -1343,7 +1343,7 @@ Write the constant-returns production function in intensive form:
     \begin{align*}
         h'(k)
         =f'(k)-\left[f'(k)+kf''(k)\right]
-        =-kf''(k).
+        =-kf''(k)
     \end{align*}
     Thus
     \begin{align*}
@@ -1356,7 +1356,7 @@ Write the constant-returns production function in intensive form:
     returns, \(f''(k)<0\), and labor's gross marginal product satisfies
     \(f(k)-kf'(k)>0\). Therefore,
     \begin{align*}
-        \boxed{\frac{\dot w}{w}>g}.
+        \boxed{\frac{\dot w}{w}>g}
     \end{align*}
     The wage grows faster than on the balanced growth path because workers
     benefit from both technological progress and capital deepening.
@@ -1428,7 +1428,7 @@ consumed and all other income is saved. Thus,
 Let \(F_K\equiv\partial F(K,AL)/\partial K\), and define capital's gross
 output elasticity by
 \begin{align*}
-    \alpha_K(t)\equiv\frac{F_K(t)K(t)}{Y(t)}.
+    \alpha_K\left(t\right)\equiv\frac{F_K\left(t\right)K\left(t\right)}{Y\left(t\right)}.
     \problemeqtag
 \end{align*}
 Because the production function has constant returns to scale, labor income
@@ -1453,14 +1453,14 @@ Thus the growth rate of capital equals the net return to capital:
 \begin{enumerate}[label=(\alph*)]
     \item Differentiate \(Y=F(K,AL)\) with respect to time:
     \begin{align*}
-        \dot Y=F_K\dot K+F_{AL}\,\dot{(AL)}.
+        \dot Y=F_K\dot K+F_{AL}\,\dot{(AL)}
     \end{align*}
     Divide by \(Y\), multiply and divide the first term by \(K\), and multiply
     and divide the second term by \(AL\):
     \begin{align*}
         \frac{\dot Y}{Y}
         &=\frac{F_KK}{Y}\frac{\dot K}{K}
-        +\frac{F_{AL}(AL)}{Y}\frac{\dot{(AL)}}{AL}.
+        +\frac{F_{AL}(AL)}{Y}\frac{\dot{(AL)}}{AL}
     \end{align*}
     Constant returns imply
     \begin{align*}
@@ -1484,7 +1484,7 @@ Thus the growth rate of capital equals the net return to capital:
     \end{align*}
     With \(0<\alpha_K<1\), this expression is positive if and only if
     \begin{align*}
-        \frac{\dot K}{K}>n+g.
+        \frac{\dot K}{K}>n+g
     \end{align*}
     Finally, since \(k=K/(AL)\),
     \begin{align*}
@@ -1523,7 +1523,7 @@ Thus the growth rate of capital equals the net return to capital:
     Then
     \begin{align*}
         k<\bar k&\Longrightarrow\dot k>0,\\
-        k>\bar k&\Longrightarrow\dot k<0.
+        k>\bar k&\Longrightarrow\dot k<0
     \end{align*}
     Since the initial condition implies \(k(0)<\bar k\), capital per unit of
     effective labor rises monotonically toward \(\bar k\).
@@ -1792,7 +1792,7 @@ denote capital's share of net output. We maintain the usual assumptions that
         \sigma
         &>\frac{0.08[1-(0.03)(3)]}{0.08-0.03}
         =\frac{0.0728}{0.05}
-        =1.456.
+        =1.456
     \end{align*}
     Thus
     \begin{align*}
@@ -1903,14 +1903,14 @@ law of motion gives
 At \(y^*=f(k^*)\), \(H(y^*)=0\). A first-order approximation around
 \(y^*\) is therefore
 \begin{align*}
-    \dot y(t)
-    \simeq H'(y^*)[y(t)-y^*]
-    \equiv-\lambda_y[y(t)-y^*].
+    \dot y\left(t\right)
+    \simeq H'(y^*)[y\left(t\right)-y^*]
+    \equiv-\lambda_y[y\left(t\right)-y^*].
     \problemeqtag\label{eq:p113-linearization}
 \end{align*}
 The solution to the linearized equation is
 \begin{align*}
-    y(t)-y^*
+    y\left(t\right)-y^*
     \simeq e^{-\lambda_y t}[y(0)-y^*].
     \problemeqtag\label{eq:p113-path}
 \end{align*}
@@ -2005,14 +2005,14 @@ Let
 \begin{enumerate}[label=(\alph*)]
     \item Define capital and output relative to \(A^\phi L\):
     \[
-        \kappa(t)\equiv\frac{K(t)}{A(t)^\phi L(t)},
+        \kappa\left(t\right)\equiv\frac{K\left(t\right)}{A\left(t\right)^\phi L\left(t\right)},
         \qquad
-        y(t)\equiv\frac{Y(t)}{A(t)^\phi L(t)}.
+        y\left(t\right)\equiv\frac{Y\left(t\right)}{A\left(t\right)^\phi L\left(t\right)}.
     \]
     Since \(1+\phi=1/(1-\alpha)\), dividing the production function by
     \(A^\phi L\) gives
     \begin{align*}
-        y(t)=\kappa(t)^\alpha.
+        y\left(t\right)=\kappa\left(t\right)^\alpha.
         \problemeqtag\label{eq:p114-capital-augmenting-production}
     \end{align*}
     The normalizing factor \(A^\phi L\) grows at rate \(\phi\mu+n\).
@@ -2051,14 +2051,14 @@ Let
     \(Y=(A\bar J)^\alpha L^{1-\alpha}\), which has the same form as in
     part (a). Define
     \[
-        j(t)\equiv\frac{\bar J(t)}{A(t)^\phi L(t)}
-        =\frac{J(t)}{A(t)^{1+\phi}L(t)}.
+        j\left(t\right)\equiv\frac{\bar J\left(t\right)}{A\left(t\right)^\phi L\left(t\right)}
+        =\frac{J\left(t\right)}{A\left(t\right)^{1+\phi}L\left(t\right)}.
     \]
     Then
     \begin{align*}
-        y(t)=j(t)^\alpha,
+        y\left(t\right)=j\left(t\right)^\alpha,
         \qquad
-        y(t)\equiv\frac{Y(t)}{A(t)^\phi L(t)}.
+        y\left(t\right)\equiv\frac{Y\left(t\right)}{A\left(t\right)^\phi L\left(t\right)}.
         \problemeqtag\label{eq:p114-embodied-production}
     \end{align*}
     Combining \eqref{eq:p114-jbar-law} with the growth rate of
@@ -2121,7 +2121,7 @@ Let
     \end{align*}
     Locally,
     \[
-        j(t)-j^*\simeq e^{-\lambda_{\mathrm{emb}}t}[j(0)-j^*].
+        j\left(t\right)-j^*\simeq e^{-\lambda_{\mathrm{emb}}t}[j(0)-j^*].
     \]
     Because \(y=j^\alpha\) is smooth and strictly increasing, \(y\) converges
     at the same rate.
@@ -2232,16 +2232,16 @@ described in Section 1.7 are applied to this economy.
 \end{problem}
 
 \begin{solution}
-Let \(\alpha_K(t)\equiv F_K(t)K(t)/Y(t)\) denote capital's output
+Let \(\alpha_K\left(t\right)\equiv F_K\left(t\right)K\left(t\right)/Y\left(t\right)\) denote capital's output
 elasticity. Growth accounting for output per worker gives
 \begin{align*}
     \frac{\dot Y}{Y}-\frac{\dot L}{L}
-    =\alpha_K(t)
+    =\alpha_K\left(t\right)
     \left(\frac{\dot K}{K}-\frac{\dot L}{L}\right)
-    +R(t),
+    +R\left(t\right),
     \problemeqtag\label{eq:p115-growth-accounting}
 \end{align*}
-where \(R(t)\) is the Solow residual.
+where \(R\left(t\right)\) is the Solow residual.
 
 \begin{enumerate}[label=(\alph*)]
     \item On the Solow balanced growth path,
